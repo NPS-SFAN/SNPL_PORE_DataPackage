@@ -1,0 +1,14 @@
+attributeName	code	definition
+Basis_Of_Record	HumanObservation	Observation made by a human
+EggToothPresence	No egg tooth present	No egg tooth was found on the observed chick
+EggToothPresence	Yes egg tooth are present	An egg tooth was found on the observed chick
+Loc_Code	K	Kehoe Beach
+Loc_Code	L	Limantour Beach
+Loc_Code	NB	North Beach - South Parking
+Loc_Code	NP	North Beach - Abbott's
+Loc_Code	RA	2011 Dune Restoration Area
+Loc_Code	SB	South Beach
+Type	event	An action that occurs at some location during some time
+Unit_Code	PORE	Point Reyes National Seashore
+YolkSacPresence	No yolk sac present	No yolk sac present
+YolkSacPresence	Yes yolk sac present	A yolk sac was present

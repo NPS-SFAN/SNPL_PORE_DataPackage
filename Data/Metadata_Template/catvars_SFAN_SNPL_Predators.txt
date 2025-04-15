@@ -1,0 +1,32 @@
+attributeName	code	definition
+Basis_Of_Record	HumanObservation	Observation made by a human
+Coord_System	UTM	Universal Transverse Mercator coordinate system
+Datum	NAD83	North American Datum 83
+Loc_Code	DB	Drakes Beach
+Loc_Code	K	Kehoe Beach
+Loc_Code	L	Limantour Beach
+Loc_Code	NB	North Beach - South Parking
+Loc_Code	NP	North Beach - Abbott's
+Loc_Code	RA	2011 Dune Restoration Area
+Loc_Code	SB	South Beach
+Location_ID	20130211164511-705547511.577606	North Beach - South Parking
+Location_ID	{39744D68-DFEE-4649-ACE2-806C077E64E2}	Kehoe Beach
+Location_ID	{764DC5D8-DDE7-49E6-B146-A9328A9BB8B6}	North Beach - Abbott's
+Location_ID	{915091EC-61D4-40EF-92EF-E9EF4B6A26D1}	2011 Dune Restoration Area
+Location_ID	{AAECB23A-DD1B-4289-A95D-BD34276088B9}	Limantour Beach
+Location_ID	{C3FE26AC-14CC-4030-B7A6-94ADE3A1F54B}	South Beach
+Location_ID	{EE76E19D-DBD4-4FCB-9151-C32719F25BD9}	Drakes Beach
+PredatorAction	Flying	Predator was flying when observed
+PredatorAction	Foraging	Predator was foraging when observed
+PredatorAction	Stationary	Predator was stationary when observed
+PredatorAction	Walking	Predator was walking when observed
+PredatorDirection	East	Predator was observed moving east
+PredatorDirection	North	Predator was observed moving north
+PredatorDirection	Northeast	Predator was observed moving northeast
+PredatorDirection	Northwest	Predator was observed moving northwest
+PredatorDirection	South	Predator was observed moving south
+PredatorDirection	Southeast	Predator was observed moving southeast
+PredatorDirection	Southwest	Predator was observed moving southwest
+PredatorDirection	West	Predator was observed moving west
+Type	event	An action that occurs at some location during some time
+Unit_Code	PORE	Point Reyes National Seashore

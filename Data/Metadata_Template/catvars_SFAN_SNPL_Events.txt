@@ -1,0 +1,49 @@
+attributeName	code	definition
+Basis_Of_Record	HumanObservation	Observation made by a human
+Incomplete_Survey	Yes	Survey was incomplete
+Loc_Code	DB	Drakes Beach
+Loc_Code	K	Kehoe Beach
+Loc_Code	L	Limantour Beach
+Loc_Code	NB	North Beach - South Parking
+Loc_Code	NP	North Beach - Abbott's
+Loc_Code	RA	2011 Dune Restoration Area
+Loc_Code	SB	South Beach
+Local_Time_Zone	PDT	Pacific Daylight Time
+Local_Time_Zone	PST	Pacific Standard Time
+Location_ID	20130211164511-705547511.577606	North Beach - South Parking
+Location_ID	{39744D68-DFEE-4649-ACE2-806C077E64E2}	Kehoe Beach
+Location_ID	{764DC5D8-DDE7-49E6-B146-A9328A9BB8B6}	North Beach - Abbott's
+Location_ID	{915091EC-61D4-40EF-92EF-E9EF4B6A26D1}	2011 Dune Restoration Area
+Location_ID	{AAECB23A-DD1B-4289-A95D-BD34276088B9}	Limantour Beach
+Location_ID	{C3FE26AC-14CC-4030-B7A6-94ADE3A1F54B}	South Beach
+Location_ID	{EE76E19D-DBD4-4FCB-9151-C32719F25BD9}	Drakes Beach
+Survey_Direction	Combo	Survey direction is a combination of "N to S" and "S to N"
+Survey_Direction	N to S	Survey progresses from the north to the south side of the survey area
+Survey_Direction	S to N	Survey progresses from the south to the north side of the survey area
+Tide_Cond	Fall	Water level is decreasing, tidal current moving seaward
+Tide_Cond	Fall, Hi-Slack, Rise	Water level is decreasing, High tide, minimal tidal current, Water level increasing, tidal current moving landward
+Tide_Cond	Fall, Lo-Slack	Water level is decreasing, tidal current moving seaward; Low tide, minimal tidal current
+Tide_Cond	Fall, Lo-Slack, Rise	Water level is decreasing, tidal current moving seaward; Low tide, minimal tidal current; Water level increasing, tidal current moving landward
+Tide_Cond	Hi-Slack	High tide, minimal tidal current
+Tide_Cond	Hi-Slack, Fall	High tide, minimal tidal current; Water level is decreasing, tidal current moving seaward
+Tide_Cond	Hi-Slack, Fall, Lo-Slack	High tide, minimal tidal current; Water level is decreasing, tidal current moving seaward; Low tide, minimal tidal current
+Tide_Cond	Hi-Slack, Fall, Lo-Slack, Rise	High tide, minimal tidal current; Water level is decreasing; Low tide, minimal tidal current;  Water level increasing, tidal current moving landward
+Tide_Cond	Hi-Slack, Fall, Rise	High tide, minimal tidal current; Water level is decreasing, tidal current moving seaward; Water level increasing, tidal current moving landward
+Tide_Cond	Hi-Slack, Lo-Slack	High tide, minimal tidal current;  Low tide, minimal tidal current
+Tide_Cond	Hi-Slack, Lo-Slack, Rise	High tide, minimal tidal current;  Low tide, minimal tidal current;  Water level increasing, tidal current moving landward
+Tide_Cond	Hi-Slack, Rise	High tide, minimal tidal current; Water level increasing, tidal current moving landward
+Tide_Cond	Lo-Slack	Low tide, minimal tidal current
+Tide_Cond	Lo-Slack, Fall	Low tide, minimal tidal current; Water level is decreasing, tidal current moving seaward
+Tide_Cond	Lo-Slack, Fall, Rise	Low tide, minimal tidal current;  Water level is decreasing, tidal current moving seaward; Water level increasing, tidal current moving landward
+Tide_Cond	Lo-Slack, Rise	Low tide, minimal tidal current; Water level increasing, tidal current moving landward
+Tide_Cond	Rise	Water level increasing, tidal current moving landward
+Type	event	An action that occurs at some location during some time
+Unit_Code	PORE	Point Reyes National Seashore
+Wind_Dir	E	East
+Wind_Dir	N	North
+Wind_Dir	NE	Northeast
+Wind_Dir	NW	Northwest
+Wind_Dir	S	South
+Wind_Dir	SE	Southeast
+Wind_Dir	SW	Southwest
+Wind_Dir	W	West

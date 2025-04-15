@@ -1,0 +1,58 @@
+attributeName	code	definition
+Basis_Of_Record	HumanObservation	Observation made by a human
+BehaviorTerritoryCC	empty	Not defined
+BehaviorTerritoryCC	No	A plover was not making a contact call
+BehaviorTerritoryCC	Yes	A plover was making a contact call
+BehaviorTerritoryLW	empty	Not defined
+BehaviorTerritoryLW	No	A plover was not walking low to the ground
+BehaviorTerritoryLW	Yes	A plover was walking low to the ground
+BehaviorTerritoryMD	empty	Not defined
+BehaviorTerritoryMD	No	A male plover was not displaying
+BehaviorTerritoryMD	Yes	A male plover was displaying
+BehaviorTerritorySC	empty	Not defined
+BehaviorTerritorySC	No	Scrapping was not observed
+BehaviorTerritorySC	Yes	Scrapping was observed
+BehaviorTerritoryCP	empty	Not defined
+BehaviorTerritoryCP	No	A plover was not chasing another plover
+BehaviorTerritoryCP	Yes	A plover was chasing another plover
+BehaviorNestCP	empty	Not defined
+BehaviorNestCP	No	A plover was not observed in copulation
+BehaviorNestCP	Yes	A plover was observed in copulation
+BehaviorNestDC	empty	Not defined
+BehaviorNestDC	No	A plover was not making a distress call
+BehaviorNestDC	Yes	A plover was making a distress call
+BehaviorNestAI	empty	Not defined
+BehaviorNestAI	No	A plover was not agitating their wings or feigning injury
+BehaviorNestAI	Yes	A plover was agitating their wings or feigning injury
+BehaviorNestFN	empty	Not defined
+BehaviorNestFN	No	A plover did not flush from the nest
+BehaviorNestFN	Yes	A plover flushed from the nest
+BehaviorChicksAC	empty	Not defined
+BehaviorChicksAC	No	An adult plover was not accompanied with chicks
+BehaviorChicksAC	Yes	An adult plover was accompanied with chicks
+BehaviorChicksNA	empty	Not defined
+BehaviorChicksNA	No	There were not chicks without an adult nearby
+BehaviorChicksNA	Yes	There were chicks without an adult nearby
+BehaviorOtherFG	empty	Not defined
+BehaviorOtherFG	No	The plover was not observed to be foraging
+BehaviorOtherFG	Yes	The plover was observed to be foraging
+Coord_System	UTM	Universal Transverse Mercator coordinate system
+Datum	NAD83	North American Datum 83
+Loc_Code	DB	Drakes Beach
+Loc_Code	K	Kehoe Beach
+Loc_Code	L	Limantour Beach
+Loc_Code	NB	North Beach - South Parking
+Loc_Code	NP	North Beach - Abbott's
+Loc_Code	RA	2011 Dune Restoration Area
+Loc_Code	SB	South Beach
+Local_Time_Zone	PDT	Pacific Daylight Time
+Local_Time_Zone	PST	Pacific Standard Time
+Location_ID	20130211164511-705547511.577606	North Beach - South Parking
+Location_ID	{39744D68-DFEE-4649-ACE2-806C077E64E2}	Kehoe Beach
+Location_ID	{764DC5D8-DDE7-49E6-B146-A9328A9BB8B6}	North Beach - Abbott's
+Location_ID	{915091EC-61D4-40EF-92EF-E9EF4B6A26D1}	2011 Dune Restoration Area
+Location_ID	{AAECB23A-DD1B-4289-A95D-BD34276088B9}	Limantour Beach
+Location_ID	{C3FE26AC-14CC-4030-B7A6-94ADE3A1F54B}	South Beach
+Location_ID	{EE76E19D-DBD4-4FCB-9151-C32719F25BD9}	Drakes Beach
+Type	event	An action that occurs at some location during some time
+Unit_Code	PORE	Point Reyes National Seashore

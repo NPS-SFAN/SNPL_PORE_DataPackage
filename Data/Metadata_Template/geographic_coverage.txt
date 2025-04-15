@@ -1,0 +1,2 @@
+geographicDescription	northBoundingCoordinate	southBoundingCoordinate	eastBoundingCoordinate	westBoundingCoordinate
+PORE	38.1072195340767	38.1072195340767	-122.963145613284	-122.963145613284

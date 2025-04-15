@@ -1,0 +1,58 @@
+attributeName	code	definition
+Basis_Of_Record	HumanObservation	Observation made by a human
+ChickLoss_Weekend1	No	No chicks were lost during the first weekend
+ChickLoss_Weekend1	Yes	A chick or chicks were lost during the first weekend
+ChickLoss_Weekend2	No	No chicks were lost during the second weekend
+ChickLoss_Weekend2	Yes	A chick or chicks were lost during the second weekend
+ChickLoss_Weekend3	No	No chicks were lost during the third weekend
+ChickLoss_Weekend3	Yes	A chick or chicks were lost during the third weekend
+ChickLoss_Weekend4	empty	Not defined
+ChickLoss_Weekend4	No	No chicks were lost during the fourth weekend
+ChickLoss_Weekend4	Yes	A chick or chicks were lost during the fourth weekend
+Coord_System	UTM	Universal Transverse Mercator coordinate system
+DataProcessingLevelNestMaster	Raw	Data that have not been verified against paper datasheets or validated
+DataProcessingLevelNestMaster	Accepted	"Data have been verified and validated (logic queries run), but a QAP does not exist"
+DataProcessingLevelNestMaster	Provisional	"Data that have been verified against paper datasheets, but not validated"
+Datum	NAD83	North American Datum 83
+Datum	WGS84	World Geodetic System 84
+InitiationDateUnk	No	The date of the nest's initiation is known
+InitiationDateUnk	Yes	The date of the nest's initiation is unknown
+Loc_Code	K	Kehoe Beach
+Loc_Code	L	Limantour Beach
+Loc_Code	NB	North Beach - South Parking
+Loc_Code	NP	North Beach - Abbott's
+Loc_Code	RA	2011 Dune Restoration Area
+Loc_Code	SB	South Beach
+Location_ID	20130211164511-705547511.577606	North Beach - South Parking
+Location_ID	{39744D68-DFEE-4649-ACE2-806C077E64E2}	Kehoe Beach
+Location_ID	{764DC5D8-DDE7-49E6-B146-A9328A9BB8B6}	North Beach - Abbott's
+Location_ID	{915091EC-61D4-40EF-92EF-E9EF4B6A26D1}	2011 Dune Restoration Area
+Location_ID	{AAECB23A-DD1B-4289-A95D-BD34276088B9}	Limantour Beach
+Location_ID	{C3FE26AC-14CC-4030-B7A6-94ADE3A1F54B}	South Beach
+MicroCoarse	No	Coarse microhabitat not present
+MicroCoarse	Yes	Coarse microhabitat present
+MicroHorsePrints	No	Horse prints not present
+MicroHorsePrints	Yes	Horse prints present
+MicroHumanDogPrints	No	Human/Dog prints not present
+MicroHumanDogPrints	Yes	Human/Dog prints present
+MicroHumanTrash	No	Manufactured debris/beach visitor trash not present
+MicroHumanTrash	Yes	Manufactured debris/beach visitor trash present
+MicroSand	No	Sand microhabitat not present
+MicroSand	Yes	Sand microhabitat present
+MicroSeaweedKelp	No	Seaweed/kelp microhabitat not present
+MicroSeaweedKelp	Yes	Seaweed/kelp microhabitat present
+MicroSmooth	No	Smooth/undulating microhabitat not present
+MicroSmooth	Yes	Smooth/undulating microhabitat present
+MicroSteep	No	Steep terracing towards ocean not present
+MicroSteep	Yes	Steep terracing towards ocean present
+MicroVegetation	No	Vegetation microhabitat not present
+MicroVegetation	Yes	Vegetation microhabitat present
+MicroVehicleTracks	No	Vehicle tracks not present
+MicroWoody	No	Woody debris microhabitat not present
+MicroWoody	Yes	Woody debris microhabitat present
+Restored_Adjacent	No	Nest is not adjacent to a restored area
+Restored_Adjacent	Yes	Nest is adjacent to a restored area
+Restored_Area	No	Nest is not within a restored area
+Restored_Area	Yes	Nest is within a restored area
+Type	event	An action that occurs at some location during some time
+Unit_Code	PORE	Point Reyes National Seashore

@@ -1,0 +1,16 @@
+attributeName	code	definition
+Basis_Of_Record	HumanObservation	Observation made by a human
+Loc_Code	K	Kehoe Beach
+Loc_Code	L	Limantour Beach
+Loc_Code	NB	North Beach - South Parking
+Loc_Code	NP	North Beach - Abbott's
+Loc_Code	RA	2011 Dune Restoration Area
+Loc_Code	SB	South Beach
+SNPL_Age	Adult	Adult plover of reproducing age
+SNPL_Age	Fledgling	Fledgling plover, whose feathers have grown enough to be able to fly
+SNPL_Age	Hatchling	A recently-hatched plover whose feathers have yet to develop to become flight-ready
+SNPL_Sex	Female	Female plover
+SNPL_Sex	Male	Male plover
+SNPL_Sex	Unknown	Plover of unknown sex
+Type	event	An action that occurs at some location during some time
+Unit_Code	PORE	Point Reyes National Seashore

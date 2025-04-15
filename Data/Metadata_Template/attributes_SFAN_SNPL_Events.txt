@@ -1,0 +1,38 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+ID	Table ID field	numeric	dimensionless			
+Event_ID	Event identifier	character				
+Type	The nature of the genre or source	categorical				
+Basis_Of_Record	The specific nature of the data record	categorical				
+Unit_Code	Park, monument, or network code	categorical				
+Location_ID	Location identifier	categorical				
+Loc_Code	Location code	categorical				
+Loc_Name	Name of the location	character				
+Protocol_Name	Protocol version name	character				
+Protocol_Description	Protocol version description information	character				
+Start_Year	Year of the starting date of the event	Date		YYYY		
+Start_Date	Starting date for the event	Date		YYYY-MM-DD		
+Start_Time	Starting time for the event	Date		hh:mm:ss+hhmm	empty	Not defined
+Start_Time_Local	Starting time for the event, in local time	Date		hh:mm:ss	empty	Not defined
+End_Time	End time for the event	Date		hh:mm:ss+hhmm	empty	Not defined
+End_Time_Local	End time for the event, in local time	Date		hh:mm:ss	empty	Not defined
+Local_Time_Zone	The time zone where times were recorded in	categorical			empty	Not defined
+Observers	List of names of individuals responsible for recording the original occurrence	character				
+Updated_Date	Date the event was updated	Date		YYYY-MM-DD hh:mm:ss-hhmm	empty	Not defined
+Updated_By	Active Directory login name of the individual that updated the event record	character			empty	Not defined
+EventQCFlag	Quality control flag	character			empty	Not defined
+EventQCNotes	Quality control flag notes	character			empty	Not defined
+Event_Notes	General notes on the event	character			empty	Not defined
+Survey_Direction	Direction in which the survey was conducted, i.e. north to south	categorical			empty	Not defined
+Wind_Spd_mph	Average wind speed	numeric	milesPerHour		empty	Not defined
+Wind_Max_mph	Maximum wind speed	numeric	milesPerHour		empty	Not defined
+Wind_Dir	Wind direction	categorical			empty	Not defined
+Air_Temp_degF	Average air temperature	numeric	fahrenheit		empty	Not defined
+Rel_Hum_per	Average relative humidity	numeric	percent		empty	Not defined
+Cloud_Cover	Average percent cloud cover	numeric	percent		empty	Not defined
+Tide_Cond	Tide condition	categorical			empty	Not defined
+Incomplete_Survey	Check if the survey was an incomplete survey of the beach sector	categorical			empty	Not defined
+EventDetailsQCFlag	Quality control flag for columns `Event_Notes` to `Incomplete_Survey`	character			empty	Not defined
+EventDetailsQCNotes	Quality control flag notes	character			empty	Not defined
+DataProcessingLevel	Unique name for the data processing level	character				
+DataProcessingLevelDate	Date that the data processing level changed	Date		YYYY-MM-DD hh:mm:ss		
+DataProcessingLevelUser	Individual who assigned the current data processing level status	character				
