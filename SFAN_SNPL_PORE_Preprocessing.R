@@ -10,7 +10,20 @@
 ## Updates:
 
 
+#clear the console
+cat("\014")
+
+#clear the environment
 rm(list = ls())
+
+#####################
+# Variables to Define
+#####################
+# SNPL PORE Backend Database with the Datasets to be preprocssed
+db_name <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/SNPLOVER/SNPL_IM/Data/Deliverable/2024/Database_2310672/PORE_SNPL_BE_20250429.accdb"
+# Directory where output preprocessed .csv dataset files will be exported
+outPutDir <-'C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/Scripts/SNPL_PORE_DataPackage/Data/Input'
+#############################################
 
 packages <- c(
   "tidyverse",
@@ -64,8 +77,6 @@ writeFile <- function(df) {
 }
 
 # Preparation ---- Extracting from AccessDB to variables within R
-
-db_name <- "..\\..\\01_raw_data_and_documents\\Database\\PORE_SNPL_BE_20240802.accdb"
 query <- list(events = "SELECT tblEventsDataset.* FROM tblEventsDataset", observations = "SELECT tblSNPLObservationsDataset.* FROM tblSNPLObservationsDataset", preds = "SELECT tblPredatorDataset.* FROM tblPredatorDataset", banded = "SELECT tblSNPLBandedDataset.* FROM tblSNPLBandedDataset", nestMaster = "SELECT tblNestMasterDataset.* FROM tblNestMasterDataset", chicknband = "SELECT tblChickBandDataset.* FROM tblChickBandDataset")
 
 df_Tables <- lapply(query, getDataExport_Access.function, db_name = db_name)
@@ -80,7 +91,9 @@ dfChickBands <- df_Tables[[6]]
 rm(df_Tables)
 
 # Processing ----
-## Events ----
+#################
+## Events Dataset
+#################
 ### Operating on times within the dataset
 dfEvents <- dfEvents |> dplyr::mutate(
   Start_Time_Local = lubridate::ymd_hms(paste0(as.character(Start_Date), " ", format(Start_Time, "%H:%M:%S")), tz = "America/Los_Angeles"),
@@ -96,8 +109,11 @@ dfEvents <- dfEvents |> dplyr::mutate(
   Wind_Dir = stringr::str_to_upper(Wind_Dir)
 )
 
+# Dropping the Created and Verified fields
 dfEvents <- dfEvents[, !(names(dfEvents) %in% c("Created_Date", "Created_By", "Verified_Date", "Verified_By"))]
 
+# Replacing ";" with "|" in concatenated Observers field
+# Adding Darwing Core fields Type as 'event' and Basis_of_Record as 'HumanObservation
 dfEvents <- dfEvents |> dplyr::mutate(
   Observers = dplyr::if_else(
     grepl(";", Observers),
@@ -108,6 +124,7 @@ dfEvents <- dfEvents |> dplyr::mutate(
   Basis_Of_Record = "HumanObservation"
 )
 
+#Move field locations in dataframe
 dfEvents <- dfEvents |> dplyr::relocate(
   Start_Time_Local,
   .after = Start_Time
@@ -122,8 +139,10 @@ dfEvents <- dfEvents |> dplyr::relocate(
   c(Type, Basis_Of_Record, Unit_Code),
   .after = Event_ID
 )
+#######################
+## Dataset Observations 
+#######################
 
-## Dataset with Coordinates: Observations ----
 ### Dates and times
 dfObservations <- dfObservations |> dplyr::mutate(
   temp = lubridate::ymd_hms(paste0(Start_Date, " ", format(SNPL_Time, "%H:%M:%S")), tz = "America/Los_Angeles"),
@@ -146,13 +165,21 @@ dfObservations <- dfObservations |> dplyr::mutate(
   Unit_Code = "PORE"
 )
 
-### Geography
+### Geography - Create Lat/Lon fields - Note starting in 2024 Coordinates in X_Coord and Y_Coord at Lat/Lon
 dfObservations <- dfObservations |> QCkit::generate_ll_from_utm(
   X_Coord,
   Y_Coord,
   UTM_Zone,
   Datum
 )
+
+# For Records that are Lat/Lon in X_Coord|Y_Coord add to the decimalLatitude and decimalLongitude fields
+dfObservations <- dfObservations %>%
+  mutate(
+    decimalLongitude = if_else(Coord_System == "GCS", X_Coord, decimalLongitude),
+    decimalLatitude  = if_else(Coord_System == "GCS", Y_Coord, decimalLatitude)
+  )
+
 
 # Removing superfluous columns
 dfObservations <- dfObservations[, !(names(dfObservations) %in% c("temp", "LatLong_CRS"))]
@@ -161,6 +188,14 @@ dfObservations <- dfObservations |> dplyr::relocate(
   tidyselect::starts_with("decimal"),
   .before = X_Coord
 )
+
+# Remove the Native Geographic Fields - X_Coord, Y_Coord, Est_H_Error, UTM_Zone 
+dfObservations <- dfObservations[, !(names(dfObservations) %in% c("X_Coord", "Y_Coord", "Est_H_Error", "UTM_Zone"))]
+
+# Define the 'Coord_System' value to 'GCS'
+dfObservations <- dfObservations %>%
+  mutate(Coord_System = if_else(is.na(decimalLatitude), NA_character_, 'GCS'))
+
 
 dfObservations <- dfObservations |> dplyr::relocate(
   Scientific_Name,
@@ -182,7 +217,9 @@ dfObservations <- dfObservations |> dplyr::rename(
   Decimal_Longitude = decimalLongitude
 )
 
-## Dataset with Coordinates: Predators ----
+####################
+## Dataset Predators 
+####################
 
 dfPredators <- dfPredators |> dplyr::mutate(
   temp.zone = dplyr::if_else(!is.na(X_Coord) & !is.na(Y_Coord), "10N", NA),
@@ -191,17 +228,52 @@ dfPredators <- dfPredators |> dplyr::mutate(
   Unit_Code = "PORE"
 )
 
-dfPredators <- dfPredators |> QCkit::generate_ll_from_utm(
+# Derive the Lat/Lon values where native coordinates are UTM:
+# Identify which rows are UTM - Series
+is_utm <- dfPredators$Coord_System == "UTM"
+
+# Make a copy of just the UTM rows
+utm_rows <- dfPredators[is_utm, ]
+
+# Run the conversion only on UTM rows
+utm_rows <- utm_rows |> QCkit::generate_ll_from_utm(
   X_Coord,
   Y_Coord,
   temp.zone,
   Datum
 )
 
+# Define the Lat/Lon fields where is native UTM coordinate.
+dfPredators[is_utm, c("decimalLongitude", "decimalLatitude")] <- utm_rows[, c("decimalLongitude", "decimalLatitude")]
+
+rm(utm_rows)
+rm(is_utm)
+
+
+# For Records that are Lat/Lon in X_Coord|Y_Coord add to the decimalLatitude and decimalLongitude fields
+dfPredators <- dfPredators %>%
+  mutate(
+    decimalLongitude = if_else(Coord_System == "GCS", X_Coord, decimalLongitude),
+    decimalLatitude  = if_else(Coord_System == "GCS", Y_Coord, decimalLatitude)
+  )
+
+
+# Removing superfluous columns
+dfPredators <- dfPredators[, !(names(dfPredators) %in% c("temp.zone"))]
+
 dfPredators <- dfPredators |> dplyr::relocate(
   tidyselect::starts_with("decimal"),
-  .before = "X_Coord"
+  .before = X_Coord
 )
+
+# Remove the Native Geographic Fields - X_Coord, Y_Coord, Est_H_Error, UTM_Zone 
+dfPredators <- dfPredators[, !(names(dfPredators) %in% c("X_Coord", "Y_Coord", "UTM_Zone"))]
+
+# Define the 'Coord_System' value to 'GCS'
+dfPredators <- dfPredators %>%
+  mutate(Coord_System = if_else(is.na(decimalLatitude), NA_character_, 'GCS'),
+         Datum = if_else(is.na(decimalLatitude), NA_character_, Datum))
+
 
 dfPredators <- dfPredators |> dplyr::relocate(
   c(Type, Basis_Of_Record, Unit_Code),
@@ -215,8 +287,10 @@ dfPredators <- dfPredators |> dplyr::rename(
 
 # Removing columns that are no longer necessary
 dfPredators <- dfPredators[, !(names(dfPredators) %in% c("temp.zone", "LatLong_CRS"))]
-## Bands ----
 
+################
+## Bands Dataset
+################
 dfBands <- dfBands |> dplyr::mutate(
   Type = "event",
   Basis_Of_Record = "HumanObservation",
@@ -228,7 +302,9 @@ dfBands <- dfBands |> dplyr::relocate(
   .after = Event_ID
 )
 
-## Dataset with Coordinates: Nesting ----
+##################
+## Dataset Nesting
+#################
 
 dfNesting <- dfNesting |> dplyr::mutate(
   Type = "event",
@@ -245,13 +321,54 @@ dfNesting <- dfNesting |> dplyr::mutate(
   ChickLoss_Age4 = NA
 )
 
-dfNesting <- dfNesting |> QCkit::generate_ll_from_utm(
+
+# Derive the Lat/Lon values where native coordinates are UTM:
+# Identify which rows are UTM and has a coordinate- Series
+is_utm <- dfNesting$Coord_System == "UTM" & !is.na(dfNesting$X_Coord)
+
+
+# Make a copy of just the UTM rows
+utm_rows <- dfNesting[is_utm, ]
+
+# Run the conversion only on UTM rows - (93 Missing Coordinates)
+utm_rows <- utm_rows |> QCkit::generate_ll_from_utm(
   X_Coord,
   Y_Coord,
   UTM_Zone,
   Datum
 )
 
+# Define the Lat/Lon fields where is native UTM coordinate.
+dfNesting[is_utm, c("decimalLongitude", "decimalLatitude")] <- utm_rows[, c("decimalLongitude", "decimalLatitude")]
+
+rm(utm_rows)
+rm(is_utm)
+
+
+# For Records that are Lat/Lon in X_Coord|Y_Coord add to the decimalLatitude and decimalLongitude fields
+dfNesting <- dfNesting %>%
+  mutate(
+    decimalLongitude = if_else(Coord_System == "GCS", X_Coord, decimalLongitude),
+    decimalLatitude  = if_else(Coord_System == "GCS", Y_Coord, decimalLatitude)
+  )
+
+
+# Removing superfluous columns
+
+dfNesting <- dfNesting |> dplyr::relocate(
+  tidyselect::starts_with("decimal"),
+  .before = X_Coord
+)
+
+# Remove the Native Geographic Fields - X_Coord, Y_Coord, Est_H_Error, UTM_Zone 
+dfNesting <- dfNesting[, !(names(dfNesting) %in% c("X_Coord", "Y_Coord", "UTM_Zone"))]
+
+# Define the 'Coord_System' value to 'GCS'
+dfNesting <- dfNesting %>%
+  mutate(Coord_System = if_else(is.na(decimalLatitude), NA_character_, 'GCS'),
+         Datum = if_else(is.na(decimalLatitude), NA_character_, Datum))
+
+# Move Type, Basis and Unit code field locations
 dfNesting <- dfNesting |> dplyr::relocate(
   c(Type, Basis_Of_Record, Unit_Code),
   .after = Nest_ID
@@ -267,9 +384,11 @@ dfNesting <- dfNesting |> dplyr::rename(
   Decimal_Longitude = decimalLongitude
 )
 
-dfNesting <- dfNesting[, !(names(dfNesting) %in% c("Verified_Date", "Verified_By", "LatLong_CRS"))]
+dfNesting <- dfNesting[, !(names(dfNesting) %in% c("Verified_Date", "Verified_By"))]
 
-## Chick Bands ----
+##############
+## Chick Bands
+##############
 dfChickBands <- dfChickBands |> dplyr::mutate(
   Scientific_Name = "Charadrius nivosus",
   Type = "event",
@@ -287,21 +406,25 @@ dfChickBands <- dfChickBands |> dplyr::relocate(
   .after = Year
 )
 
-# EML Formatted Datasets -------------------------------------------------------
-# EML cannot handle empty categorical or date columns, make one row a value for temporary datasets to produce EML
-# Nesting
-## dfNesting2 <- dfNesting
-## dfNesting2$ChickLoss_Weekend4[1] <- "Yes"
-## dfNesting2$ChickLoss_Date4[1] <- "2001-01-01"
+#########################################
+# Export cleaned datasets to CSV in the 'Input' directory of the Data Package Script location
+#########################################
 
-# Observations
-## dfObservations2 <- dfObservations
-## dfObservations2[1, 35:46] <- "Yes" # BehaviorTerritoryCC, BehaviorTerritoryLW, BehaviorTerritoryMD, BehaviorTerritorySC, BehaviorTerritoryCP, BehaviorNestCP, BehaviorNestDC, BehaviorNestAI, BehaviorNestFN, BehaviorChicksAC, BehaviorChicksNA, BehaviorOtherFG
+outPath <- paste0(outPutDir, "/SFAN_SNPL_Events.csv")
+utils::write.csv(dfEvents, outPath, na = "", row.names = FALSE)
 
-# Output
-writeFile(dfEvents)
-writeFile(dfBands)
-writeFile(dfChickBands)
-writeFile(dfNesting)
-writeFile(dfObservations)
-writeFile(dfPredators)
+outPath <- paste0(outPutDir, "/SFAN_SNPL_Bands.csv")
+utils::write.csv(dfBands, outPath, na = "", row.names = FALSE)
+
+outPath <- paste0(outPutDir, "/SFAN_SNPL_ChickBands.csv")
+utils::write.csv(dfChickBands, outPath, na = "", row.names = FALSE)
+
+outPath <- paste0(outPutDir, "/SFAN_SNPL_Nesting.csv")
+utils::write.csv(dfNesting, outPath, na = "", row.names = FALSE)
+
+outPath <- paste0(outPutDir, "/SFAN_SNPL_Observations.csv")
+utils::write.csv(dfObservations, outPath, na = "", row.names = FALSE)
+
+outPath <- paste0(outPutDir, "/SFAN_SNPL_Predators.csv")
+utils::write.csv(dfPredators, outPath, na = "", row.names = FALSE)
+
