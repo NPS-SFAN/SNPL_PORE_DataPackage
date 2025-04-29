@@ -17,14 +17,10 @@ Local_Time_Zone	The time zone where times were recorded in	categorical			empty	N
 QCFlag	Quality control flag	character			empty	Not defined
 QCNotes	Notes for quality control flags	character			empty	Not defined
 Waypoint	"Waypoint name, as recorded in GPS"	character			empty	Not defined
-Decimal_Latitude	"The geographic latitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are north of the Equator, negative values are south of it. Legal values lie between -90 and 90, inclusive"	numeric	dimensionless		empty	Not defined
-Decimal_Longitude	"The geographic longitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are east of the Greenwich Meridian, negative values are west of it. Legal values lie between -180 and 180, inclusive"	numeric	dimensionless		empty	Not defined
-X_Coord	X UTM coordinate	numeric	meter		empty	Not defined
-Y_Coord	Y UTM coordinate	numeric	meter		empty	Not defined
-Est_H_Error	Estimated horizontal coordinate error	numeric	meter		empty	Not defined
-Coord_System	Coordinate system used when geographic data was recorded	categorical				
-UTM_Zone	UTM zone that coordinates were measured in	character				
-Datum	Datum of the mapping ellipsoid	categorical				
+Decimal_Latitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
+Decimal_Longitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
+Coord_System	Coordinate system for Decimal_Latitude and Decimal_Longitude values	categorical				
+Datum	Datum used for Decimal_Latitude and Decimal_Longitude values	categorical				
 Scientific_Name	The full scientific name of the observed species	character				
 SNPL_Male	Number of adult male Snowy plovers observed	numeric	dimensionless		empty	Not defined
 SNPL_Female	Number of adult female Snowy plovers observed	numeric	dimensionless		empty	Not defined
