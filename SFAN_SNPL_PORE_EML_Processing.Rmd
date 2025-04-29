@@ -87,39 +87,98 @@ print(paste0("DPchecker version installed - ", packageVersion("DPchecker")))
 ## Set the overall package details
 All of the following items should be reviewed and updated to fit the package you are working on. For lists of more than one item, keep the same order (i.e. item #1 should correspond to the same file in each list).
 
-#### Metadata filename
-This becomes the file name of your .xml file. Be sure it ends in _metadata to comply with data package specifications. You do not need to include the extension (.xml).
-```{r metadata_id}
-metadata_id <- "SFAN_SNPL_metadata"
+
+# Extract the Min Max Year and Dates
+International Standards Organization's standard 8601
+```{r Extract Min Max Year and Dates}
+library(lubridate)
+
+# Crude approach to get the min and max years
+beginYearEvent <- year(min(data$SFAN_SNPL_Events$Start_Date))
+endYearEvent <- year(min(data$SFAN_SNPL_Events$Start_Date))
+
+beginYearObs <- year(min(data$SFAN_SNPL_Observations$Start_Date))
+endYearObs <- year(max(data$SFAN_SNPL_Observations$Start_Date))
+
+# Get Years Across all
+startYear <- min(c(beginYearEvent, beginYearObs))
+endYear <- max(c(endYearEvent, endYearObs))
+
+# Get End Date, setting Starting period as the starting year and the endDate with an actual end data.
+beginDateEvent <- min(data$SFAN_SNPL_Events$Start_Date)
+endDateEvent <- max(data$SFAN_SNPL_Events$Start_Date)
+
+beginDateObs <- min(data$SFAN_SNPL_Observations$Start_Date)
+endDateObs <- max(data$SFAN_SNPL_Observations$Start_Date)
+
+startDate <- min(c(beginDateEvent, beginDateObs)) # Not Using in EML
+endDate <- max(c(endDateEvent, endDateObs))
+
+paste ('Start Year All Datasets:', startYear)
+paste ('End Year All Datasets:', endYear)
+paste ('Start Date All Datasets:', startDate)
+paste ('End Date All Datasets:', endDate)
+
 ```
 
-#### Package Title
+#### Package Title and Metadata ID
 Give the data package a title. FAIR principles suggest titles of between 7 and 20 words. Be sure to make your title informative and consider how a naive user would interpret it.
 ```{r package_title}
-package_title <- "Snowy Plover Monitoring at Point Reyes National Seashore, 1997-2023"
+
+metadata_id <- paste0("SFAN_SNPL_Monitoring_" , startYear, "_", endYear, "_metadata")
+print(paste0("Metadata FileName - ", metadata_id))
+
+
+package_title <- paste0("Snowy Plover Monitoring at Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network, ", startYear, "-", endYear, " – Data Package")
+print(paste0("Data Package Title - ", package_title))
 ```
 
-#### Data collection status
+#### Data collection status  - STOPPED HERE 4/29/2025 KRS
 Choose from either "ongoing" or "complete"
 ```{r data_status}
 data_type <- "complete"
 ```
 
-#### Path to data file(s)
-Tell R where your data files are. If they are in the working directory, you can set the working_folder to `getwd()`. If they are in a different directory you will need to specify that directory.
-```{r working_dir}
-working_folder <- getwd()
-# or:
-# working_folder <- setwd("C:/users/<yourusername>/Documents/my_data_package_folder)
-```
 
 #### List data files
 Tell R what your data files are called. 
 ```{r list_files}
-# if the data files are in your working directory (and the only .csv files in your working directory are data files:
-data_files <- list.files(pattern = "*.csv")
 
+# Read in the Datafiles
+inPath <- paste0(codepath, "/Data/Input")
+data_files_wSuffix <-list.files(inPath,pattern = "\\.csv$")
+data_files <- sub("\\.csv$", "", data_files_wSuffix)
+
+data_filepaths <- list.files(inPath, pattern = "\\.csv$", full.names = TRUE)
+data <- lapply(data_filepaths,function(i){read.csv(i, header=TRUE)})
+names(data) <-data_files
 ```
+
+```{r Create Dataset and Copy Data Package}
+
+# Define output folder for data package content (i.e Dataset and EML)
+outFolderDataPackage <- paste0(codepath, "/Data/", data_pkg_name)
+
+# Check if the folder exists
+if (!dir.exists(outFolderDataPackage)) {
+  # Create the folder if it doesn't exist
+  dir.create(outFolderDataPackage)
+  cat("Folder created:", outFolderDataPackage, "\n")
+} else {
+  cat("Folder already exists:", outFolderDataPackage, "\n")
+}
+
+# Copy data_files to the output folder
+for (file in data_filepaths) {
+  if (file.exists(file)) {
+    file.copy(file, file.path(outFolderDataPackage, basename(file)))
+    cat("Copied:", file, "to", outFolderDataPackage, "\n")
+  } else {
+    cat("File does not exist:", file, "\n")
+  }
+}
+```
+
 
 #### Name the data files
 These should be relatively short, but perhaps more informative than the actual file names. Make sure that they are in the same order as the files in data_files.
@@ -152,7 +211,7 @@ data_urls <- c(rep("temporary URL", length(data_files)))
 Specify where you taxonomic information is. this can be a single file or a list of files and fields (columns) with scientific names that will be used to automatically generate the taxonomic coverage metadata. We suggest using [DarwinCore](https://dwc.tdwg.org/terms) for column names, such as "scientificName". If your data package does not have taxonomic data, skip this step.
 ```{r taxonomic_info}
 # the file(s) where scientific names are located:
-data_taxa_tables <- c("SFAN_SNPL_Observations_INTERNAL.csv", "SFAN_SNPL_ChickBands_INTERNAL.csv")
+data_taxa_tables <- c("SFAN_SNPL_Observations.csv", "SFAN_SNPL_ChickBands.csv")
 
 # the column where your scientific names are within the data files.
 data_taxa_fields <- c("Scientific_Name", "Scientific_Name")
@@ -361,7 +420,7 @@ if your EML is valid you should see the following (admittedly crypitic):
 
 ```{r DRR_links}
 
-drr_title <- paste0("Pinniped Monitoring for the NPS Inventory and Monitoring San Francisco Bay Area Network: ", startYear, "-" , endYear, " - Data Release Report")
+drr_title <- paste0("Snowy Plover Monitoring for the NPS Inventory and Monitoring San Francisco Bay Area Network: ", startYear, "-" , endYear, " - Data Release Report")
 
 my_metadata <- EMLeditor::set_drr(my_metadata, drr_referenceCode, drr_title)
 
