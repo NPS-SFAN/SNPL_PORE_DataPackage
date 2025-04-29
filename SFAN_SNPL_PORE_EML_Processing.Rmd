@@ -1,10 +1,17 @@
 ---
 title: "NPS, SFAN Snowy Plover EML creation"
 author: "Original Author: Alexa Ron, subsequent edits by Kirk Sherrill DS/DM SFAN"
-date: "2025/04/15"
+date: "2025/04/29"
 output: html
 ---
 
+```{r Clean console/env}
+#clear the console
+cat("\014")
+
+#clear the environment
+rm(list = ls())
+```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -16,6 +23,42 @@ This script acts as a template file for end-to-end creation of EML metadata in R
 [EMLassemblyline](https://ediorg.github.io/EMLassemblyline/)
 [EMLeditor](https://nationalparkservice.github.io/EMLeditor/index.html)
 [EVER Veg Map AA dataset](https://github.com/nationalparkservice/NPS_EML_Script/tree/main/Example_files) (for testing purposes)
+
+```{r Define Setup Parameters}
+
+# Define the data package type: "internal" or "public". Case sensitive.
+# "Public" can be used senstive data if the files are limited form release which is the
+# case for the SPOW datapackages. The Refrence is publically visiable and the files 
+# are controlled from release.
+datapackage_type <- "public"
+
+# Choose a name for your data package. This will be used as the name of the data package folder.
+data_pkg_name <- "SNPLPORE_2024_2310749"
+
+# For each CREATOR in the personel.txt file (Data/Metadata_Templates), in the order they appear, 
+# add their orcidID in the variable below. Use NA (no quotes) if a Creator doesn't
+# have an orchid ID (#Kirk, #Lizzy)
+my_orcids <- c( "0009-0000-9082-4799")
+
+# Select 'Yes' if Data package reference already exists else select 'No'  ('Yes'|'No')
+existingReference <- "Yes"
+# Define the Existing Data Package Reference Code if reference has already been created
+existingReferenceCode  <- 2310749
+
+# Database reference on the datastore with the through field data being processed. This reference is being added to
+# the 'Additional_Info' EML section.
+db_referenceCode <- 2310672
+
+# Data Release Report Reference
+drr_referenceCode <- 2310766
+
+# SNPL PORE Data Store Project Code - Created Data Package will be linked to the SPOW Project Reference
+projectReferenceCode <- 2310339
+
+# Path to the Scripts being used in this processing. Will be where the Falcons Datapackage Repo has been cloned locally.
+codepath <-"C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/Scripts/SNPL_PORE_DataPackage"
+```
+
 
 # Install and Load R Packages 
 Install packages. If you have not recently installed packages, please re-install them. You will want to make sure you have the latest versions of all the NPSdataverse packages - QCkit, EMLeditor, DPchecker, and NPSutils - as they are under constant development. If you are on the VPN, you will need to set your CRAN mirror to Texas 1. If you run into errors installing packages from github on NPS computers you may first need to run:
@@ -35,6 +78,10 @@ devtools::install_github("nationalparkservice/NPSdataverse")
 # development.
 library(NPSdataverse)
 library(tidyverse)
+
+print(paste0("NPSdataverse version installed - ", packageVersion("NPSdataverse")))
+print(paste0("EMLeditor version installed - ", packageVersion("EMLeditor")))
+print(paste0("DPchecker version installed - ", packageVersion("DPchecker")))
 ```
 
 ## Set the overall package details
@@ -43,7 +90,7 @@ All of the following items should be reviewed and updated to fit the package you
 #### Metadata filename
 This becomes the file name of your .xml file. Be sure it ends in _metadata to comply with data package specifications. You do not need to include the extension (.xml).
 ```{r metadata_id}
-metadata_id <- "SFAN_SNPL_INTERNAL_metadata"
+metadata_id <- "SFAN_SNPL_metadata"
 ```
 
 #### Package Title
@@ -72,9 +119,6 @@ Tell R what your data files are called.
 # if the data files are in your working directory (and the only .csv files in your working directory are data files:
 data_files <- list.files(pattern = "*.csv")
 
-# alternatively, you can list the files out manually:
-#data_files <- c("qry_Export_AA_points.csv",
-#                "qry_Export_AA_VegetationDetails.csv")
 ```
 
 #### Name the data files
@@ -314,6 +358,14 @@ if your EML is valid you should see the following (admittedly crypitic):
 # [1] TRUE
 # attr(,"errors")
 # character(0)
+
+```{r DRR_links}
+
+drr_title <- paste0("Pinniped Monitoring for the NPS Inventory and Monitoring San Francisco Bay Area Network: ", startYear, "-" , endYear, " - Data Release Report")
+
+my_metadata <- EMLeditor::set_drr(my_metadata, drr_referenceCode, drr_title)
+
+```
 
 if your EML is not schema valid, the function will notify you of specific problems you need to address. We HIGHLY recommend that you use the EMLassemblyline and/or EMLeditor functions to fix your EML and do not attempt to edit it by hand.
 
