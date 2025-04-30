@@ -13,6 +13,10 @@ Start_Date	Starting date for the event	Date		YYYY-MM-DD
 QCFlag	Quality control flag	character			empty	Not defined
 QCNotes	Quality control notes	character			empty	Not defined
 PredatorType	Code for the type of predator or disturbance	character			empty	Not defined
+SpeciesCode	Predator type species code	categorical				
+ScientificName	Predator type scientific name	character			empty	Not defined
+CommonName	Predator type common name	character			empty	Not defined
+TSN	Integrated Taxonomic Information System Taxonomic Serial Number.	character			empty	Not defined
 NumPredator	Number of predators observed	numeric	dimensionless		empty	Not defined
 PredatorAction	Code for what the predator was doing	categorical			empty	Not defined
 PredatorDirection	Direction of where the predator was moving	categorical			empty	Not defined

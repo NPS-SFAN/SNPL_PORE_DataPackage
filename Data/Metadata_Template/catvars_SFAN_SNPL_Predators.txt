@@ -30,3 +30,15 @@ PredatorDirection	Southwest	Predator was observed moving southwest
 PredatorDirection	West	Predator was observed moving west
 Type	event	An action that occurs at some location during some time
 Unit_Code	PORE	Point Reyes National Seashore
+SpeciesCode	AMCR	Corvus brachyrhynchos
+SpeciesCode	COHA	Accipiter cooperii
+SpeciesCode	CORA	Corvus corax
+SpeciesCode	COYO	Canis latrans
+SpeciesCode	DOG	Canis lupus familiaris
+SpeciesCode	HORS	Equus Linnaeus
+SpeciesCode	HUMN	Homo sapiens
+SpeciesCode	NOHA	Circus cyaneus
+SpeciesCode	PEFA	Falco peregrinus
+SpeciesCode	RTHA	Buteo jamaicensis
+SpeciesCode	UNK	Unknown
+SpeciesCode	WTKI	Elanus leucurus
