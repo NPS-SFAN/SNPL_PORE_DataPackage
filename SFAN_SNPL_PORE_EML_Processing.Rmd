@@ -67,6 +67,10 @@ options(download.file.method="wininet")
 ```{r package_install, eval=FALSE}
 #install packages
 install.packages(c("devtools", "tidyverse"))
+remove.packages("NPSdataverse")
+remove.packages("DPchecker")
+remove.packages("EMLeditor")
+
 devtools::install_github("nationalparkservice/NPSdataverse")
 ```
 ```{r load_packages}
@@ -186,8 +190,7 @@ Give the data package a title. FAIR principles suggest titles of between 7 and 2
 metadata_id <- paste0("SFAN_SNPL_Monitoring_" , startYear, "_", endYear, "_metadata")
 print(paste0("Metadata FileName - ", metadata_id))
 
-
-package_title <- paste0("Snowy Plover Monitoring Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network, ", startYear, "-", endYear, " – Data Package")
+package_title <- paste0("Snowy Plover Monitoring Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network: ", startYear, "-", endYear, " – Data Package")
 print(paste0("Data Package Title - ", package_title))
 ```
 
@@ -278,32 +281,67 @@ EMLassemblyline::template_geographic_coverage(path = working_folder,
                              write.file = TRUE)
 ```
 
+
 #### FUNCTION 5 - Taxonomic Coverage
 This function creates a taxonomic_coverage.txt file if you have taxonomic data. Currently supported authorities are 3 = ITIS, 9 = WORMS, and 11 = GBIF. In the example below, the function will first try to find the scientific name at ITIS and if it fails will then look at GBIF. If you have lots of taxa, this could take some time to complete.
+
+
 ```{r tax_cov}
-EMLassemblyline::template_taxonomic_coverage(path = working_folder, 
-                            data.path = working_folder, 
-                            taxa.table = data_taxa_tables,
-                            taxa.col = data_taxa_fields, 
-                            taxa.authority = c(3,11),
-                            taxa.name.type = 'scientific', 
-                            write.file = TRUE)
+library(stringr)
+
+# Delete taxonomic_coverage.txt if it already exists and new taxon need definition
+overWriteTaxon <- FALSe
+
+if (overWriteTaxon) {
+
+  # Define path to the taxonomy file created during pre-processing this will be harvested to
+  # a new taxonomic_coverage.txt file
+  taxonomy_PreproccingPathFull <- paste0(codepath, "/Data/Metadata_Template/taxonomy_preprocessing.csv")
+  
+  # If taxonomic coverage for EML exists delete
+  taxonTableFull <- paste0(codepath, "/Data/Metadata_Templates/taxonomic_coverage.txt")
+  if (file.exists(taxonTableFull)) {
+    file.remove(taxonTableFull)
+    print(paste("Existing Taxonomic Coverage File - ", taxonTableFull, " - has been deleted."))
+    }
+  
+  # Create the Taxonomic Coverage metadata template
+  EMLassemblyline::template_taxonomic_coverage(path = dirname(taxonomy_PreproccingPathFull), 
+                              data.path = dirname(taxonomy_PreproccingPathFull), 
+                              taxa.table = basename(taxonomy_PreproccingPathFull),
+                              taxa.col = "ScientificName", 
+                              taxa.authority = c(3, 11, 9) ,
+                              taxa.name.type = "scientific", 
+                              write.file = TRUE)
+  
+ 
+} else {print("overWriteTaxon is FALSE, skipping update of taxonomicCoverage taxon")}
+  
 ```
 
 ## Create an EML File
 Run this (it may take a little while) and see if it validates (you should see 'Validation passed'). It will generate an R object called "my_metadata". The function could alert you of some issues to review as. Run the function `issues()` at the end of the process to get feedback on items that might be missing or need attention. Fix these issues and then re-run the `make_eml()` function.
 ```{r make_eml}
-my_metadata <- EMLassemblyline::make_eml(path = working_folder,
+templatePath <- paste0(codepath, "/Data/Metadata_Template")
+my_metadata <- EMLassemblyline::make_eml(path = templatePath,
+               data.path = outFolderDataPackage,
                dataset.title = package_title,
-               data.table = data_files,
+               data.table = data_files_wSuffix,
                data.table.name = data_names,
                data.table.description = data_descriptions,
                data.table.url = data_urls,
-               temporal.coverage = c(startDate, endDate),
+               temporal.coverage = c(startYear, endDate),
                maintenance.description = data_type,
                package.id = metadata_id,
                return.obj = TRUE, 
                write.file = FALSE)
+
+# Check for issues
+EMLassemblyline::issues()
+
+# Export for QC Testing Only - Turn off post QC
+outXMLFull <- paste0(outFolderDataPackage, "/", metadata_id, ".xml")
+EML::write_eml(my_metadata, outXMLFull)
 ```
 
 ## Check for EML validity 
@@ -366,7 +404,7 @@ Add your data package's Digital Object Identifier (DOI) to the metadata. The `se
   2) We suggest you NOT manually upload files. If you manually upload your files, be sure to upload your data package to the correct draft reference! It is easy to create several draft references with the same draft title but different DataStore reference IDs and DOIs. So check the reference ID number carefully
   3) There is no need to fill in additional fields in DataStore at this point - many of them will be auto-populated based on the metadata you upload. Any fields you do populate will be over-written by the content in your metadata.
 ```{r DS_doi}
-my_metadata2 <- EMLeditor::set_doi(my_metadata2, 2305287)
+my_metadata2 <- EMLeditor::set_doi(my_metadata2, existingReferenceCode )
 ```
 
 #### Add information about a DRR (optional) 
@@ -376,7 +414,8 @@ You will need the DOI for the DRR you are drafting as well as the DRR's Title. G
 it will not be activated until after publication so that you have plenty of 
 time to construct the DRR.
 ```{r DRR_links}
-my_metadata2 <- EMLeditor::set_drr(my_metadata2, 2305550, "Snowy Plover Monitoring at Point Reyes National Seashore, 1997-2023 - Data Release Report")
+dRR_Name <- paste0("Snowy Plover Monitoring Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network: ", startYear, "-", endYear, " - Data Release Report")
+my_metadata2 <- EMLeditor::set_drr(my_metadata2, drr_referenceCode, dRR_Name)
 ```
 
 #### Add information about a project (optional) 
@@ -400,7 +439,7 @@ my_metadata2 <- EMLeditor::set_creator_orcids(my_metadata2, my_orcids, force=FAL
 
 ```{r addtional Info - with Database}
 # Define the Additional Info section. Include the Link to the database profile for this reference
-database_LU <- paste0("The Snowy Plover Database from which the datasets were pulled for this data package is on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
+database_LU <- paste0("The Snowy Plover Database from which the datasets orignate for this data package is on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
 
 monitoringObjectives <- "The Snowy Plover monitoring objectives are to determine trends in the estimated breeding population size, distribution, and reproductive success of snowy plovers at known breeding beaches at Point Reyes National Seashore."
 
@@ -410,10 +449,6 @@ my_metadata2 <- EMLeditor::set_additional_info(my_metadata2, defition_LU)
 # Show the addition Info Text
 EMLeditor::get_additional_info(my_metadata2)
 ```
-
-
-
-
 #### Set the language 
 This is the human language (as opposed to computer language) that the data package and metadata are constructed in. Examples include English, Spanish, Navajo, etc. A full list of available languages is available from the Libraryof Congress. Please use the "English Name of Language" as an input. The function will then convert your input to the appropriate 3-character ISO 639-2 code.Available languages: [https://www.loc.gov/standards/iso639-2/php/code_list.php](https://www.loc.gov/standards/iso639-2/php/code_list.php)
 ```{r language}
@@ -429,8 +464,6 @@ my_metadata2 <- EMLeditor::set_content_units(my_metadata2, park_units)
 #### Add the Producing Unit(s)
 This is the unit(s) responsible for generating the data package. It may be a single park (ROMO) or a network (ROMN). It may be identical to the units listed in the previous step, overlapping, or entirely different.
 ```{r prod_units}
-# a single producing unit:
-#my_metadata2 <- EMLeditor::set_producing_units(my_metadata2, "ROMN")
 # alternatively, a list of producing units:
 my_metadata2 <- set_producing_units(my_metadata2, c("IMD", "SFAN"))
 ```
@@ -441,25 +474,18 @@ Everything is schema valid. Run:
 ```{r val_eml}
 EML::eml_validate(my_metadata2)
 ```
-if your EML is valid you should see the following (admittedly crypitic):
+If your EML is valid you should see the following (admittedly crypitic):
 # [1] TRUE
 # attr(,"errors")
 # character(0)
 
-```{r DRR_links}
-
-drr_title <- paste0("Snowy Plover Monitoring for the NPS Inventory and Monitoring San Francisco Bay Area Network: ", startYear, "-" , endYear, " - Data Release Report")
-
-my_metadata <- EMLeditor::set_drr(my_metadata, drr_referenceCode, drr_title)
-
-```
-
-if your EML is not schema valid, the function will notify you of specific problems you need to address. We HIGHLY recommend that you use the EMLassemblyline and/or EMLeditor functions to fix your EML and do not attempt to edit it by hand.
+If your EML is not schema valid, the function will notify you of specific problems you need to address. We HIGHLY recommend that you use the EMLassemblyline and/or EMLeditor functions to fix your EML and do not attempt to edit it by hand.
 
 ## Write your EML to an xml file 
 Now it's time to convert your R object to an .xml file and save it. Keep in mind that the file name should end with "_metadata.xml".
 ```{r write_eml}
-EML::write_eml(my_metadata2, "SFAN_SNPL_INTERNAL_metadata.xml")
+outXMLFull <- paste0(outFolderDataPackage, "/", metadata_id, ".xml")
+EML::write_eml(my_metadata2, outXMLFull)
 ```
 
 ## Check your .xml file  
