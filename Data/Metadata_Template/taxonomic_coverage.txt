@@ -1,14 +1,14 @@
 name	name_type	name_resolved	authority_system	authority_id
 Charadrius nivosus	scientific	Charadrius nivosus	ITIS	824030
-Accipiter cooperii	scientific	Accipiter cooperii	ISIS	175309
-Buteo jamaicensis	scientific	Buteo jamaicensis	ISIS	175350
-Canis latrans	scientific	Canis latrans	ISIS	180599
-Canis lupus familiaris	scientific	Canis lupus familiaris	ISIS	726821
-Circus cyaneus	scientific	Circus cyaneus	ISIS	175430
-Corvus brachyrhynchos	scientific	Corvus brachyrhynchos	ISIS	179731
-Corvus corax	scientific	Corvus corax	ISIS	179725
-Elanus leucurus	scientific	Elanus leucurus	ISIS	175282
-Equus Linnaeus	scientific	Equus Linnaeus	ISIS	180689
-Falco peregrinus	scientific	Falco peregrinus	ISIS	175604
-Homo sapiens	scientific	Homo sapiens	ISIS	180092
+Accipiter cooperii	scientific	Accipiter cooperii	ITIS	175309
+Buteo jamaicensis	scientific	Buteo jamaicensis	ITIS	175350
+Canis latrans	scientific	Canis latrans	ITIS	180599
+Canis lupus familiaris	scientific	Canis lupus familiaris	ITIS	726821
+Circus cyaneus	scientific	Circus cyaneus	ITIS	175430
+Corvus brachyrhynchos	scientific	Corvus brachyrhynchos	ITIS	179731
+Corvus corax	scientific	Corvus corax	ITIS	179725
+Elanus leucurus	scientific	Elanus leucurus	ITIS	175282
+Equus Linnaeus	scientific	Equus Linnaeus	ITIS	180689
+Falco peregrinus	scientific	Falco peregrinus	ITIS	175604
+Homo sapiens	scientific	Homo sapiens	ITIS	180092
 Unknown	scientific	Unknown	NA	NA
