@@ -1,2 +1,14 @@
 name	name_type	name_resolved	authority_system	authority_id
 Charadrius nivosus	scientific	Charadrius nivosus	ITIS	824030
+Accipiter cooperii	sicentific	Accipiter cooperii	ISIS	175309
+Buteo jamaicensis	sicentific	Buteo jamaicensis	ISIS	175350
+Canis latrans	sicentific	Canis latrans	ISIS	180599
+Canis lupus familiaris	sicentific	Canis lupus familiaris	ISIS	726821
+Circus cyaneus	sicentific	Circus cyaneus	ISIS	175430
+Corvus brachyrhynchos	sicentific	Corvus brachyrhynchos	ISIS	179731
+Corvus corax	sicentific	Corvus corax	ISIS	179725
+Elanus leucurus	sicentific	Elanus leucurus	ISIS	175282
+Equus Linnaeus	sicentific	Equus Linnaeus	ISIS	180689
+Falco peregrinus	sicentific	Falco peregrinus	ISIS	175604
+Homo sapiens	sicentific	Homo sapiens	ISIS	180092
+Unknown	sicentific	Unknown	NA	NA
