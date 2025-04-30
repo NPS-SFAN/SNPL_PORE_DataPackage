@@ -1,11 +1,8 @@
 givenName	middleInitial	surName	organizationName	electronicMailAddress	userId	role	projectTitle	fundingAgency	fundingNumber
-James	R	Brown	Student Conservation Association	James_Brown@partner.nps.gov	0009-0004-5867-1904	creator			
-Alexa		Ron	National Park Service	alexa_ron@partner.nps.gov	0009-0005-9661-7148	creator			
-Aiko		Goldston	National Park Service	aiko_goldston@partner.nps.gov		contact			
-Dawn		Adams	National Park Service			contributor			
-David		Press	National Park Service			contributor			
-Marcus		Koenen	National Park Service			contributor			
-Sarah	G	Allen	National Park Service			contributor			
-Kate		Peterlein	National Park Service			contributor			
+Dave		Press	National Park Service	Dave_Press@nps.gov		PI	Snowy Plover Monitoring at Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network	Department of Interior	
+Kirk		Sherrill	National Park Service	Kirk_Sherrill@nps.gov	0009-0000-9082-4799	creator			
 Kirk		Sherrill	National Park Service	Kirk_Sherrill@nps.gov	0009-0000-9082-4799	contact			
-Dave		Press	National Park Service	Dave_Press@nps.gov		PI			
+Parker		Kaye	Point Reyes National Seashore Association	parker_kaye@partner.nps.gov		contact			
+Aiko		Goldston	Point Reyes National Seashore Association	aiko_goldston@partner.nps.gov		contributor			
+David		Press	National Park Service	Dave_Press@nps.gov		contributor			
+Lau		Matt	National Park Service			contributor			
