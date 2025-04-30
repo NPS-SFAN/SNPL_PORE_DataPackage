@@ -420,8 +420,7 @@ dfChickBands <- dfChickBands |> dplyr::relocate(
 # taxonomic coverage template from preivous year.
 
 # Get the realized taxon codes in the Predator dataset
-predators_DF<- data$SFAN_SNPL_Predators
-uniqueTaxon_DF <- predators_DF %>%
+uniqueTaxon_DF <- dfPredators %>%
   distinct(SpeciesCode)
 
 # Remove rows where SpeciesCode is NA or empty
