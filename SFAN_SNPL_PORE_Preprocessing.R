@@ -20,7 +20,7 @@ rm(list = ls())
 # Variables to Define
 #####################
 # SNPL PORE Backend Database with the Datasets to be preprocssed
-db_name <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/SNPLOVER/SNPL_IM/Data/Deliverable/2024/Database_2310672/PORE_SNPL_BE_20250429.accdb"
+db_name <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/SNPLOVER/SNPL_IM/Data/Deliverable/2024/Database_2310672/PORE_SNPL_BE_Thru_20224_20250430.accdb"
 # Directory where output preprocessed .csv dataset files will be exported
 outPutDir <-'C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/Scripts/SNPL_PORE_DataPackage/Data/Input'
 #############################################
