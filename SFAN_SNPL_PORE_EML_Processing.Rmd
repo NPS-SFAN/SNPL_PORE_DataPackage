@@ -87,6 +87,65 @@ print(paste0("DPchecker version installed - ", packageVersion("DPchecker")))
 ## Set the overall package details
 All of the following items should be reviewed and updated to fit the package you are working on. For lists of more than one item, keep the same order (i.e. item #1 should correspond to the same file in each list).
 
+#### List data files
+Tell R what your data files are called. 
+```{r list_files}
+
+# Read in the Datafiles
+inPath <- paste0(codepath, "/Data/Input")
+data_files_wSuffix <-list.files(inPath,pattern = "\\.csv$")
+data_files <- sub("\\.csv$", "", data_files_wSuffix)
+
+data_filepaths <- list.files(inPath, pattern = "\\.csv$", full.names = TRUE)
+data <- lapply(data_filepaths,function(i){read.csv(i, header=TRUE)})
+names(data) <-data_files
+```
+
+```{r Create Dataset and Copy Data Package}
+
+# Define output folder for data package content (i.e Dataset and EML)
+outFolderDataPackage <- paste0(codepath, "/Data/", data_pkg_name)
+
+# Check if the folder exists
+if (!dir.exists(outFolderDataPackage)) {
+  # Create the folder if it doesn't exist
+  dir.create(outFolderDataPackage)
+  cat("Folder created:", outFolderDataPackage, "\n")
+} else {
+  cat("Folder already exists:", outFolderDataPackage, "\n")
+}
+
+# Copy data_files to the output folder
+for (file in data_filepaths) {
+  if (file.exists(file)) {
+    file.copy(file, file.path(outFolderDataPackage, basename(file)))
+    cat("Copied:", file, "to", outFolderDataPackage, "\n")
+  } else {
+    cat("File does not exist:", file, "\n")
+  }
+}
+```
+
+#### Name the data files
+These should be relatively short, but perhaps more informative than the actual file names. Make sure that they are in the same order as the files in data_files.
+```{r data_names}
+data_names <- c("SFAN Snowy Plover Band Data", 
+                "SFAN Snowy Plover Chick Banding Data", 
+                "SFAN Snowy Plover Event and Environmental Data", 
+                "SFAN Snowy Plover Nesting Data", 
+                "SFAN Snowy Plover Observation Data", 
+                "SFAN Snowy Plover Predator Data")
+```
+
+### Describe each data file. Data file descriptions should be unique and about 10 words long. Descriptions will be used in auto-generated tables within the ReadMe and DRR. If you need to use more than 10 words, consider putting that information into the abstract, methods, or additional information sections. Again, make sure these are in the same order as the files they are describing.
+```{r data_descriptions}
+data_descriptions <- c("Detailed leg band information of observed Snowy plovers", 
+                       "Leg band information of observed Snowy plover chicks", 
+                       "Event Metadata Environmental, data, time, and directional information of each survey", 
+                       "Observations of nesting Snowy plovers and their offspring", 
+                       "Observations of any Snowy plover encountered", 
+                       "Observations of nearby predators")
+```
 
 # Extract the Min Max Year and Dates
 International Standards Organization's standard 8601
@@ -129,80 +188,19 @@ metadata_id <- paste0("SFAN_SNPL_Monitoring_" , startYear, "_", endYear, "_metad
 print(paste0("Metadata FileName - ", metadata_id))
 
 
-package_title <- paste0("Snowy Plover Monitoring at Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network, ", startYear, "-", endYear, " – Data Package")
+package_title <- paste0("Snowy Plover Monitoring Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network, ", startYear, "-", endYear, " – Data Package")
 print(paste0("Data Package Title - ", package_title))
 ```
 
-#### Data collection status  - STOPPED HERE 4/29/2025 KRS
+#### Data collection status
 Choose from either "ongoing" or "complete"
 ```{r data_status}
 data_type <- "complete"
 ```
 
 
-#### List data files
-Tell R what your data files are called. 
-```{r list_files}
-
-# Read in the Datafiles
-inPath <- paste0(codepath, "/Data/Input")
-data_files_wSuffix <-list.files(inPath,pattern = "\\.csv$")
-data_files <- sub("\\.csv$", "", data_files_wSuffix)
-
-data_filepaths <- list.files(inPath, pattern = "\\.csv$", full.names = TRUE)
-data <- lapply(data_filepaths,function(i){read.csv(i, header=TRUE)})
-names(data) <-data_files
-```
-
-```{r Create Dataset and Copy Data Package}
-
-# Define output folder for data package content (i.e Dataset and EML)
-outFolderDataPackage <- paste0(codepath, "/Data/", data_pkg_name)
-
-# Check if the folder exists
-if (!dir.exists(outFolderDataPackage)) {
-  # Create the folder if it doesn't exist
-  dir.create(outFolderDataPackage)
-  cat("Folder created:", outFolderDataPackage, "\n")
-} else {
-  cat("Folder already exists:", outFolderDataPackage, "\n")
-}
-
-# Copy data_files to the output folder
-for (file in data_filepaths) {
-  if (file.exists(file)) {
-    file.copy(file, file.path(outFolderDataPackage, basename(file)))
-    cat("Copied:", file, "to", outFolderDataPackage, "\n")
-  } else {
-    cat("File does not exist:", file, "\n")
-  }
-}
-```
-
-
-#### Name the data files
-These should be relatively short, but perhaps more informative than the actual file names. Make sure that they are in the same order as the files in data_files.
-```{r data_names}
-data_names <- c("SFAN Snowy Plover Band Data", 
-                "SFAN Snowy Plover Chick Banding Data", 
-                "SFAN Snowy Plover Event and Environmental Data", 
-                "SFAN Snowy Plover Nesting Data", 
-                "SFAN Snowy Plover Observation Data", 
-                "SFAN Snowy Plover Predator Data")
-```
-
-#### Describe each data file. Data file descriptions should be unique and about 10 words long. Descriptions will be used in auto-generated tables within the ReadMe and DRR. If you need to use more than 10 words, consider putting that information into the abstract, methods, or additional information sections. Again, make sure these are in the same order as the files they are describing.
-```{r data_descriptions}
-data_descriptions <- c("Detailed leg band information of observed Snowy plovers", 
-                       "Leg band information of observed Snowy plover chicks", 
-                       "Environmental, time, and directional information of each survey", 
-                       "Observations of nesting Snowy plovers and their offspring", 
-                       "Observations of any Snowy plover encountered", 
-                       "Observations of nearby predators")
-```
-
 #### Placeholder URL for data files
-EMLassemblyline needs to know where the data files will be (a URL). However, because you have not yet initiated a draft reference in DataStore, it isn't possible to specify a URL. Instead, insert a place holder. Don't worry - this information will be updated later on when you add a Digital Object Identifier(DOI) to the metadata.
+EMLassemblyline needs to know where the data files will be (a URL). However, because you have not yet initiated a draft reference in DataStore, it isn't possible to specify a URL. Instead, insert a place holder. This information will be updated later on when you add a Digital Object Identifier(DOI) to the metadata.
 ```{r temp_data_url}
 data_urls <- c(rep("temporary URL", length(data_files)))
 ```
@@ -221,14 +219,7 @@ data_taxa_fields <- c("Scientific_Name", "Scientific_Name")
 Specify the tables and fields that contain geographic coordinates and site names. This information will be used to fill out the geographic coverage elements of the metadata. If your data package does not have geographic information skip this step. If the only geographic information you are supplying is the park units (and their bounding boxes) you can also skip this step; Park Units and the corresponding GPS coordinates for their bounding boxes will be added at a later step. If your coordinates are in UTMs and not GPS, try the [`convert_utm_to_ll()`](https://nationalparkservice.github.io/QCkit/reference/convert_utm_to_ll.html) function in the [QCkit package](https://nationalparkservice.github.io/QCkit/)
 ```{r geo_info}
 
-# Note, a text file titled geographic_coverage.txt was created for this script that contains only N/S/E/W bounding coordinates to protect site locations from being shared in the EML file.
-```
-
-#### Temporal information
-This should indicate collection date of the first and last data point in the data package (across all files) and does not include any planning, pre- or post-processing time. The format should be one that complies with the International Standards Organization's standard 8601. The recommended format for EML is: YYYY-MM-DD, where Y is the four digit year, M is the two digit month code (01 - 12 for example, January = 01), and D is the two digit day of the month (01 - 31). Using an alternate format or setting the date to the future will cause errors down the road!
-```{r temp_info}
-startdate <- ymd("1997-03-30")
-enddate <- ymd("2024-02-22")
+# Note, a text file titled geographic_coverage.txt was created for this script that contains a generalized N/S/E/W bounding box coordinate of realized observations to protect site locations from being shared in the EML file. While not sensistive no reason to provide the finer grained spatial data in the XML file. These coordiantes exist in the datasets. In the future if determined to be desirable we can harvest all the realized observations into the 'geographic_coverage.txt' file.
 ```
 
 ## EMLassemblyline Functions
@@ -243,24 +234,32 @@ We encourage you to craft your abstract in a text editor, NOT Word. Your abstrac
 
 Currently this function inserts a Creative Common 0 license. The CC0 license will need to be updated. However, to ensure that the licence meets NPS specifications and properly coincides with CUI designations, the best way to update the license information is during a later step using `EMLeditor::set_int_rights()`. There is no need to edit this .txt file.
 ```{r core}
-EMLassemblyline::template_core_metadata(path = working_folder, 
-                       license = "CC0") # that '0' is a zero!
+templatePath <- paste0(codepath, "/Data/Metadata_Template")
+dataPath <- paste0(codepath, "/Data/", data_pkg_name)   
+EMLassemblyline::template_table_attributes(path = templatePath, 
+                          data.path = dataPath,
+                          data.table = data_files_wSuffix, 
+                          write.file = TRUE)
 ```
 
 #### FUNCTION 2 - Data Table Attributes
 This function creates an "attributes_datafilename.txt" file for each data file. This can be opened in Excel (we recommend against trying to update these in a text editor) and fill in/adjust the columns for attributeDefinition, class, unit, etc. refer to https://ediorg.github.io/EMLassemblyline/articles/edit_tmplts.html for helpful hints and `view_unit_dictionary()` for potential units. This will only need to be run again if the attributes (name, order or new/deleted fields) are modified from the previous year. NOTE that if these files already exist from a previous run, they are not overwritten.
 ```{r attributes}
-EMLassemblyline::template_table_attributes(path = working_folder, 
-                          data.table = data_files, 
+EMLassemblyline::template_table_attributes(path = templatePath, 
+                          data.path = dataPath,
+                          data.table = data_files_wSuffix, 
                           write.file = TRUE)
 ```
-
 #### FUNCTION 3 - Data Table Categorical Variable
 This function Creates a "catvars_datafilename.txt" file for each data file that has columns with a class = categorical. These .txt files will include each unique 'code' and allow input of the corresponding 'definition'.NOTE that since the list of codes is harvested from the data itself, it's possible that additional codes may have been relevant/possible but they are not automatically included here. Consider your lookup lists carefully to see if additional options should be included (e.g if your dataset DPL values are all set to "Accepted" this  function will not include "Raw" or "Provisional" in the resulting file and you may want to add those manually). NOTE that if these files already exist from a previous run, they are not overwritten.
+
+
 ```{r cat_vars}
-EMLassemblyline::template_categorical_variables(path = working_folder, 
-                               data.path = working_folder, 
+EMLassemblyline::template_categorical_variables(path = templatePath, 
+                               data.path = dataPath, 
                                write.file = TRUE)
+                               
+
 ```
 
 #### FUNCTION 4 - Geographic Coverage
@@ -270,7 +269,7 @@ If you would like to add additional GPS coordinates (such as for specific site
 locations, survey plots, or bounding boxes for locations within a park, etc) please do. 
 
 This function creates a geographic_coverage.txt file that lists your sites as points as long as your coordinates are in lat/long. If your coordinates are in UTM it is probably easiest to convert them first or create the geographic_coverage.txt file another way (see [QCkit](https://nationalparkservice.github.io/QCkit/) for R functions that will convert UTM to lat/long).
-```{r geo_cov}
+```{r geo_cov - not being used 4/30/2025}
 EMLassemblyline::template_geographic_coverage(path = working_folder, 
                              data.path = working_folder,
                              data.table = data_coordinates_table, 
@@ -301,7 +300,7 @@ my_metadata <- EMLassemblyline::make_eml(path = working_folder,
                data.table.name = data_names,
                data.table.description = data_descriptions,
                data.table.url = data_urls,
-               temporal.coverage = c(startdate, enddate),
+               temporal.coverage = c(startDate, endDate),
                maintenance.description = data_type,
                package.id = metadata_id,
                return.obj = TRUE, 
@@ -340,7 +339,7 @@ dissemination codes. Watch out for the spaces! These are:
 More information about these codes can be found at: [https://www.archives.gov/cui/registry/limited-dissemination](https://www.archives.gov/cui/registry/limited-dissemination)
 
 ```{r cui_dissemination}
-my_metadata2 <- EMLeditor::set_cui_code(my_metadata, "FED ONLY")
+my_metadata2 <- EMLeditor::set_cui_code(my_metadata, "PUBLIC")
 # note that in this case I have added the CUI code to the original R object, 
 # "my_metadata" but by giving it a new name, i.e. "my_meta2" I could have
 # created a new R object. Sometimes creating a new R object is preferable 
@@ -359,7 +358,7 @@ The `set_int_rights()` function will also put the name of your license in a fiel
 
 ```{r int_rights}
 # choose from "restricted", "public" or "CC0" (zero), see above:
-my_metadata2 <- EMLeditor::set_int_rights(my_metadata2, "restricted")
+my_metadata2 <- EMLeditor::set_int_rights(my_metadata2, "public")
 ```
 
 #### Add a data package DOI 
@@ -383,8 +382,38 @@ my_metadata2 <- EMLeditor::set_drr(my_metadata2, 2305550, "Snowy Plover Monitori
 
 #### Add information about a project (optional) 
 ```{r set project}
-#my_metadata2 <- EMLeditor::set_project(my_metadata2, 2305513)
+my_metadata2 <- EMLeditor::set_project(my_metadata2, projectReferenceCode)
 ```
+
+
+```{r add orcidID's}
+## Add OrcidID's
+#List in the order of the CREATORS listed in the 'Personnel' metatdata template see - personnel.txt"
+my_metadata2 <- EMLeditor::set_creator_orcids(my_metadata2, my_orcids, force=FALSE, NPS=TRUE)
+
+# If you get an error about The list of orcids and existing authors must be the same length, 
+# you can uncomment and use the following to see which authors you have set and in which order:
+
+# EMLeditor::get_author_list(my_metadata)
+```
+
+## Add additoinal Info Section
+
+```{r addtional Info - with Database}
+# Define the Additional Info section. Include the Link to the database profile for this reference
+database_LU <- paste0("The Snowy Plover Database from which the datasets were pulled for this data package is on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
+
+monitoringObjectives <- "The Snowy Plover monitoring objectives are to determine trends in the estimated breeding population size, distribution, and reproductive success of snowy plovers at known breeding beaches at Point Reyes National Seashore."
+
+# Combine Monitoring Objectives and the database Reference Info.
+defition_LU <- paste0(monitoringObjectives," ", database_LU)
+my_metadata2 <- EMLeditor::set_additional_info(my_metadata2, defition_LU)
+# Show the addition Info Text
+EMLeditor::get_additional_info(my_metadata2)
+```
+
+
+
 
 #### Set the language 
 This is the human language (as opposed to computer language) that the data package and metadata are constructed in. Examples include English, Spanish, Navajo, etc. A full list of available languages is available from the Libraryof Congress. Please use the "English Name of Language" as an input. The function will then convert your input to the appropriate 3-character ISO 639-2 code.Available languages: [https://www.loc.gov/standards/iso639-2/php/code_list.php](https://www.loc.gov/standards/iso639-2/php/code_list.php)
