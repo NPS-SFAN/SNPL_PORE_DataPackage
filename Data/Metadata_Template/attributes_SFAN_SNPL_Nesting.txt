@@ -1,72 +1,72 @@
 attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
-ID	Table ID field	numeric	dimensionless			
-Nest_ID	Unique identifier for nests	character				
-Type	The nature of the genre or source	categorical				
-Basis_Of_Record	The specific nature of the data record	categorical				
-Unit_Code	"Park, monument, or network code"	categorical				
-Location_ID	Location identifier	categorical				
-Loc_Code	Location code	categorical				
-Loc_Name	Name of the location	character				
-Year	Year nest was observed	Date		YYYY		
-QCFlag	Data quality flag	character			empty	Not defined
-QCNotes	Data quality notes	character			empty	Not defined
-Decimal_Longitude	"The geographic longitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are east of the Greenwich Meridian, negative values are west of it. Legal values lie between -180 and 180, inclusive."	numeric	dimensionless		empty	Not defined
-Decimal_Latitude	"The geographic latitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are north of the Equator, negative values are south of it. Legal values lie between -90 and 90, inclusive."	numeric	dimensionless		empty	Not defined
-Coord_System	Coordinate system used when geographic data was recorded	categorical				
-Datum	Datum of the mapping ellipsoid	categorical				
-GPSunit	"Type of unit or method used to GPS (i.e. ProXL, Garmin 3+, map)"	character			empty	Not defined
-Date_Found	Date the nest was located	Date		YYYY-MM-DD		
-Date_Exclosure	"Date an exclosure was built around the nest, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-ExclosureType	"Description of the exclosure, if applicable"	character			empty	Not defined
-MicroCodes	"Microhabitat notes, compiled into one abbreviation (Sand = S; coarse sand, shell, pebble, rock = R; seaweed or kelp = K; washed up debris or trash from beach visitors = T; vegetation or sand at the base of vegetation = V; carcasses = C)"	character			empty	Not defined
-MicroSand	Sand microhabitat	categorical				
-MicroCoarse	"Coarse-grain sand, rock, pebble, and/or shell microhabitat"	categorical				
-MicroSeaweedKelp	Seaweed and/or kelp microhabitat	categorical				
-MicroWoody	Natural woody debris	categorical				
-MicroHumanTrash	Washed up debris or visitor trash microhabitat	categorical				
-MicroVegetation	Vegetation or sand at the base of vegetation	categorical				
-MicroSmooth	Smooth to gently undulating	categorical				
-MicroSteep	>25% of the beach is steeply terraced to ocean	categorical				
-MicroHumanDogPrints	Human/dog footprints	categorical				
-MicroHorsePrints	Horse prints	categorical				
-MicroVehicleTracks	Vehicle tracks	categorical				
-Restored_Area	Check if nest is located in a restored area	categorical				
-Restored_Adjacent	Check if nest located adjacent to a restored area within 25 feet	categorical				
-Init_Date	Estimated date of nest initiation	Date		YYYY-MM-DD	empty	Not defined
-InitiationDateUnk	Check if the initiation date is unknown	categorical				
-Hatching_Date	"Date of nest hatching, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-Fledging_Date	"Date of nest fledging, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-ChickBand_Date	Date chicks were banded	Date		YYYY-MM-DD	empty	Not defined
-Eggs	Number of eggs	numeric	dimensionless		empty	Not defined
-Hatchlings	Number of chicks that hatched	numeric	dimensionless		empty	Not defined
-Fledglings	Number of chicks that fledged	numeric	dimensionless		empty	Not defined
-Failure_Date	"Date of nest failure, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-Failure_Reason	"Reason for nest failure, if applicable"	character			empty	Not defined
-Predator_Type	"Type of predator, if failure reason was predation"	character			empty	Not defined
-ChickLoss_Date1	"Date of first chick loss, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-ChickLoss_Age1	"Age of first chick when lost, if applicable"	numeric	nominalDay		empty	Not defined
-ChickLoss_Weekend1	Yes/No if first chick was lost on a weekend	categorical				
-ChickLoss_Date2	"Date of second chick loss, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-ChickLoss_Age2	"Age of second chick when lost, if applicable"	numeric	nominalDay		empty	Not defined
-ChickLoss_Weekend2	Yes/No if second chick was lost on a weekend	categorical				
-ChickLoss_Date3	"Date of third chick loss, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-ChickLoss_Age3	"Age of third chick when lost, if applicable"	numeric	nominalDay		empty	Not defined
-ChickLoss_Weekend3	Yes/No if third chick was lost on a weekend	categorical				
-ChickLoss_Date4	"Date of fourth chick loss, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-ChickLoss_Age4	"Age of fourth chick when lost, if applicable"	numeric	nominalDay		empty	Not defined
-ChickLoss_Weekend4	Yes/No if fourth chick was lost on a weekend	categorical			empty	Not defined
-Disturbance	Disturbances noted during monitoring (whether or not an effect is shown)	character			empty	Not defined
-F_Band	"Leg bands on the female plover, if any. Recorded as: ""Top band on left leg, bottom band on left leg : Top band on right leg, bottom band on right leg"" (e.g. av:bb)"	character			empty	Not defined
-M_Band	"Leg bands on the male plover, if any. Recorded as: ""Top band on left leg, bottom band on left leg : Top band on right leg, bottom band on right leg"" (e.g. av:bb)"	character			empty	Not defined
-Eggs_When	"Date that eggs were collected for testing, if applicable"	Date		YYYY-MM-DD	empty	Not defined
-Eggs_Where	"Where eggs were taken for testing/preservation, if applicable"	character			empty	Not defined
-Eggs_Results	"Egg analysis results, if applicable"	character			empty	Not defined
-Comment	Additional comments on nest or birds	character			empty	Not defined
-Created_Date	Date the event record was created	Date		YYYY-MM-DD hh:mm:ss	empty	Not defined
-Created_By	Active Directory login name of individual that entered the event record	character			empty	Not defined
-Updated_Date	Date that the event record was updated	Date		YYYY-MM-DD hh:mm:ss	empty	Not defined
-Updated_By	Active Directory login name of individual that updated the event record	character			empty	Not defined
-Quality_Notes	Comments about the quality of the data for the survey event	character			empty	Not defined
-DataProcessingLevelNestMaster	Data Processing Level (DPL)	categorical				
-DataProcessingLevelDateNestMaster	Date that Data Processing Level (DPL) changed	Date		YYYY-MM-DD hh:mm:ss		
-DataProcessingLevelUserNestMaster	Individual who assigned the current DPL status	character				
+ID	Table ID field	numeric	dimensionless		Empty string	Not applicable or data not collected
+Nest_ID	Unique identifier for nests	character			Empty string	Not applicable or data not collected
+Type	The nature of the genre or source	categorical			Empty string	Not applicable or data not collected
+Basis_Of_Record	The specific nature of the data record	categorical			Empty string	Not applicable or data not collected
+Unit_Code	"Park, monument, or network code"	categorical			Empty string	Not applicable or data not collected
+Location_ID	Location identifier	categorical			Empty string	Not applicable or data not collected
+Loc_Code	Location code	categorical			Empty string	Not applicable or data not collected
+Loc_Name	Name of the location	character			Empty string	Not applicable or data not collected
+Year	Year nest was observed	Date		YYYY	Empty string	Not applicable or data not collected
+QCFlag	Data quality flag	character			Empty string	Not applicable or data not collected
+QCNotes	Data quality notes	character			Empty string	Not applicable or data not collected
+Decimal_Longitude	"The geographic longitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are east of the Greenwich Meridian, negative values are west of it. Legal values lie between -180 and 180, inclusive."	numeric	dimensionless		Empty string	Not applicable or data not collected
+Decimal_Latitude	"The geographic latitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are north of the Equator, negative values are south of it. Legal values lie between -90 and 90, inclusive."	numeric	dimensionless		Empty string	Not applicable or data not collected
+Coord_System	Coordinate system used when geographic data was recorded	categorical			Empty string	Not applicable or data not collected
+Datum	Datum of the mapping ellipsoid	categorical			Empty string	Not applicable or data not collected
+GPSunit	"Type of unit or method used to GPS (i.e. ProXL, Garmin 3+, map)"	character			Empty string	Not applicable or data not collected
+Date_Found	Date the nest was located	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+Date_Exclosure	"Date an exclosure was built around the nest, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+ExclosureType	"Description of the exclosure, if applicable"	character			Empty string	Not applicable or data not collected
+MicroCodes	"Microhabitat notes, compiled into one abbreviation (Sand = S; coarse sand, shell, pebble, rock = R; seaweed or kelp = K; washed up debris or trash from beach visitors = T; vegetation or sand at the base of vegetation = V; carcasses = C)"	character			Empty string	Not applicable or data not collected
+MicroSand	Sand microhabitat	categorical			Empty string	Not applicable or data not collected
+MicroCoarse	"Coarse-grain sand, rock, pebble, and/or shell microhabitat"	categorical			Empty string	Not applicable or data not collected
+MicroSeaweedKelp	Seaweed and/or kelp microhabitat	categorical			Empty string	Not applicable or data not collected
+MicroWoody	Natural woody debris	categorical			Empty string	Not applicable or data not collected
+MicroHumanTrash	Washed up debris or visitor trash microhabitat	categorical			Empty string	Not applicable or data not collected
+MicroVegetation	Vegetation or sand at the base of vegetation	categorical			Empty string	Not applicable or data not collected
+MicroSmooth	Smooth to gently undulating	categorical			Empty string	Not applicable or data not collected
+MicroSteep	>25% of the beach is steeply terraced to ocean	categorical			Empty string	Not applicable or data not collected
+MicroHumanDogPrints	Human/dog footprints	categorical			Empty string	Not applicable or data not collected
+MicroHorsePrints	Horse prints	categorical			Empty string	Not applicable or data not collected
+MicroVehicleTracks	Vehicle tracks	categorical			Empty string	Not applicable or data not collected
+Restored_Area	Check if nest is located in a restored area	categorical			Empty string	Not applicable or data not collected
+Restored_Adjacent	Check if nest located adjacent to a restored area within 25 feet	categorical			Empty string	Not applicable or data not collected
+Init_Date	Estimated date of nest initiation	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+InitiationDateUnk	Check if the initiation date is unknown	categorical			Empty string	Not applicable or data not collected
+Hatching_Date	"Date of nest hatching, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+Fledging_Date	"Date of nest fledging, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+ChickBand_Date	Date chicks were banded	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+Eggs	Number of eggs	numeric	dimensionless		Empty string	Not applicable or data not collected
+Hatchlings	Number of chicks that hatched	numeric	dimensionless		Empty string	Not applicable or data not collected
+Fledglings	Number of chicks that fledged	numeric	dimensionless		Empty string	Not applicable or data not collected
+Failure_Date	"Date of nest failure, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+Failure_Reason	"Reason for nest failure, if applicable"	character			Empty string	Not applicable or data not collected
+Predator_Type	"Type of predator, if failure reason was predation"	character			Empty string	Not applicable or data not collected
+ChickLoss_Date1	"Date of first chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+ChickLoss_Age1	"Age of first chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected
+ChickLoss_Weekend1	Yes/No if first chick was lost on a weekend	categorical			Empty string	Not applicable or data not collected
+ChickLoss_Date2	"Date of second chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+ChickLoss_Age2	"Age of second chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected
+ChickLoss_Weekend2	Yes/No if second chick was lost on a weekend	categorical			Empty string	Not applicable or data not collected
+ChickLoss_Date3	"Date of third chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+ChickLoss_Age3	"Age of third chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected
+ChickLoss_Weekend3	Yes/No if third chick was lost on a weekend	categorical			Empty string	Not applicable or data not collected
+ChickLoss_Date4	"Date of fourth chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+ChickLoss_Age4	"Age of fourth chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected
+ChickLoss_Weekend4	Yes/No if fourth chick was lost on a weekend	categorical			Empty string	Not applicable or data not collected
+Disturbance	Disturbances noted during monitoring (whether or not an effect is shown)	character			Empty string	Not applicable or data not collected
+F_Band	"Leg bands on the female plover, if any. Recorded as: ""Top band on left leg, bottom band on left leg : Top band on right leg, bottom band on right leg"" (e.g. av:bb)"	character			Empty string	Not applicable or data not collected
+M_Band	"Leg bands on the male plover, if any. Recorded as: ""Top band on left leg, bottom band on left leg : Top band on right leg, bottom band on right leg"" (e.g. av:bb)"	character			Empty string	Not applicable or data not collected
+Eggs_When	"Date that eggs were collected for testing, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+Eggs_Where	"Where eggs were taken for testing/preservation, if applicable"	character			Empty string	Not applicable or data not collected
+Eggs_Results	"Egg analysis results, if applicable"	character			Empty string	Not applicable or data not collected
+Comment	Additional comments on nest or birds	character			Empty string	Not applicable or data not collected
+Created_Date	Date the event record was created	Date		YYYY-MM-DD hh:mm:ss	Empty string	Not applicable or data not collected
+Created_By	Active Directory login name of individual that entered the event record	character			Empty string	Not applicable or data not collected
+Updated_Date	Date that the event record was updated	Date		YYYY-MM-DD hh:mm:ss	Empty string	Not applicable or data not collected
+Updated_By	Active Directory login name of individual that updated the event record	character			Empty string	Not applicable or data not collected
+Quality_Notes	Comments about the quality of the data for the survey event	character			Empty string	Not applicable or data not collected
+DataProcessingLevelNestMaster	Data Processing Level (DPL)	categorical			Empty string	Not applicable or data not collected
+DataProcessingLevelDateNestMaster	Date that Data Processing Level (DPL) changed	Date		YYYY-MM-DD hh:mm:ss	Empty string	Not applicable or data not collected
+DataProcessingLevelUserNestMaster	Individual who assigned the current DPL status	character			Empty string	Not applicable or data not collected

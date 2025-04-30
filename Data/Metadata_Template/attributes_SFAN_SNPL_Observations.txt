@@ -1,44 +1,44 @@
 attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
-ID	Table ID field	numeric	dimensionless			
-SNPL_Data_ID	Unique identifier for SNPL Observations	character				
-Event_ID	Event ID	character				
-Type	The nature of the genre or source	categorical				
-Basis_Of_Record	The specific nature of the data record	categorical				
-Unit_Code	"Park, monument, or network code"	categorical				
-Location_ID	Location identifier	categorical				
-Loc_Code	Location code	categorical				
-Loc_Name	Location name	character				
-Start_Year	Year of the starting date for the event	Date		YYYY		
-Start_Date	Starting date for the event	Date		YYYY-MM-DD		
-Nest_ID	Unique identifier for nests	character			empty	Not defined
-SNPL_Time	Time plover(s) observed	Date		hh:mm:ss+hhmm	empty	Not defined
-SNPL_Time_Local	"Time plover(s) observed, in local time"	Date		hh:mm:ss	empty	Not defined
-Local_Time_Zone	The time zone where times were recorded in	categorical			empty	Not defined
-QCFlag	Quality control flag	character			empty	Not defined
-QCNotes	Notes for quality control flags	character			empty	Not defined
-Waypoint	"Waypoint name, as recorded in GPS"	character			empty	Not defined
-Decimal_Latitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
-Decimal_Longitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
-Coord_System	Coordinate system for Decimal_Latitude and Decimal_Longitude values	categorical				
-Datum	Datum used for Decimal_Latitude and Decimal_Longitude values	categorical				
-Scientific_Name	The full scientific name of the observed species	character				
-SNPL_Male	Number of adult male Snowy plovers observed	numeric	dimensionless		empty	Not defined
-SNPL_Female	Number of adult female Snowy plovers observed	numeric	dimensionless		empty	Not defined
-SNPL_Unk	Number of adult Snowy plovers observed whose sex could not be determined	numeric	dimensionless		empty	Not defined
-SNPL_Hatchlings	Number of Snowy plover hatchlings observed	numeric	dimensionless		empty	Not defined
-SNPL_Fledglings	Number of Snowy plover fledglings observed	numeric	dimensionless		empty	Not defined
-SNPL_Bands	Number of banded adult Snowy plovers	numeric	dimensionless		empty	Not defined
-Number_Eggs	"Number of eggs seen in nest, if applicable"	numeric	dimensionless		empty	Not defined
-BehaviorTerritoryCC	"Was a plover making a contact call? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorTerritoryLW	"Was a plover walking low to the ground? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorTerritoryMD	"Was a male plover displaying? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorTerritorySC	"Was scrapping observed? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorTerritoryCP	"Was a plover chasing another plover? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorNestCP	"Was a plover observed in copulation? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorNestDC	"Was a plover making a distress call? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorNestAI	"Was a plover agitating their wings or feigning injury? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorNestFN	"Did a plover flush from the nest? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorChicksAC	"Was an adult plover accompanied with chicks? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorChicksNA	"Were there chicks without an adult nearby? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-BehaviorOtherFG	"Was the plover observed to be foraging? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			empty	Not defined
-SNPL_Notes	Other notes about the observed plovers	character			empty	Not defined
+ID	Table ID field	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPL_Data_ID	Unique identifier for SNPL Observations	character			Empty string	Not applicable or data not collected
+Event_ID	Event ID	character			Empty string	Not applicable or data not collected
+Type	The nature of the genre or source	categorical			Empty string	Not applicable or data not collected
+Basis_Of_Record	The specific nature of the data record	categorical			Empty string	Not applicable or data not collected
+Unit_Code	"Park, monument, or network code"	categorical			Empty string	Not applicable or data not collected
+Location_ID	Location identifier	categorical			Empty string	Not applicable or data not collected
+Loc_Code	Location code	categorical			Empty string	Not applicable or data not collected
+Loc_Name	Location name	character			Empty string	Not applicable or data not collected
+Start_Year	Year of the starting date for the event	Date		YYYY	Empty string	Not applicable or data not collected
+Start_Date	Starting date for the event	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+Nest_ID	Unique identifier for nests	character			Empty string	Not applicable or data not collected
+SNPL_Time	Time plover(s) observed	Date		hh:mm:ss+hhmm	Empty string	Not applicable or data not collected
+SNPL_Time_Local	"Time plover(s) observed, in local time"	Date		hh:mm:ss	Empty string	Not applicable or data not collected
+Local_Time_Zone	The time zone where times were recorded in	categorical			Empty string	Not applicable or data not collected
+QCFlag	Quality control flag	character			Empty string	Not applicable or data not collected
+QCNotes	Notes for quality control flags	character			Empty string	Not applicable or data not collected
+Waypoint	"Waypoint name, as recorded in GPS"	character			Empty string	Not applicable or data not collected
+Decimal_Latitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		Empty string	Not applicable or data not collected
+Decimal_Longitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		Empty string	Not applicable or data not collected
+Coord_System	Coordinate system for Decimal_Latitude and Decimal_Longitude values	categorical			Empty string	Not applicable or data not collected
+Datum	Datum used for Decimal_Latitude and Decimal_Longitude values	categorical			Empty string	Not applicable or data not collected
+Scientific_Name	The full scientific name of the observed species	character			Empty string	Not applicable or data not collected
+SNPL_Male	Number of adult male Snowy plovers observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPL_Female	Number of adult female Snowy plovers observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPL_Unk	Number of adult Snowy plovers observed whose sex could not be determined	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPL_Hatchlings	Number of Snowy plover hatchlings observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPL_Fledglings	Number of Snowy plover fledglings observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPL_Bands	Number of banded adult Snowy plovers	numeric	dimensionless		Empty string	Not applicable or data not collected
+Number_Eggs	"Number of eggs seen in nest, if applicable"	numeric	dimensionless		Empty string	Not applicable or data not collected
+BehaviorTerritoryCC	"Was a plover making a contact call? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorTerritoryLW	"Was a plover walking low to the ground? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorTerritoryMD	"Was a male plover displaying? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorTerritorySC	"Was scrapping observed? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorTerritoryCP	"Was a plover chasing another plover? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorNestCP	"Was a plover observed in copulation? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorNestDC	"Was a plover making a distress call? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorNestAI	"Was a plover agitating their wings or feigning injury? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorNestFN	"Did a plover flush from the nest? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorChicksAC	"Was an adult plover accompanied with chicks? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorChicksNA	"Were there chicks without an adult nearby? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+BehaviorOtherFG	"Was the plover observed to be foraging? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
+SNPL_Notes	Other notes about the observed plovers	character			Empty string	Not applicable or data not collected
