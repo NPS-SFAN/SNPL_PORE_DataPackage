@@ -1,28 +1,28 @@
 attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
-ID	Table ID field	numeric	dimensionless			
-Predator_Data_ID	Unique identifier for predator observations	character				
-Event_ID	Event ID	character				
-Type	The nature of the genre or source	categorical				
-Basis_Of_Record	The specific nature of the data record	categorical				
-Unit_Code	"Park, monument, or network code"	categorical				
-Location_ID	Location identifier	categorical				
-Loc_Code	Location code	categorical				
-Loc_Name	Location name	character				
-Start_Year	Year of the starting date for the event	Date		YYYY		
-Start_Date	Starting date for the event	Date		YYYY-MM-DD		
-QCFlag	Quality control flag	character			empty	Not defined
-QCNotes	Quality control notes	character			empty	Not defined
-PredatorType	Code for the type of predator or disturbance	character			empty	Not defined
-SpeciesCode	Predator type species code	categorical				
-ScientificName	Predator type scientific name	character			empty	Not defined
-CommonName	Predator type common name	character			empty	Not defined
-TSN	Integrated Taxonomic Information System Taxonomic Serial Number.	character			empty	Not defined
-NumPredator	Number of predators observed	numeric	dimensionless		empty	Not defined
-PredatorAction	Code for what the predator was doing	categorical			empty	Not defined
-PredatorDirection	Direction of where the predator was moving	categorical			empty	Not defined
-Waypoint	Waypoint name as recorded in GPS	character			empty	Not defined
-Decimal_Longitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
-Decimal_Latitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
-Coord_System	Coordinate system for Decimal_Latitude and Decimal_Longitude values	categorical				
-Datum	Datum used for Decimal_Latitude and Decimal_Longitude values	categorical				
-PredatorNotes	General notes on the observed predators	character			empty	Not defined
+ID	Table ID field	numeric	dimensionless		Empty string	Not applicable or data not collected
+Predator_Data_ID	Unique identifier for predator observations	character			Empty string	Not applicable or data not collected
+Event_ID	Event ID	character			Empty string	Not applicable or data not collected
+Type	The nature of the genre or source	categorical			Empty string	Not applicable or data not collected
+Basis_Of_Record	The specific nature of the data record	categorical			Empty string	Not applicable or data not collected
+Unit_Code	"Park, monument, or network code"	categorical			Empty string	Not applicable or data not collected
+Location_ID	Location identifier	categorical			Empty string	Not applicable or data not collected
+Loc_Code	Location code	categorical			Empty string	Not applicable or data not collected
+Loc_Name	Location name	character			Empty string	Not applicable or data not collected
+Start_Year	Year of the starting date for the event	Date		YYYY	Empty string	Not applicable or data not collected
+Start_Date	Starting date for the event	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+QCFlag	Quality control flag	character			Empty string	Not applicable or data not collected
+QCNotes	Quality control notes	character			Empty string	Not applicable or data not collected
+PredatorType	Code for the type of predator or disturbance	character			Empty string	Not applicable or data not collected
+SpeciesCode	Predator type species code	categorical			Empty string	Not applicable or data not collected
+ScientificName	Predator type scientific name	character			Empty string	Not applicable or data not collected
+CommonName	Predator type common name	character			Empty string	Not applicable or data not collected
+TSN	Integrated Taxonomic Information System Taxonomic Serial Number.	character			Empty string	Not applicable or data not collected
+NumPredator	Number of predators observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+PredatorAction	Code for what the predator was doing	categorical			Empty string	Not applicable or data not collected
+PredatorDirection	Direction of where the predator was moving	categorical			Empty string	Not applicable or data not collected
+Waypoint	Waypoint name as recorded in GPS	character			Empty string	Not applicable or data not collected
+Decimal_Longitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		Empty string	Not applicable or data not collected
+Decimal_Latitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		Empty string	Not applicable or data not collected
+Coord_System	Coordinate system for Decimal_Latitude and Decimal_Longitude values	categorical			Empty string	Not applicable or data not collected
+Datum	Datum used for Decimal_Latitude and Decimal_Longitude values	categorical			Empty string	Not applicable or data not collected
+PredatorNotes	General notes on the observed predators	character			Empty string	Not applicable or data not collected
