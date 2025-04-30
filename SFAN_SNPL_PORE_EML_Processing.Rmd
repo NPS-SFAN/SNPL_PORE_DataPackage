@@ -22,7 +22,6 @@ This script acts as a template file for end-to-end creation of EML metadata in R
 # Good additional references
 [EMLassemblyline](https://ediorg.github.io/EMLassemblyline/)
 [EMLeditor](https://nationalparkservice.github.io/EMLeditor/index.html)
-[EVER Veg Map AA dataset](https://github.com/nationalparkservice/NPS_EML_Script/tree/main/Example_files) (for testing purposes)
 
 ```{r Define Setup Parameters}
 
