@@ -406,6 +406,82 @@ dfChickBands <- dfChickBands |> dplyr::relocate(
   .after = Year
 )
 
+
+##################### 
+# Taxonomy Processing
+#####################
+
+### Taxize Workflow and Global Names Resolver not up - Commented out Service not working 1/23/2025
+### Blocked out code below not setup for SNPL PORE process 
+
+# In place of the taxize -  Global Names Resolver workflow, reading in the 'taxonomy_preprocessing.csv'
+# taxonomy table and check for any new realized taxon in need of definition.  
+# Realized taxon most likely will be stable after initial year so can re-use existing 
+# taxonomic coverage template from preivous year.
+
+# Get the realized taxon codes in the Predator dataset
+predators_DF<- data$SFAN_SNPL_Predators
+uniqueTaxon_DF <- predators_DF %>%
+  distinct(SpeciesCode)
+
+# Remove rows where SpeciesCode is NA or empty
+uniqueTaxon_DF <- subset(uniqueTaxon_DF, !is.na(SpeciesCode) & SpeciesCode != "")
+
+
+# Sort on the Species Code field
+uniqueTaxon_DF <- uniqueTaxon_DF %>%
+  arrange(SpeciesCode)
+
+# Add in the Snowy Plover Record which is not in the Predator Dataset
+uniqueTaxon_DF <- rbind(uniqueTaxon_DF, data.frame(SpeciesCode = "SNPL"))
+
+# Get Count of Records
+countTaxon_DF <- dim(uniqueTaxon_DF)[1]
+
+# Read in Taxonomic Preprocessing Template 
+taxonPrePath <- here::here(gsub(" ", "", paste("Data", "/Metadata_Template", "/taxonomy_Preprocessing.csv")))
+taxonTemplate_df <- readr::read_csv(taxonPrePath, lazy = FALSE)
+
+
+# Get Unique template values
+taxonTemplate_df_distinct <- taxonTemplate_df %>%
+  distinct(SpeciesCode)
+
+
+#First Outer Join of all realized on SpeciesCode
+uniqueTaxonCodes_DF_Both <- uniqueTaxon_DF %>%
+  left_join(
+    taxonTemplate_df_distinct %>% mutate(name_TaxonTemplate = SpeciesCode),
+    by = c("SpeciesCode" = "SpeciesCode")
+  )
+
+# Check if count of joined records equals number of records in uniqueBirds_DFCount if equal Taxonomic Template has a definition per taxon
+countNotNull <- sum(!is.na(uniqueTaxonCodes_DF_Both$name_TaxonTemplate))
+
+print(paste("Number of Matching Taxon in Dataset and Taxonomic Coverage Template is -", countNotNull))
+
+if (countTaxon_DF == countNotNull) {
+  print("Number of Realized Taxon and Matching in Taxonomic Template is equal - Taxonomic Coverage doesn't need update all Realized Taxon are defined"
+  )
+  
+  } else {
+  
+  #Subset to Taxon in need of definition in Taxonomic Coverages Template
+  uniqueTaxonCodes_ToDefine <- uniqueTaxonCodes_DF_Both %>%
+    filter(is.na(name_TaxonTemplate))
+  
+  outDFPath <- here::here(paste0("Input", "/TaxonToDefine.csv"))
+  if (file.exists(outDFPath)) {
+    file.remove(outDFPath)
+    print(paste("Existing File - ", outDFPath, " - has been deleted."))
+  }
+  
+  write.csv(uniqueTaxonCodes_ToDefine, outDFPath)
+  
+  print(paste0("WARNING - there are - ", countNotNull, " - Records in need of definition in the Taxonomic Coverage Template before proceeding"))
+  print(paste0("See Exported dataframe with Taxon to be defined in Tempalte at: ", outDFPath))
+} 
+
 #########################################
 # Export cleaned datasets to CSV in the 'Input' directory of the Data Package Script location
 #########################################
