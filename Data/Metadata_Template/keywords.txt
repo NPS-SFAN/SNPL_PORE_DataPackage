@@ -1,7 +1,7 @@
 keyword	keywordThesaurus
-Snowy plover
-SNPL
-Point Reyes National Seashore
-PORE
-SFAN
-IMD
+SNPL-PORE Data Package	
+snowy plovers	
+long-term monitoring	
+ecological data	
+ecological monitoring	
+landbirds	
