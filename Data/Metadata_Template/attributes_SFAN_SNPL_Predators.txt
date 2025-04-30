@@ -21,8 +21,8 @@ NumPredator	Number of predators observed	numeric	dimensionless		empty	Not define
 PredatorAction	Code for what the predator was doing	categorical			empty	Not defined
 PredatorDirection	Direction of where the predator was moving	categorical			empty	Not defined
 Waypoint	Waypoint name as recorded in GPS	character			empty	Not defined
-Decimal_Latitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
 Decimal_Longitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
+Decimal_Latitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		empty	Not defined
 Coord_System	Coordinate system for Decimal_Latitude and Decimal_Longitude values	categorical				
 Datum	Datum used for Decimal_Latitude and Decimal_Longitude values	categorical				
 PredatorNotes	General notes on the observed predators	character			empty	Not defined
