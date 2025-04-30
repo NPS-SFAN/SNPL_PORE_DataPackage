@@ -1,0 +1,14 @@
+SpeciesCode,ScientificName,CommonName,TSN
+SNPL,Charadrius nivosus,Western Snowy Plover,824030
+AMCR,Corvus brachyrhynchos,American crow,179731
+COHA,Accipiter cooperii,Coopers Hawk,175309
+CORA,Corvus corax,Common Raven,179725
+COYO,Canis latrans,Coyote,180599
+DOG,Canis lupus familiaris,Common Dog,726821
+HORS,Equus Linnaeus,Horses,180689
+HUMN,Homo sapiens,Human,180092
+NOHA,Circus cyaneus,Northern Harrier,175430
+PEFA,Falco peregrinus,Peregrine Falcon,175604
+RTHA,Buteo jamaicensis,Red-tailed Hawk,175350
+UNK,Unknown,Unknown,-1
+WTKI,Elanus leucurus,White-tailed Kite,175282
