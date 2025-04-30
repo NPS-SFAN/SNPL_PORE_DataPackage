@@ -11,4 +11,3 @@ Elanus leucurus	scientific	Elanus leucurus	ITIS	175282
 Equus Linnaeus	scientific	Equus Linnaeus	ITIS	180689
 Falco peregrinus	scientific	Falco peregrinus	ITIS	175604
 Homo sapiens	scientific	Homo sapiens	ITIS	180092
-Unknown	scientific	Unknown	NA	NA
