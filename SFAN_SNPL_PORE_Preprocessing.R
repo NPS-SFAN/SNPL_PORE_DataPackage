@@ -353,8 +353,27 @@ dfNesting <- dfNesting %>%
   )
 
 
-# Removing superfluous columns
+#####
+# Check for Null fields - ChickLoss_4 fields are all null as of 5/1/2025
+################
 
+# If Chickloss_Date4 values are null delete these fields
+if (all(is.na(dfNesting$Chickloss_Date4))) {
+  dfNesting <- dfNesting[, !(names(dfNesting) %in% c("ChickLoss_Date4", "ChickLoss_Age4", "ChickLoss_Weekend4"))]
+  
+  print(paste0(
+    "Deleted Null fields: Chickloss_Date4, Chickloss_Age4, and ChickLoss_Weekend4 fields."))
+  
+} else {
+  
+  print(paste0(
+    "WARNING - There are now records in the: Chickloss_Date4, Chickloss_Age4, and ChickLoss_Weekend4 fields.\n\n",
+    "Fields have not been deleted. Please add these fields to the attributes_SFAN_SNPL_Nesting.txt field attribute template"
+  ))
+}
+
+
+# Removing superfluous columns
 dfNesting <- dfNesting |> dplyr::relocate(
   tidyselect::starts_with("decimal"),
   .before = X_Coord
