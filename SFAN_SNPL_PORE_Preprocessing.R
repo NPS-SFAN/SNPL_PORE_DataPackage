@@ -495,8 +495,9 @@ if (countTaxon_DF == countNotNull) {
   }
   
   write.csv(uniqueTaxonCodes_ToDefine, outDFPath)
+  countNull <- sum(is.na(uniqueTaxonCodes_ToDefine$name_TaxonTemplate))
   
-  print(paste0("WARNING - there are - ", countNotNull, " - Records in need of definition in the Taxonomic Coverage Template before proceeding"))
+  print(paste0("WARNING - there are - ", countNull, " - Records in need of definition in the Taxonomic Coverage Template before proceeding"))
   print(paste0("See Exported dataframe with Taxon to be defined in Tempalte at: ", outDFPath))
 } 
 
