@@ -34,8 +34,12 @@ referencecodeDRR <- 2310766
 # Processing Date of the Data Package
 processingDate <- '2025-05-01'
 
-#Year Published
+# Year Published
 publishYear <- 2025
+
+
+# SNPL PORE Backend Database with the Datasets to be preprocssed
+db_name <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/SNPLOVER/SNPL_IM/Data/Database/Dbase_BE/PORE_SNPL_BE_20250430.accdb"
 
 # Dataset/Data Package Files Path
 dsFilePath <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/Scripts/SNPL_PORE_DataPackage/Data/SNPLPORE_2024_2310749"
@@ -106,65 +110,60 @@ paste ('Start Year All Datasets:', beginYear)
 paste ('End Year All Datasets:', endYear)
 
 # Define individual Min and Max Yearly Values
-#DistubranceStart
-#DistubranceEnd
-#ElephantStart
-#ElephantEnd
-#HarborStart
-#HarborEnd
-#RedSharkStart
-#RedSharkEnd
-#ResightStart
-#ResightEnd
+#bandsStart
+#bandsEnd
+#chickbandsStart
+#chickbandsEnd
+#eventStart
+#eventEnd
+#nestingStart
+#nestingEnd
+#observationStart
+#observationEnd
+#predatorStart
+#predatorEnd
 
+# Bands Start - End
+bands_df$Start_Date <- as.Date(bands_df$Start_Date, format = "%Y-%m-%d")
+bandsStart <- format(min(bands_df$Start_Date, na.rm = TRUE), "%Y")
+bandsEnd <- format(max(bands_df$Start_Date, na.rm = TRUE), "%Y")
 
-# Compute min and max years for each dataset
-min_max_years <- lapply(dataframes, function(df) {
-  # Convert StartDate to Date if not already
-  df$StartDate <- as.Date(df$StartDate, format = "%Y-%m-%d")
-  
-  # Get min and max years
-  min_year <- format(min(df$StartDate, na.rm = TRUE), "%Y")
-  max_year <- format(max(df$StartDate, na.rm = TRUE), "%Y")
-  
-  # Return as a named list
-  list(StartYear = min_year, EndYear = max_year)
-})
+# ChickBands Start - End
+chickBandsStart <- min(chickbands_df$Year, na.rm = TRUE)
+chickBandsEnd <- max(chickbands_df$Year, na.rm = TRUE)
 
-# Assign names to the min_max_years list
-names(min_max_years) <- names(dataframes)
+# Events Start - End
+events_df$Start_Date <- as.Date(events_df$Start_Date, format = "%Y-%m-%d")
+eventsStart <- format(min(events_df$Start_Date, na.rm = TRUE), "%Y")
+eventsEnd <- format(max(events_df$Start_Date, na.rm = TRUE), "%Y")
 
-# Print min and max years for each dataset
-min_max_years
+# Nesting Start - End
+nesting_df$Date_Found <- as.Date(nesting_df$Date_Found, format = "%Y-%m-%d")
+nestingStart <- format(min(nesting_df$Date_Found, na.rm = TRUE), "%Y")
+nestingEnd <- format(max(nesting_df$Date_Found, na.rm = TRUE), "%Y")
 
+# Observation Start - End
+observations_df$Start_Date <- as.Date(observations_df$Start_Date, format = "%Y-%m-%d")
+obsStart <- format(min(observations_df$Start_Date, na.rm = TRUE), "%Y")
+obsEnd <- format(max(observations_df$Start_Date, na.rm = TRUE), "%Y")
 
-# Assign individual variables for each dataset
-DistubranceStart <- min_max_years[["NPS_IMD_SFAN_Pinniped_Disturbance"]][["StartYear"]]
-DistubranceEnd <- min_max_years[["NPS_IMD_SFAN_Pinniped_Disturbance"]][["EndYear"]]
+# Predator Start - End
+predators_df$Start_Date <- as.Date(predators_df$Start_Date, format = "%Y-%m-%d")
+predStart <- format(min(predators_df$Start_Date, na.rm = TRUE), "%Y")
+predEnd <- format(max(predators_df$Start_Date, na.rm = TRUE), "%Y")
 
-ElephantStart <- min_max_years[["NPS_IMD_SFAN_Pinniped_ElephantSeal"]][["StartYear"]]
-ElephantEnd <- min_max_years[["NPS_IMD_SFAN_Pinniped_ElephantSeal"]][["EndYear"]]
-
-HarborStart <- min_max_years[["NPS_IMD_SFAN_Pinniped_HarborSeal"]][["StartYear"]]
-HarborEnd <- min_max_years[["NPS_IMD_SFAN_Pinniped_HarborSeal"]][["EndYear"]]
-
-RedSharkStart <- min_max_years[["NPS_IMD_SFAN_Pinniped_HarborSealRedShark"]][["StartYear"]]
-RedSharkEnd <- min_max_years[["NPS_IMD_SFAN_Pinniped_HarborSealRedShark"]][["EndYear"]]
-
-ResightStart <- min_max_years[["NPS_IMD_SFAN_Pinniped_Resights"]][["StartYear"]]
-ResightEnd <- min_max_years[["NPS_IMD_SFAN_Pinniped_Resights"]][["EndYear"]]
 
 # Print individual variables
-paste("Disturbance Start:", DistubranceStart, "End:", DistubranceEnd)
-paste("Elephant Seal Start:", ElephantStart, "End:", ElephantEnd)
-paste("Harbor Seal Start:", HarborStart, "End:", HarborEnd)
-paste("Red Shark Start:", RedSharkStart, "End:", RedSharkEnd)
-paste("Resights Start:", ResightStart, "End:", ResightEnd)
-
+paste("Bands Start:", bandsStart, "End:", bandsEnd)
+paste("Chick Band Start:", chickBandsStart, "End:", chickBandsEnd)
+paste("Events Start:", eventsStart, "End:", eventsEnd)
+paste("Nesting Start:", nestingStart, "End:", nestingEnd)
+paste("Observations Start:", obsStart, "End:", obsEnd)
+paste("Predator Start:", predStart, "End:", predEnd)
 
 #############################################
 # Calculate the Number of Records per dataset
-# DistNum, ElephantNum, HarborNum, RedSharkNum, ResightNum
+
 # Get record count for each dataset
 record_counts <- sapply(dataframes, nrow)
 
@@ -172,18 +171,132 @@ record_counts <- sapply(dataframes, nrow)
 record_counts
 
 # Optionally, assign to individual variables
-DistNum <- record_counts["NPS_IMD_SFAN_Pinniped_Disturbance"]
-ElephantNum <- record_counts["NPS_IMD_SFAN_Pinniped_ElephantSeal"]
-HarborNum <- record_counts["NPS_IMD_SFAN_Pinniped_HarborSeal"]
-RedSharkNum <- record_counts["NPS_IMD_SFAN_Pinniped_HarborSealRedShark"]
-ResightNum <- record_counts["NPS_IMD_SFAN_Pinniped_Resights"]
+BandsNum <- record_counts["SFAN_SNPL_Bands"]
+ChickBandsNum <- record_counts["SFAN_SNPL_ChickBands"]
+EventNum <- record_counts["SFAN_SNPL_Events"]
+NestingNum <- record_counts["SFAN_SNPL_Nesting"]
+ObsNum <- record_counts["SFAN_SNPL_Observations"]
+PredNum <- record_counts["SFAN_SNPL_Predators"]
+
 
 # Print individual record counts
-paste("Disturbance Records:", DistNum)
-paste("Elephant Seal Records:", ElephantNum)
-paste("Harbor Seal Records:", HarborNum)
-paste("Red Shark Records:", RedSharkNum)
-paste("Resight Records:", ResightNum)
+paste("Band Records:", BandsNum)
+paste("Chick Band Records:", ChickBandsNum)
+paste("Event Records:", EventNum)
+paste("Nesting Records:", NestingNum)
+paste("Observation Records:", ObsNum)
+paste("Predator Records:", PredNum)
+
+
+
+
+#############################################
+# Get List of Realized QC Flags from datasets
+# Check tlu_DataFlags - and field DefinedDRR to see if new fields
+# need to added to the Table 2 Table in the DRR.
+#############################################
+
+# Combine all QC flag fields into one character vector
+all_flags_raw <- c(
+  as.character(bands_df$QCFlag),
+  as.character(chickbands_df$QCFlag),
+  as.character(events_df$EventDetailsQCFlag),
+  as.character(events_df$EventQCFlag),
+  as.character(nesting_df$QCFlag),
+  as.character(observations_df$QCFlag),
+  as.character(predators_df$QCFlag)
+)
+
+# Remove NA values and ""
+all_flags_raw <- all_flags_raw[!is.na(all_flags_raw) & all_flags_raw != ""]
+
+# Split concatenated flags by ";" and flatten the list
+all_flags_split <- unlist(strsplit(all_flags_raw, ";"))
+
+# Trim whitespace (optional, in case flags like " DFO" exist)
+all_flags_split <- trimws(all_flags_split)
+
+# Get unique flags
+unique_flags <- unique(all_flags_split)
+
+# Export to dataframe
+realizedFlags_df <- data.frame(QCFlags = unique_flags)
+
+# Count of Realized Flags
+countrealizedFlags_df <- dim(realizedFlags_df)[1]
+
+
+# Import the Flag Lookup table
+getDataExport_Access.function <- function(db_name, inQuery) {
+  DRIVERINFO <- "Driver={Microsoft Access Driver (*.mdb, *.accdb)};"
+  PATH <- paste0(DRIVERINFO, "DBQ=", db_name)
+  
+  if (!require("pacman")) install.packages("pacman")
+  
+  pacman::p_load("RODBC", "svDialogs", "getPass", "dplyr", "ggplot2")
+  
+  # Connect to Access DB
+  
+  channel <- odbcDriverConnect(PATH)
+  on.exit(odbcClose(channel))
+  
+  # Import to a DataFrame
+  
+  dfOut <- sqlQuery(channel, inQuery)
+}
+
+
+query <- list(events = "SELECT tlu_DataFlags.* FROM tlu_DataFlags")
+
+df_Tables <- lapply(query, getDataExport_Access.function, db_name = db_name)
+
+df_luFlags <- df_Tables[[1]]
+
+# Subset to only DefineDRR = 'Yes' - These are the Flags defined already in the DRR
+df_luFlags_DRR <- df_luFlags[df_luFlags$DefinedDRR == "Yes", ]
+
+#Check for 
+#First Outer Join of all realized on SpeciesCode
+flags_DF_Both <- realizedFlags_df %>%
+  left_join(
+    df_luFlags_DRR %>% mutate(DRR_FlagsDefined = FlagCode),
+    by = c("QCFlags" = "FlagCode")
+  )
+
+# Check if count of joined records equals number of records in uniqueBirds_DFCount if equal Taxonomic Template has a definition per taxon
+countNotNull <- sum(!is.na(flags_DF_Both$DRR_FlagsDefined))
+
+print(paste("Number of Matching Realized QC Flags in Dataset and the Data Release Report Table 2 is -", countNotNull))
+
+if (countNotNull == countrealizedFlags_df) {
+  print("Realized QC Flags are already defined in the DRR Table as defined in the tlu_DataFlags$DefinedDRR field attribute - no need to add new QC Flags they are already defined."
+  )
+  
+} else {
+  
+  #Subset to Taxon in need of definition in Taxonomic Coverages Template
+  flags_ToDefine <- flags_DF_Both %>%
+    filter(is.na(DRR_FlagsDefined))
+  
+  outDFPath <- here::here(paste0("Input", "/FlagsToDefine.csv"))
+  if (file.exists(outDFPath)) {
+    file.remove(outDFPath)
+    print(paste("Existing File - ", outDFPath, " - has been deleted."))
+  }
+  
+  write.csv(flags_ToDefine, outDFPath)
+  
+  # Get Count of records that are Null - i.e. in need of definition
+  countNull <- sum(is.na(flags_DF_Both$DRR_FlagsDefined))
+  
+  print(paste0("WARNING - there are - ", countNull, " - QC Records in need of definition in the DRR Table 2."))
+  print(paste0("See Exported dataframe with Flags to be defined in the DRR Table 2 at: ", outDFPath))
+} 
+
+
+###########
+#STOPPED HERE 5/1/2025 - KRS
+
 
 
 ########################
@@ -191,7 +304,7 @@ paste("Resight Records:", ResightNum)
 ########################
 
 #Copy Template file to output folder
-templateName <- paste0('SFAN_Pinniped_DRR_', beginYear, '-', endYear, '.docx')
+templateName <- paste0('SFAN_SNPL_DRR_', beginYear, '-', endYear, '.docx')
 
 # Full path to the copied template
 outTemplateFull <- paste0(outDir, '/', templateName) 
