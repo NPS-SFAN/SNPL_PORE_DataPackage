@@ -1,8 +1,11 @@
 ---
 title: "NPS, SFAN Snowy Plover EML creation"
-author: "Original Author: Alexa Ron, subsequent edits by Kirk Sherrill DS/DM SFAN"
-date: "2025/04/29"
+author: "Original Author: Alexa Ron, subsequent edited by Kirk Sherrill DS/DM SFAN"
+date: "2025/05/01"
 output: html
+
+
+updates:  "April/May 2025 editted script for an annual workflow.  Incorperated various updates as need to further refine the data package and EML XML metadata output. - Kirk Sherrill"
 ---
 
 ```{r Clean console/env}
@@ -144,11 +147,12 @@ data_names <- c("SFAN Snowy Plover Band Data",
 ```{r data_descriptions}
 data_descriptions <- c("Detailed leg band information of observed Snowy plovers", 
                        "Leg band information of observed Snowy plover chicks", 
-                       "Event Metadata Environmental, data, time, and directional information of each survey", 
+                       "Event Metadata Environmental, data, time, and directional information for surveys", 
                        "Observations of nesting Snowy plovers and their offspring", 
                        "Observations of any Snowy plover encountered", 
                        "Observations of nearby predators")
 ```
+
 
 # Extract the Min Max Year and Dates
 International Standards Organization's standard 8601
@@ -205,16 +209,6 @@ data_type <- "complete"
 EMLassemblyline needs to know where the data files will be (a URL). However, because you have not yet initiated a draft reference in DataStore, it isn't possible to specify a URL. Instead, insert a place holder. This information will be updated later on when you add a Digital Object Identifier(DOI) to the metadata.
 ```{r temp_data_url}
 data_urls <- c(rep("temporary URL", length(data_files)))
-```
-
-#### Taxonomic information
-Specify where you taxonomic information is. this can be a single file or a list of files and fields (columns) with scientific names that will be used to automatically generate the taxonomic coverage metadata. We suggest using [DarwinCore](https://dwc.tdwg.org/terms) for column names, such as "scientificName". If your data package does not have taxonomic data, skip this step.
-```{r taxonomic_info}
-# the file(s) where scientific names are located:
-data_taxa_tables <- c("SFAN_SNPL_Observations.csv", "SFAN_SNPL_ChickBands.csv")
-
-# the column where your scientific names are within the data files.
-data_taxa_fields <- c("Scientific_Name", "Scientific_Name")
 ```
 
 #### Geographic information
@@ -285,12 +279,13 @@ EMLassemblyline::template_geographic_coverage(path = working_folder,
 #### FUNCTION 5 - Taxonomic Coverage
 This function creates a taxonomic_coverage.txt file if you have taxonomic data. Currently supported authorities are 3 = ITIS, 9 = WORMS, and 11 = GBIF. In the example below, the function will first try to find the scientific name at ITIS and if it fails will then look at GBIF. If you have lots of taxa, this could take some time to complete.
 
+Note 4/30/2025 - The EML Assemblyline Taxonomic Coverage creation is not working, won't be able to create a taxonomic coverage using the underlying GNA verifier https://verifier.globalnames.org/ which Assemblyline hits.  Additionaly while down even if a taxonomic template is given with correct data the taxonomic coverage secton will not be created in the EML file.
 
 ```{r tax_cov}
 library(stringr)
 
 # Delete taxonomic_coverage.txt if it already exists and new taxon need definition
-overWriteTaxon <- FALSe
+overWriteTaxon <- FALSE
 
 if (overWriteTaxon) {
 
@@ -340,8 +335,8 @@ my_metadata <- EMLassemblyline::make_eml(path = templatePath,
 EMLassemblyline::issues()
 
 # Export for QC Testing Only - Turn off post QC
-outXMLFull <- paste0(outFolderDataPackage, "/", metadata_id, ".xml")
-EML::write_eml(my_metadata, outXMLFull)
+#outXMLFull <- paste0(outFolderDataPackage, "/", "ExportTest_Taxonomy", ".xml")
+# EML::write_eml(my_metadata, outXMLFull)
 ```
 
 ## Check for EML validity 
@@ -377,10 +372,7 @@ More information about these codes can be found at: [https://www.archives.gov/cu
 
 ```{r cui_dissemination}
 my_metadata2 <- EMLeditor::set_cui_code(my_metadata, "PUBLIC")
-# note that in this case I have added the CUI code to the original R object, 
-# "my_metadata" but by giving it a new name, i.e. "my_meta2" I could have
-# created a new R object. Sometimes creating a new R object is preferable 
-# because if you make a mistake you don't need to start over again.
+
 ```
 
 ## Intellectual Rights
@@ -422,8 +414,6 @@ my_metadata2 <- EMLeditor::set_drr(my_metadata2, drr_referenceCode, dRR_Name)
 ```{r set project}
 my_metadata2 <- EMLeditor::set_project(my_metadata2, projectReferenceCode)
 ```
-
-
 ```{r add orcidID's}
 ## Add OrcidID's
 #List in the order of the CREATORS listed in the 'Personnel' metatdata template see - personnel.txt"
@@ -439,7 +429,7 @@ my_metadata2 <- EMLeditor::set_creator_orcids(my_metadata2, my_orcids, force=FAL
 
 ```{r addtional Info - with Database}
 # Define the Additional Info section. Include the Link to the database profile for this reference
-database_LU <- paste0("The Snowy Plover Database from which the datasets orignate for this data package is on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
+database_LU <- paste0("The Snowy Plover Database from which the datasets were processed for this data package is on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
 
 monitoringObjectives <- "The Snowy Plover monitoring objectives are to determine trends in the estimated breeding population size, distribution, and reproductive success of snowy plovers at known breeding beaches at Point Reyes National Seashore."
 
@@ -493,33 +483,20 @@ You're EML metadata file should be ready for upload. You can run some additional
 ```{r check_eml}
 # This assumes that you have written your metadata to an .xml file and that the .xml file is in the current working directory.
 
-EMLeditor::check_eml()
+cols_to_skip <- c("Start_Date")
 
-# If you .xml file with metadata is in a different directory, you will have to specify that:
-#check_eml("C:/Users/<yourusername>/Documents/your_data_package")
+DPchecker::test_fields_match(directory = outFolderDataPackage)
+DPchecker::run_congruence_checks(directory = outFolderDataPackage, skip_cols = cols_to_skip)
 ```
-
-## Check your data package 
-If your data package is now complete, you can run some test prior to upload to make sure that the package fits some minimal set of requirements and that the data and metadata are properly specified and coincide. This assumes that your data package is in the root of your R project. 
-```{r congruence_tests}
-# this assumes that the data package is the working directory
-DPchecker::run_congruence_checks(skip_cols = "Updated_Date")
-
-# if your data package is somewhere else, specify that:
-# run_congruence_checks("C:/Users/<yourusername>/Documents/my_data_package")
-```
-
-
 ## Upload your data package 
 If everything checked out, you should be ready to upload your data package! We recommend using `upload_data_package()` to accomplish this. The function automatically checks your DOI and uploads to the correct reference on DataStore. All of your files for the data package need to be in the same folder, there can be only one .xml file (ending in "_metadata.xml") and all the other files should be data files in .csv format. Each individual file should be < 32Mb.  If you have files > 32Mb, you will need to upload them manually using the web interface on DataStore. 
 ```{r upload}
 # this assumes your data package is in the current working directory
-EMLeditor::upload_data_package()
+EMLeditor::upload_data_package(outFolderDataPackage,force=TRUE)
 
-# If your data package is somewhere else, specify that:
-#upload_data_package("C:/Users/<yourusername>/Documents/my_data_package)
 ```
 
 From within DataStore you should be able to extract all the information from the metadata file to populate the relevant DataStore fields. In the upper right, select "Edit" from the drop down menu. Then click on the "Files and Links" tab. On the left side of the files list, select the radio button corresponding to your metadata. Then click the "Extract Metadata" button from the top right of box with the files listed in it. 
 
-Please don't activate your reference just yet! Data package references need to be reviewed prior to activation. We are still working on what that review process will look like.
+Please don't activate your reference just yet! Prior to activation the Data package needs to be reviewed, via review of the data package reference profile export and working through a
+data package checklist worksheet - see: https://irma.nps.gov/DataStore/Reference/Profile/2306391) prior to activation.
