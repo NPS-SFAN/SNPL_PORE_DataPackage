@@ -1,1 +1,1 @@
-"This data package contains Snowy Plover monitoring data collected at Point Reyes National Seashore. It includes the following datasets: Snowy Plover Observations, Banding , Nesting, Predator, Chick Band, and Event Metadata.
+This data package contains Snowy Plover monitoring data collected at Point Reyes National Seashore. It includes the following datasets: Snowy Plover Observations, Banding , Nesting, Predator, Chick Band, and Event Metadata.
