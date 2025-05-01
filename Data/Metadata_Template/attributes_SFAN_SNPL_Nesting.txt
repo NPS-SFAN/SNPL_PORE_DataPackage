@@ -52,9 +52,6 @@ ChickLoss_Weekend2	Yes/No if second chick was lost on a weekend	categorical			Em
 ChickLoss_Date3	"Date of third chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
 ChickLoss_Age3	"Age of third chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected
 ChickLoss_Weekend3	Yes/No if third chick was lost on a weekend	categorical			Empty string	Not applicable or data not collected
-ChickLoss_Date4	"Date of fourth chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
-ChickLoss_Age4	"Age of fourth chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected
-ChickLoss_Weekend4	Yes/No if fourth chick was lost on a weekend	categorical			Empty string	Not applicable or data not collected
 Disturbance	Disturbances noted during monitoring (whether or not an effect is shown)	character			Empty string	Not applicable or data not collected
 F_Band	"Leg bands on the female plover, if any. Recorded as: ""Top band on left leg, bottom band on left leg : Top band on right leg, bottom band on right leg"" (e.g. av:bb)"	character			Empty string	Not applicable or data not collected
 M_Band	"Leg bands on the male plover, if any. Recorded as: ""Top band on left leg, bottom band on left leg : Top band on right leg, bottom band on right leg"" (e.g. av:bb)"	character			Empty string	Not applicable or data not collected
