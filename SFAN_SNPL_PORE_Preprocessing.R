@@ -1,5 +1,5 @@
-### Original Authors: James Brown, James_Brown@partner.nps.gov, and Alexa Ron, alexa_ron@partner.nps.gov v12/05/2024
-## Script has been further modified for an annual workflow by Kirk Sherrill
+### Original Authors: James Brown, James_Brown@partner.nps.gov, and Alexa Ron, alexa_ron@partner.nps.gov 12/05/2024
+## Script has been further modified for an annual workflow by Kirk Sherrill - April 2025.
 
 ## Abstract: Preprocessing script for Snowy Plover Point Reyes Datasets.  The
 ## preprocessed datasets will subsequently be added to a SNPL PORE data package
@@ -8,6 +8,8 @@
 
 
 ## Updates:
+
+# Updates made to account for an annual data package creation workflow - KRS 4/29/2025.
 
 
 #clear the console
