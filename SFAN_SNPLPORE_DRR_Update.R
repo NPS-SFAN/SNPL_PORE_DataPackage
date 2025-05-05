@@ -17,7 +17,6 @@ library(officer)
 #install.packages("magrittr") # Install if not already installed
 library(magrittr)           # Load for the pipe operator `%>%`
 
-
 ##################
 # Hard coded values Below
 ##################
@@ -31,12 +30,14 @@ referencecodeDB <- 2310672
 # Data Release Report Data Store Reference Code
 referencecodeDRR <- 2310766
 
+# Data Processing Script Reference Code
+referencecodeDPS <- 2311067
+
 # Processing Date of the Data Package
 processingDate <- '2025-05-01'
 
 # Year Published
 publishYear <- 2025
-
 
 # SNPL PORE Backend Database with the Datasets to be preprocssed
 db_name <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/SNPLOVER/SNPL_IM/Data/Database/Dbase_BE/PORE_SNPL_BE_20250430.accdb"
@@ -50,11 +51,9 @@ templateFileFull <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlov
 # Output Directory this is where the updated DRR Template will be exported
 outDir <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/SNPLOVER/SNPL_IM/Data/Deliverable/2024/DRR_2310766"
 
-
 ##################
 # Hard coded values End
 ##################
-
 
 ###################
 # Load Data or Data Package
@@ -71,7 +70,6 @@ devtools::install_github('nationalparkservice/NPSutils')
 # list2env(dat, envir = .GlobalEnv)
 
 
-
 data_files_wSuffix <-list.files(dsFilePath,pattern = "\\.csv$")
 data_files <- sub("\\.csv$", "", data_files_wSuffix)
 
@@ -80,10 +78,6 @@ dataframes <- lapply(data_filepaths,function(i){read.csv(i, header=TRUE)})
 # Assign names to the dataframes list for easier access
 names(dataframes) <-data_files
 
-
-
-# Temporary Fix for Non-ISO date format in Resights DF
-#dataframes$NPS_IMD_SFAN_Pinniped_Resights$StartDate <- as.Date(dataframes$NPS_IMD_SFAN_Pinniped_Resights$StartDate, format = "%m/%d/%Y")
 
 # Access individual dataframes
 bands_df <- dataframes[["SFAN_SNPL_Bands"]]
@@ -186,8 +180,6 @@ paste("Event Records:", EventNum)
 paste("Nesting Records:", NestingNum)
 paste("Observation Records:", ObsNum)
 paste("Predator Records:", PredNum)
-
-
 
 
 #############################################
@@ -293,11 +285,26 @@ if (countNotNull == countrealizedFlags_df) {
   print(paste0("See Exported dataframe with Flags to be defined in the DRR Table 2 at: ", outDFPath))
 } 
 
+####################
+# Extract File Sizes
+####################
 
-###########
-#STOPPED HERE 5/1/2025 - KRS
+# Extract File Sizes
+file_sizes <- sapply(data_filepaths, function(x) file.info(x)$size)
 
+# File Size dataframe
+file_sizes_df <- data.frame(
+  filepath = data_filepaths,
+  size_bytes = file_sizes,
+  size_MB = round(file_sizes / (1024^2), 2)  # size in megabytes
+)
 
+bandsSize <- file_sizes_df$size_MB[1]
+chickSize <- file_sizes_df$size_MB[2]
+eventSize <- file_sizes_df$size_MB[3]
+nestingSize <- file_sizes_df$size_MB[4]
+obsSize <- file_sizes_df$size_MB[5]
+predSize <- file_sizes_df$size_MB[6]
 
 ########################
 # Apply Harvested values back to the DRR Template
@@ -329,7 +336,7 @@ if (file.exists(file.path(outDir, templateName))) {
 
 
 ###########################
-# Open the copied template
+# Open the copied template - replacing value's in order of occurence.
 doc <- read_docx(outTemplateFull)
 
 # Replace placeholders with harvested values
@@ -337,34 +344,57 @@ doc <- read_docx(outTemplateFull)
 referencecodeDRRFull <- paste0("https://irma.nps.gov/DataStore/Reference/Profile/",referencecodeDRR)
 doc <- body_replace_all_text(doc, "REFERENCECODEDRR", as.character(referencecodeDRRFull))
 
-doc <- body_replace_all_text(doc, "DISTNUM", as.character(DistNum))
-doc <- body_replace_all_text(doc, "ELEPHANTNUM", as.character(ElephantNum))
-doc <- body_replace_all_text(doc, "HARBORNUM", as.character(HarborNum))
-doc <- body_replace_all_text(doc, "REDSHARKNUM", as.character(RedSharkNum))
-doc <- body_replace_all_text(doc, "RESIGHTNUM", as.character(ResightNum))
 doc <- body_replace_all_text(doc, "BEGINYEAR", as.character(beginYear))
 doc <- body_replace_all_text(doc, "ENDYEAR", as.character(endYear))
-
-referencecodeDBFull <- paste0("https://irma.nps.gov/DataStore/Reference/Profile/",referencecodeDB)
-doc <- body_replace_all_text(doc, "CODEDB", as.character(referencecodeDBFull))
-
-doc <- body_replace_all_text(doc, "PUBYEAR", as.character(publishYear))
 
 referencecodeDPFull <- paste0("https://doi.org/10.57830/",referencecodeDP)
 doc <- body_replace_all_text(doc, "CODEDP", as.character(referencecodeDPFull))
 
-doc <- body_replace_all_text(doc, "PROCESSINGDATE", processingDate)
-doc <- body_replace_all_text(doc, "DISTURBANCESTART", as.character(DistubranceStart))
-doc <- body_replace_all_text(doc, "DISTURBANCEEND", as.character(DistubranceEnd))
-doc <- body_replace_all_text(doc, "ELEPHANTSTART", as.character(ElephantStart))
-doc <- body_replace_all_text(doc, "ELEPHANTEND", as.character(ElephantEnd))
-doc <- body_replace_all_text(doc, "HARBORSTART", as.character(HarborStart))
-doc <- body_replace_all_text(doc, "HARBOREND", as.character(HarborEnd))
-doc <- body_replace_all_text(doc, "REDSHARKSTART", as.character(RedSharkStart))
-doc <- body_replace_all_text(doc, "REDSHARKEND", as.character(RedSharkEnd))
-doc <- body_replace_all_text(doc, "RESIGHTSTART", as.character(ResightStart))
-doc <- body_replace_all_text(doc, "RESIGHTEND", as.character(ResightEnd))
+referencecodeDBFull <- paste0("https://doi.org/10.57830/",referencecodeDB)
+doc <- body_replace_all_text(doc, "CODEDB", as.character(referencecodeDBFull))
 
+# File Size
+doc <- body_replace_all_text(doc, "SBANDS", as.character(bandsSize))
+doc <- body_replace_all_text(doc, "SCHICKS", as.character(chickSize))
+doc <- body_replace_all_text(doc, "SEVENT", as.character(eventSize))
+doc <- body_replace_all_text(doc, "SNEST", as.character(nestingSize))
+doc <- body_replace_all_text(doc, "SOBS", as.character(obsSize))
+doc <- body_replace_all_text(doc, "SPRED", as.character(predSize))
+
+# Dataset Start - End Date
+doc <- body_replace_all_text(doc, "BANDSSTART", as.character(bandsStart))
+doc <- body_replace_all_text(doc, "BANDEND", as.character(bandsEnd))
+
+doc <- body_replace_all_text(doc, "#2CS", as.character(chickBandsStart))
+doc <- body_replace_all_text(doc, "#3CE", as.character(chickBandsEnd))
+
+doc <- body_replace_all_text(doc, "EVENTSTART", as.character(eventsStart))
+doc <- body_replace_all_text(doc, "EVENTEND", as.character(eventsEnd))
+
+doc <- body_replace_all_text(doc, "NESTINGSTART", as.character(nestingStart))
+doc <- body_replace_all_text(doc, "NESTINGEND", as.character(nestingEnd))
+
+doc <- body_replace_all_text(doc, "OBSSTART", as.character(obsStart))
+doc <- body_replace_all_text(doc, "OBSEND", as.character(obsEnd))
+
+doc <- body_replace_all_text(doc, "PREDSTART", as.character(predStart))
+doc <- body_replace_all_text(doc, "PREDEND", as.character(predEnd))
+
+
+# Record Counts by Dataset
+doc <- body_replace_all_text(doc, "NBANDS", as.character(BandsNum))
+doc <- body_replace_all_text(doc, "NCHICKS", as.character(ChickBandsNum))
+doc <- body_replace_all_text(doc, "NEVENTS", as.character(EventNum))
+doc <- body_replace_all_text(doc, "NNESTS", as.character(NestingNum))
+doc <- body_replace_all_text(doc, "NOBS", as.character(ObsNum))
+doc <- body_replace_all_text(doc, "NPRED", as.character(PredNum))
+
+# Data Package Code Only
+doc <- body_replace_all_text(doc, "DPCODEONLY", as.character(referencecodeDP))
+
+# Data processing script
+referencecodeDPSFull <- paste0("https://doi.org/10.57830/",referencecodeDPS)
+doc <- body_replace_all_text(doc, "#1DPS", as.character(referencecodeDPSFull))
 
 # Save the updated document
 print(doc, target = outTemplateFull)
@@ -375,8 +405,3 @@ if (file.exists(outTemplateFull)) {
 } else {
   print("Failed to update the template.")
 }
-
-
-
-
-
