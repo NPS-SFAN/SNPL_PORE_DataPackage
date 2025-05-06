@@ -5,7 +5,11 @@ date: "2025/05/01"
 output: html
 
 
-updates:  "April/May 2025 editted script for an annual workflow.  Incorperated various updates as need to further refine the data package and EML XML metadata output. - Kirk Sherrill"
+updates 
+
+# April/May 2025 - editted script for an annual workflow.  Incorperated various updates as need to further refine the data package and EML XML metadata output. - Kirk Sherrill
+
+# May 6, 2025 - Added workflow to pull the most recent GitRepo version from the SNPL_PORE_DataPackage repo and create a DataStore reference.
 ---
 
 ```{r Clean console/env}
@@ -89,7 +93,6 @@ print(paste0("NPSdataverse version installed - ", packageVersion("NPSdataverse")
 print(paste0("EMLeditor version installed - ", packageVersion("EMLeditor")))
 print(paste0("DPchecker version installed - ", packageVersion("DPchecker")))
 ```
-
 ## Set the overall package details
 All of the following items should be reviewed and updated to fit the package you are working on. For lists of more than one item, keep the same order (i.e. item #1 should correspond to the same file in each list).
 
@@ -493,6 +496,19 @@ If everything checked out, you should be ready to upload your data package! We r
 ```{r upload}
 # this assumes your data package is in the current working directory
 EMLeditor::upload_data_package(outFolderDataPackage,force=TRUE)
+```
+
+
+## Data Package Scripts Repo DataStore reference.
+Annually export the version of the SFAN SNPL data package repo (i.e. https://github.com/NPS-SFAN/SNPL_PORE_DataPackage) so this is exported to a zip and uploaded to the DataStore as a new version script refernce (of the Repo) on the Data Store.
+
+To create GitHub Repo versions see NPS Data Science Team Best Practices Section - https://doimspp.sharepoint.com/sites/nps-nrss-imdiv/data-publication/SitePages/Documenting-Code.aspx
+
+Version previous DataStore references for Repo.  
+
+```{r Create the Data Package Scripts Repository Reference}
+# Use the QC Kit to programmatically import the most current GitHub Release 
+QCkit::create_datastore_script("NPS-SFAN", "SNPL_PORE_DataPackage", dev = FALSE)
 
 ```
 
