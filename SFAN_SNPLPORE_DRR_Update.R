@@ -31,7 +31,8 @@ referencecodeDB <- 2310672
 # Data Release Report Data Store Reference Code
 referencecodeDRR <- 2310766
 
-# Data Processing Script Reference Code
+# Data Processing Scripts Reference Code - This is the Version of the SNPL_PORE_DataPackage 
+# code repo which is exported annually to provide open data and open science reproducability.
 referencecodeDPS <- 2311067
 
 # Processing Date of the Data Package
