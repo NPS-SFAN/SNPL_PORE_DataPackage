@@ -1,8 +1,9 @@
 #######################################################################
 ## Project: SFAN PORE DRR Update.R
-## Script Updates the Snowy Plover PORE Data Release Report for the annual pinnipeds
+## Script Updates the Snowy Plover PORE Data Release Report Template for the annual
+## Data Release Report that accompanies the annual Data Package Release.
 ## data package
-## Date: 2025-05-01 
+## Date: 2025-05-06 
 ## Authors: Kirk Sherrill
 ## R version 4.4.0 
 #######################################################################
