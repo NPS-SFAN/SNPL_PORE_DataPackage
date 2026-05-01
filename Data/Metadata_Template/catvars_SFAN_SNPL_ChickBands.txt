@@ -1,14 +1,14 @@
 attributeName	code	definition
-Basis_Of_Record	HumanObservation	Observation made by a human
-EggToothPresence	No egg tooth present	No egg tooth was found on the observed chick
-EggToothPresence	Yes egg tooth are present	An egg tooth was found on the observed chick
-Loc_Code	K	Kehoe Beach
-Loc_Code	L	Limantour Beach
-Loc_Code	NB	North Beach - South Parking
-Loc_Code	NP	North Beach - Abbott's
-Loc_Code	RA	2011 Dune Restoration Area
-Loc_Code	SB	South Beach
-Type	event	An action that occurs at some location during some time
-Unit_Code	PORE	Point Reyes National Seashore
-YolkSacPresence	No yolk sac present	No yolk sac present
-YolkSacPresence	Yes yolk sac present	A yolk sac was present
+basisOfRecord	HumanObservation	Observation made by a human
+eggToothPresence	No egg tooth present	No egg tooth was found on the observed chick
+eggToothPresence	Yes egg tooth are present	An egg tooth was found on the observed chick
+siteID	K	Kehoe Beach
+siteID	L	Limantour Beach
+siteID	NB	North Beach - South Parking
+siteID	NP	North Beach - Abbott's
+siteID	RA	2011 Dune Restoration Area
+siteID	SB	South Beach
+type	event	"A non-persistent, time-based occurrence"
+unitCode	PORE	Point Reyes National Seashore
+yolkSacPresence	No yolk sac present	No yolk sac present
+yolkSacPresence	Yes yolk sac present	A yolk sac was present

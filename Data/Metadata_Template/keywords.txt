@@ -1,7 +1,13 @@
 keyword	keywordThesaurus
 SNPL-PORE Data Package	
 snowy plovers	
-long-term monitoring	
+long-term monitoring	LTER Controlled Vocabulary
 ecological data	
 ecological monitoring	
 landbirds	
+Biological Integrity | Focal Species or Communities | Birds	
+Point Reyes National Seashore	
+California	
+birds	LTER Controlled Vocabulary
+beaches	LTER Controlled Vocabulary
+ecosystem ecology	LTER Controlled Vocabulary

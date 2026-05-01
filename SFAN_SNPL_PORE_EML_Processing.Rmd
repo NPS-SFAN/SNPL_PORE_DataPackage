@@ -1,13 +1,13 @@
 ---
 title: "NPS, SFAN Snowy Plover EML creation"
-author: "Original Author: Alexa Ron, subsequent edited by Kirk Sherrill DS/DM SFAN"
-date: "2025/05/01"
+author: "Original Author: Alexa Serrantes, subsequent edits by Kirk Sherrill DS/DM SFAN, Daniel Woods ADS"
+date: "2026/04/30"
 output: html
 
 
 updates 
 
-# April/May 2025 - editted script for an annual workflow.  Incorperated various updates as need to further refine the data package and EML XML metadata output. - Kirk Sherrill
+# April/May 2025 - edited script for an annual workflow.  Incorporated various updates as needed to further refine the data package and EML XML metadata output. - Kirk Sherrill
 
 # May 6, 2025 - Added workflow to pull the most recent GitRepo version from the SNPL_PORE_DataPackage repo and create a DataStore reference.
 ---
@@ -39,30 +39,31 @@ This script acts as a template file for end-to-end creation of EML metadata in R
 datapackage_type <- "public"
 
 # Choose a name for your data package. This will be used as the name of the data package folder.
-data_pkg_name <- "SNPLPORE_2024_2310749"
+data_pkg_name <- "SNPLPORE_2025_2318211"
 
 # For each CREATOR in the personel.txt file (Data/Metadata_Templates), in the order they appear, 
 # add their orcidID in the variable below. Use NA (no quotes) if a Creator doesn't
 # have an orchid ID (#Kirk, #Lizzy)
-my_orcids <- c( "0009-0000-9082-4799")
+my_orcids <- c( "0009-0000-9082-4799",
+                "0009-0006-8178-9534")
 
 # Select 'Yes' if Data package reference already exists else select 'No'  ('Yes'|'No')
 existingReference <- "Yes"
 # Define the Existing Data Package Reference Code if reference has already been created
-existingReferenceCode  <- 2310749
+existingReferenceCode  <- 2318211
 
 # Database reference on the datastore with the through field data being processed. This reference is being added to
 # the 'Additional_Info' EML section.
-db_referenceCode <- 2310672
+db_referenceCode <- 2318209
 
 # Data Release Report Reference
-drr_referenceCode <- 2310766
+drr_referenceCode <- 2318212
 
 # SNPL PORE Data Store Project Code - Created Data Package will be linked to the SPOW Project Reference
 projectReferenceCode <- 2310339
 
 # Path to the Scripts being used in this processing. Will be where the Falcons Datapackage Repo has been cloned locally.
-codepath <-"C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/Scripts/SNPL_PORE_DataPackage"
+codepath <-"C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage"
 ```
 
 
@@ -148,11 +149,11 @@ data_names <- c("SFAN Snowy Plover Band Data",
 
 ### Describe each data file. Data file descriptions should be unique and about 10 words long. Descriptions will be used in auto-generated tables within the ReadMe and DRR. If you need to use more than 10 words, consider putting that information into the abstract, methods, or additional information sections. Again, make sure these are in the same order as the files they are describing.
 ```{r data_descriptions}
-data_descriptions <- c("Detailed leg band information of observed Snowy plovers", 
-                       "Leg band information of observed Snowy plover chicks", 
+data_descriptions <- c("Detailed leg band information of observed snowy plovers", 
+                       "Leg band information of observed snowy plover chicks", 
                        "Event Metadata Environmental, data, time, and directional information for surveys", 
-                       "Observations of nesting Snowy plovers and their offspring", 
-                       "Observations of any Snowy plover encountered", 
+                       "Observations of nesting snowy plovers and their offspring", 
+                       "Observations of any snowy plover encountered", 
                        "Observations of nearby predators")
 ```
 
@@ -163,22 +164,22 @@ International Standards Organization's standard 8601
 library(lubridate)
 
 # Crude approach to get the min and max years
-beginYearEvent <- year(min(data$SFAN_SNPL_Events$Start_Date))
-endYearEvent <- year(min(data$SFAN_SNPL_Events$Start_Date))
+beginYearEvent <- year(min(data$SFAN_SNPL_Events$startDate))
+endYearEvent <- year(min(data$SFAN_SNPL_Events$startDate))
 
-beginYearObs <- year(min(data$SFAN_SNPL_Observations$Start_Date))
-endYearObs <- year(max(data$SFAN_SNPL_Observations$Start_Date))
+beginYearObs <- year(min(data$SFAN_SNPL_Observations$startDate))
+endYearObs <- year(max(data$SFAN_SNPL_Observations$startDate))
 
 # Get Years Across all
 startYear <- min(c(beginYearEvent, beginYearObs))
 endYear <- max(c(endYearEvent, endYearObs))
 
 # Get End Date, setting Starting period as the starting year and the endDate with an actual end data.
-beginDateEvent <- min(data$SFAN_SNPL_Events$Start_Date)
-endDateEvent <- max(data$SFAN_SNPL_Events$Start_Date)
+beginDateEvent <- min(data$SFAN_SNPL_Events$startDate)
+endDateEvent <- max(data$SFAN_SNPL_Events$startDate)
 
-beginDateObs <- min(data$SFAN_SNPL_Observations$Start_Date)
-endDateObs <- max(data$SFAN_SNPL_Observations$Start_Date)
+beginDateObs <- min(data$SFAN_SNPL_Observations$startDate)
+endDateObs <- max(data$SFAN_SNPL_Observations$startDate)
 
 startDate <- min(c(beginDateEvent, beginDateObs)) # Not Using in EML
 endDate <- max(c(endDateEvent, endDateObs))
@@ -204,7 +205,7 @@ print(paste0("Data Package Title - ", package_title))
 #### Data collection status
 Choose from either "ongoing" or "complete"
 ```{r data_status}
-data_type <- "complete"
+data_type <- "ongoing"
 ```
 
 
@@ -432,9 +433,9 @@ my_metadata2 <- EMLeditor::set_creator_orcids(my_metadata2, my_orcids, force=FAL
 
 ```{r addtional Info - with Database}
 # Define the Additional Info section. Include the Link to the database profile for this reference
-database_LU <- paste0("The Snowy Plover Database from which the datasets were processed for this data package is on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
+database_LU <- paste0("The snowy plover database from which the datasets were processed for this data package is on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
 
-monitoringObjectives <- "The Snowy Plover monitoring objectives are to determine trends in the estimated breeding population size, distribution, and reproductive success of snowy plovers at known breeding beaches at Point Reyes National Seashore."
+monitoringObjectives <- "The snowy plover monitoring objectives are to determine trends in the estimated breeding population size, distribution, and reproductive success of snowy plovers at known breeding beaches at Point Reyes National Seashore."
 
 # Combine Monitoring Objectives and the database Reference Info.
 defition_LU <- paste0(monitoringObjectives," ", database_LU)

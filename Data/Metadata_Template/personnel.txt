@@ -6,3 +6,4 @@ Parker		Kaye	Point Reyes National Seashore Association	parker_kaye@partner.nps.g
 Aiko		Goldston	Point Reyes National Seashore Association	aiko_goldston@partner.nps.gov		contributor			
 David		Press	National Park Service	Dave_Press@nps.gov		contributor			
 Lau		Matt	National Park Service			contributor			
+Daniel	J	Woods	National Park Service	daniel_woods@partner.nps.gov	0009-0006-8178-9534	creator			

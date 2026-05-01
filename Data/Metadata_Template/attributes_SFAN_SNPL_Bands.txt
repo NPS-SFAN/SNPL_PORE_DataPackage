@@ -1,23 +1,22 @@
 attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
-ID	Table ID field	numeric	dimensionless		Empty string	Not applicable or data not collected
-SNPL_Band_IDInt	Unique identifier for SNPL bands	numeric	dimensionless		Empty string	Not applicable or data not collected
-SNPL_Data_ID	SNPL observation ID	character			Empty string	Not applicable or data not collected
-Event_ID	Event identifier	character			Empty string	Not applicable or data not collected
-Type	The nature of the genre or source	categorical			Empty string	Not applicable or data not collected
-Basis_Of_Record	The specific nature of the data record	categorical			Empty string	Not applicable or data not collected
-Unit_Code	"Park, monument, or unit code"	categorical			Empty string	Not applicable or data not collected
-Location_ID	Location identifier	character			Empty string	Not applicable or data not collected
-Loc_Code	Location code	categorical			Empty string	Not applicable or data not collected
-Loc_Name	Name of the location	character			Empty string	Not applicable or data not collected
-Start_Year	Year of the starting date of the event	Date		YYYY	Empty string	Not applicable or data not collected
-Start_Date	Starting date for the event	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
-Nest_ID	Unique identifier for nest	character			Empty string	Not applicable or data not collected
-QCFlag	Data quality flag	character			Empty string	Not applicable or data not collected
-QCNotes	Data quality flag notes	character			Empty string	Not applicable or data not collected
-LeftLegCode	Left leg color combination	character			Empty string	Not applicable or data not collected
-LeftLegDesc	Band Code Description	character			Empty string	Not applicable or data not collected
-Right_Leg	Right leg color combination	character			Empty string	Not applicable or data not collected
-RightLegDesc	Band Code Description	character			Empty string	Not applicable or data not collected
-SNPL_Sex	"Sex of plover, if known"	categorical			Empty string	Not applicable or data not collected
-SNPL_Age	Age class of banded snowy plover individual (started collecting in 2016)	categorical			Empty string	Not applicable or data not collected
-Band_Notes	General notes on the banded plover	character			Empty string	Not applicable or data not collected
+unitCode	"Park, monument, or unit code"	categorical			Empty string	Not applicable or data not collected
+unitName	"Park, monument, or unit full name"	character			Empty string	Not applicable or data not collected
+siteID	Location code	categorical			Empty string	Not applicable or data not collected
+siteName	Name of the location	character			Empty string	Not applicable or data not collected
+startYear	Year of the starting date of the event	Date		YYYY	Empty string	Not applicable or data not collected
+startDate	Starting date for the event	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+nestID	Unique identifier for nest	character			Empty string	Not applicable or data not collected
+QCFlag	Data quality flag	character			NA	Not applicable or data not collected
+QCNotes	Data quality flag notes	character			NA	Not applicable or data not collected
+scientificName	Full scientific name	character			Empty string	Not applicable or data not collected
+commonName	Common or vernacular name	character			Empty string	Not applicable or data not collected
+TSN	Taxonomic serial number used to identify species in taxonomic database	numeric	dimensionless		Empty string	Not applicable or data not collected
+leftLegCode	Left leg color combination	character			Empty string	Not applicable or data not collected
+leftLegDesc	Band Code Description	character			Empty string	Not applicable or data not collected
+rightLeg	Right leg color combination	character			Empty string	Not applicable or data not collected
+rightLegDesc	Band Code Description	character			Empty string	Not applicable or data not collected
+SNPLSex	"Sex of plover, if known"	categorical			Empty string	Not applicable or data not collected
+SNPLAge	Age class of banded snowy plover individual (started collecting in 2016)	categorical			Empty string	Not applicable or data not collected
+bandNotes	General notes on the banded plover	character			Empty string	Not applicable or data not collected
+type	The nature of the genre or source	categorical			Empty string	Not applicable or data not collected
+basisOfRecord	The specific nature of the data record	categorical			Empty string	Not applicable or data not collected
