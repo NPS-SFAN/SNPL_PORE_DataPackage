@@ -45,6 +45,7 @@ data_pkg_name <- "SNPLPORE_2025_2318211"
 # add their orcidID in the variable below. Use NA (no quotes) if a Creator doesn't
 # have an orchid ID (#Kirk, #Lizzy)
 my_orcids <- c( "0009-0000-9082-4799",
+                "0009-0004-9602-9699",
                 "0009-0006-8178-9534")
 
 # Select 'Yes' if Data package reference already exists else select 'No'  ('Yes'|'No')

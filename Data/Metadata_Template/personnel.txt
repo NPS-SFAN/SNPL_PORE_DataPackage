@@ -3,6 +3,7 @@ Dave		Press	National Park Service	Dave_Press@nps.gov		PI	Snowy Plover Monitoring
 Kirk		Sherrill	National Park Service	Kirk_Sherrill@nps.gov	0009-0000-9082-4799	creator			
 Kirk		Sherrill	National Park Service	Kirk_Sherrill@nps.gov	0009-0000-9082-4799	contact			
 Parker		Kaye	Point Reyes National Seashore Association	parker_kaye@partner.nps.gov		contact			
+Parker		Kaye	Point Reyes National Seashore Association	parker_kaye@partner.nps.gov	0009-0004-9602-9699	creator			
 Aiko		Goldston	Point Reyes National Seashore Association	aiko_goldston@partner.nps.gov		contributor			
 David		Press	National Park Service	Dave_Press@nps.gov		contributor			
 Lau		Matt	National Park Service			contributor			
