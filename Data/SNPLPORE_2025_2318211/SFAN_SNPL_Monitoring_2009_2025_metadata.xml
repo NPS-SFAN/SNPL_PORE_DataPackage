@@ -63,7 +63,7 @@
       <organizationName>National Park Service</organizationName>
       <role>contributor</role>
     </associatedParty>
-    <pubDate>2026-05-04</pubDate>
+    <pubDate>2026-05-19</pubDate>
     <language>eng</language>
     <abstract>
       <para>The National Park Service (NPS) San Francisco Area Network (SFAN) has been monitoring western snowy plovers (Charadrius nivosus) since the 1970s. Snowy plovers have been selected as a vital sign for monitoring due to their sensitivity to habitat conditions and quality. Given their habitat needs, this vital sign serves as an important benchmark of habitat quality at Port Reyes National Seashore (PORE). This data package contains snowy plover monitoring data collected at Point Reyes National Seashore from 2009 - 2025. It includes the following datasets: Snowy Plover Observations, Banding , Nesting, Predator, Chick Band, and Event Metadata.</para>
@@ -970,8 +970,8 @@
       <entityDescription>Detailed leg band information of observed snowy plovers</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_Bands.csv</objectName>
-        <size unit="bytes">2255076</size>
-        <authentication method="MD5">a4fb33f45656ee09baed0acf9bbd6ba8</authentication>
+        <size unit="bytes">3543135</size>
+        <authentication method="MD5">59f93f1c44a2efc35b51370e7a9fa1d7</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -1019,6 +1019,83 @@
               <nonNumericDomain>
                 <textDomain>
                   <definition>Park, monument, or unit full name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>SNPLBandIDInt</attributeName>
+          <attributeDefinition>Unique band data identifier</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum exclusive="false">1</minimum>
+                  <maximum exclusive="false">10876</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>SNPLDataID</attributeName>
+          <attributeDefinition>Field data table row identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Field data table row identifier</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>eventID</attributeName>
+          <attributeDefinition>Unique event identifier for the observation</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique event identifier for the observation</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>locationID</attributeName>
+          <attributeDefinition>Unique location identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique location identifier</definition>
                 </textDomain>
               </nonNumericDomain>
             </nominal>
@@ -1428,8 +1505,8 @@
       <entityDescription>Leg band information of observed snowy plover chicks</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_ChickBands.csv</objectName>
-        <size unit="bytes">88318</size>
-        <authentication method="MD5">777e0ebfeb7a1ea5c38db9256235826e</authentication>
+        <size unit="bytes">139604</size>
+        <authentication method="MD5">46e99b6ab61f2cf5b2b7f934fb44dd3e</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -1477,6 +1554,101 @@
               <nonNumericDomain>
                 <textDomain>
                   <definition>Park, monument, or unit full name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>chickBandDataIDInt</attributeName>
+          <attributeDefinition>Unique chick band data identifier integer</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum exclusive="false">7</minimum>
+                  <maximum exclusive="false">431</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>nestID</attributeName>
+          <attributeDefinition>Unique nest identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique nest identifier</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>SNPLDataID</attributeName>
+          <attributeDefinition>Unique data observation identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique data observation identifier</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>eventID</attributeName>
+          <attributeDefinition>Unique event identifier for the observation</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique event identifier for the observation</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>locationID</attributeName>
+          <attributeDefinition>Unique location identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique location identifier</definition>
                 </textDomain>
               </nonNumericDomain>
             </nominal>
@@ -1572,6 +1744,21 @@
                 </textDomain>
               </nonNumericDomain>
             </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>chickBandDate</attributeName>
+          <attributeDefinition>Date on which chick was banded</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD</formatString>
+              <dateTimeDomain/>
+            </dateTime>
           </measurementScale>
           <missingValueCode>
             <code>Empty string</code>
@@ -1830,15 +2017,15 @@
           </missingValueCode>
         </attribute>
       </attributeList>
-      <numberOfRecords>391</numberOfRecords>
+      <numberOfRecords>415</numberOfRecords>
     </dataTable>
     <dataTable>
       <entityName>SFAN Snowy Plover Event and Environmental Data</entityName>
       <entityDescription>Event Metadata Environmental, data, time, and directional information for surveys</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_Events.csv</objectName>
-        <size unit="bytes">1729479</size>
-        <authentication method="MD5">39281507557a73854ca5990fe9e335f3</authentication>
+        <size unit="bytes">2012945</size>
+        <authentication method="MD5">2d0df04aeffe979af453e6721226c1bb</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -1886,6 +2073,42 @@
               <nonNumericDomain>
                 <textDomain>
                   <definition>Park, monument, or unit full name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>eventID</attributeName>
+          <attributeDefinition>Unique event identifier for the observation</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique event identifier for the observation</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>locationID</attributeName>
+          <attributeDefinition>Unique location identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique location identifier</definition>
                 </textDomain>
               </nonNumericDomain>
             </nominal>
@@ -2672,8 +2895,8 @@
       <entityDescription>Observations of nesting snowy plovers and their offspring</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_Nesting.csv</objectName>
-        <size unit="bytes">425561</size>
-        <authentication method="MD5">0b38b61be950fba0f909e823ab52004d</authentication>
+        <size unit="bytes">459064</size>
+        <authentication method="MD5">217f4abee28628675f68c28666a23cea</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -2721,6 +2944,42 @@
               <nonNumericDomain>
                 <textDomain>
                   <definition>Park, monument, or unit full name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>nestID</attributeName>
+          <attributeDefinition>Unique identifier for nest</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique identifier for nest</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>locationID</attributeName>
+          <attributeDefinition>Unique location identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique location identifier</definition>
                 </textDomain>
               </nonNumericDomain>
             </nominal>
@@ -4043,8 +4302,8 @@
       <entityDescription>Observations of any snowy plover encountered</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_Observations.csv</objectName>
-        <size unit="bytes">5201371</size>
-        <authentication method="MD5">1b6805c3adbf243020aba2d7af9c8eb5</authentication>
+        <size unit="bytes">6842830</size>
+        <authentication method="MD5">85915ffcd001dd7e5d21423d4714a632</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -4092,6 +4351,60 @@
               <nonNumericDomain>
                 <textDomain>
                   <definition>Park, monument, or unit full name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>SNPLDataID</attributeName>
+          <attributeDefinition>SNPL observation identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>SNPL observation identifier</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>eventID</attributeName>
+          <attributeDefinition>Unique event identifier for the observation</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique event identifier for the observation</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>locationID</attributeName>
+          <attributeDefinition>Unique location identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique location identifier</definition>
                 </textDomain>
               </nonNumericDomain>
             </nominal>
@@ -5045,8 +5358,8 @@
       <entityDescription>Observations of nearby predators</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_Predators.csv</objectName>
-        <size unit="bytes">2367043</size>
-        <authentication method="MD5">4c92ed7d60dd8a13b979053b00a891ce</authentication>
+        <size unit="bytes">3565801</size>
+        <authentication method="MD5">316526d032a80a725d1bdd44a18a3d4f</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -5094,6 +5407,60 @@
               <nonNumericDomain>
                 <textDomain>
                   <definition>Park, monument, or unit full name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>predatorDataID</attributeName>
+          <attributeDefinition>Unique identifier for predator survey</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique identifier for predator survey</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>eventID</attributeName>
+          <attributeDefinition>Unique event identifier for the observation</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique event identifier for the observation</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>Empty string</code>
+            <codeExplanation>Not applicable or data not collected</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>locationID</attributeName>
+          <attributeDefinition>Unique location identifier</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique location identifier</definition>
                 </textDomain>
               </nonNumericDomain>
             </nominal>

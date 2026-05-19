@@ -1,10 +1,16 @@
 attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
 unitCode	"Park, monument, or unit code"	categorical			Empty string	Not applicable or data not collected
 unitName	"Park, monument, or unit full name"	character			Empty string	Not applicable or data not collected
+chickBandDataIDInt	Unique chick band data identifier integer	numeric	dimensionless		Empty string	Not applicable or data not collected
+nestID	Unique nest identifier	character			Empty string	Not applicable or data not collected
+SNPLDataID	Unique data observation identifier	character			Empty string	Not applicable or data not collected
+eventID	Unique event identifier for the observation	character			Empty string	Not applicable or data not collected
+locationID	Unique location identifier	character			Empty string	Not applicable or data not collected
 siteID	Location code	categorical			Empty string	Not applicable or data not collected
 siteName	Name of the location	character			Empty string	Not applicable or data not collected
 year	Year the nest was observed	Date		YYYY	Empty string	Not applicable or data not collected
 bandCombination	"The leg band combination placed on the plover's leg. Recorded as: ""Top band on left leg, bottom band on left leg : Top band on right leg, bottom band on right leg"" (e.g. av:bb)"	character			Empty string	Not applicable or data not collected
+chickBandDate	Date on which chick was banded	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
 QCFlag	Data quality flag	character			NA	Not applicable or data not collected
 QCNotes	Data quality flag notes	character			NA	Not applicable or data not collected
 scientificName	Full scientific name	character			Empty string	Not applicable or data not collected

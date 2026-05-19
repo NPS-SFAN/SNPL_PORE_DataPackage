@@ -24,7 +24,7 @@ rm(list = ls())
 # Variables to Define
 #####################
 # SNPL PORE Backend Database with the Datasets to be preprocssed
-db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260422.accdb"
+db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260514v2.accdb"
 # Directory where output preprocessed .csv dataset files will be exported
 outPutDir <-'C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/Input'
 #############################################
@@ -92,7 +92,7 @@ names(df_Tables) <- tablenames
 saveRDS(df_Tables,"temp_tables.RDS")
 
 # Reading from Checkpoint
-df_Tables <- readRDS("temp_tables.RDS")
+# df_Tables <- readRDS("temp_tables.RDS")
 
 # Processing ----
 
@@ -332,6 +332,22 @@ df_Tables[["Nesting"]] <- df_Tables[["Nesting"]] %>%
     decimalLatitude  = if_else(Coord_System == "GCS", Y_Coord, decimalLatitude)
   )
 
+# Adding NA to microhabitat columns where code is NA
+
+df_Tables[["Nesting"]] <- df_Tables[["Nesting"]] |> 
+  dplyr::mutate(
+    MicroSand = dplyr::if_else(stringr::str_detect(MicroCodes,"S"),"Yes","No"),
+    MicroCoarse = dplyr::if_else(stringr::str_detect(MicroCodes,"R"),"Yes","No"),
+    MicroSeaweedKelp = dplyr::if_else(stringr::str_detect(MicroCodes,"K"),"Yes","No"),
+    MicroWoody = dplyr::if_else(stringr::str_detect(MicroCodes,"W"),"Yes","No"),
+    MicroHumanTrash = dplyr::if_else(stringr::str_detect(MicroCodes,"T"),"Yes","No"),
+    MicroVegetation = dplyr::if_else(stringr::str_detect(MicroCodes,"V"),"Yes","No"),
+    MicroSmooth = dplyr::if_else(stringr::str_detect(MicroCodes,"E"),"Yes","No"),
+    MicroSteep = dplyr::if_else(stringr::str_detect(MicroCodes,"D"),"Yes","No"),
+    MicroHumanDogPrints = dplyr::if_else(stringr::str_detect(MicroCodes,"P"),"Yes","No"),
+    MicroHorsePrints = dplyr::if_else(stringr::str_detect(MicroCodes,"H"),"Yes","No"),
+    MicroVehicleTracks = dplyr::if_else(stringr::str_detect(MicroCodes,"A"),"Yes","No"),
+  )
 
 #####
 # Check for Null fields - ChickLoss_4 fields are all null as of 5/1/2025
@@ -404,6 +420,15 @@ df_Tables[["ChickBands"]] <- df_Tables[["ChickBands"]] |> dplyr::rename(
   drynessInPercent = PctDryness,
   chickWeightInGrams = ChickWeight_g
 )
+
+# Fixing semicolon error 2024-2025 and/or extra spaces
+df_Tables[["ChickBands"]] <- df_Tables[["ChickBands"]] |> 
+  dplyr::mutate(
+    BandCombination = stringr::str_replace(BandCombination,";",":")
+  ) |> 
+  dplyr::mutate(
+    BandCombination = stringr::str_replace(BandCombination," ","")
+  )
 
 ##################### 
 # Taxonomy Processing
@@ -517,7 +542,7 @@ df_Tables <- purrr::imap(
   df_Tables,
   function(df, nm) {
     df |> 
-      dplyr::select("Loc_Code":dplyr::last_col())
+      dplyr::select(!"ID")
     
   }
 )
@@ -547,7 +572,7 @@ df_Tables <- purrr::imap(
 ## acronyms at the end of the name (i.e., "EventID")
 
 acronyms <- c("CC","LW","MD","SC","CP","DC","AI","FN","GPS",
-              "AC","NA","FG","QC","ID","MPH","TSN")
+              "AC","NA","FG","QC","ID","MPH","TSN","ID")
 
 to_camel_case_with_exception <- function(x, ignore = c("SNPL","TSN","QC"), acronym = acronyms) {
   # Convert to lower camel case
@@ -588,7 +613,9 @@ df_Tables <- purrr::imap(
       dplyr::rename_with(~ stringr::str_replace(.x, "^gpS", "GPS"),
                          dplyr::contains("GPS")) |>  
       dplyr::rename_with(~ stringr::str_replace(.x, "^snpl", "SNPL"),
-                         dplyr::contains("snpl"))
+                         dplyr::contains("snpl")) |> 
+      dplyr::rename_with(~ stringr::str_replace(.x, "Id", "ID"),
+                         dplyr::contains("Id"))
   }
 )
 

@@ -1,6 +1,10 @@
 attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
 unitCode	"Park, monument, or unit code"	categorical			Empty string	Not applicable or data not collected
 unitName	"Park, monument, or unit full name"	character			Empty string	Not applicable or data not collected
+SNPLBandIDInt	Unique band data identifier	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPLDataID	Field data table row identifier	character			Empty string	Not applicable or data not collected
+eventID	Unique event identifier for the observation	character			Empty string	Not applicable or data not collected
+locationID	Unique location identifier	character			Empty string	Not applicable or data not collected
 siteID	Location code	categorical			Empty string	Not applicable or data not collected
 siteName	Name of the location	character			Empty string	Not applicable or data not collected
 startYear	Year of the starting date of the event	Date		YYYY	Empty string	Not applicable or data not collected

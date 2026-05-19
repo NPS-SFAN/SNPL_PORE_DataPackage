@@ -1,7 +1,7 @@
 ---
 title: "NPS, SFAN Snowy Plover EML creation"
 author: "Original Author: Alexa Serrantes, subsequent edits by Kirk Sherrill DS/DM SFAN, Daniel Woods ADS"
-date: "2026/04/30"
+date: "2026/05/19"
 output: html
 
 
@@ -10,6 +10,7 @@ updates
 # April/May 2025 - edited script for an annual workflow.  Incorporated various updates as needed to further refine the data package and EML XML metadata output. - Kirk Sherrill
 
 # May 6, 2025 - Added workflow to pull the most recent GitRepo version from the SNPL_PORE_DataPackage repo and create a DataStore reference.
+
 ---
 
 ```{r Clean console/env}
@@ -129,7 +130,7 @@ if (!dir.exists(outFolderDataPackage)) {
 # Copy data_files to the output folder
 for (file in data_filepaths) {
   if (file.exists(file)) {
-    file.copy(file, file.path(outFolderDataPackage, basename(file)))
+    file.copy(file, file.path(outFolderDataPackage, basename(file)),overwrite = TRUE)
     cat("Copied:", file, "to", outFolderDataPackage, "\n")
   } else {
     cat("File does not exist:", file, "\n")
