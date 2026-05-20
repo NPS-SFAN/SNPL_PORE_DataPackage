@@ -40,6 +40,18 @@ coordSystem	UTM	Universal Transverse Mercator coordinate system
 datum	NAD83	North American Datum 83
 localTimeZone	PDT	Pacific Daylight Time
 localTimeZone	PST	Pacific Standard Time
+QCFlag	LCSBC	Location coordinates set to beach centroid due to incorrect original data value
+QCFlag	LEOT	Logical Error Observation Time outside survey start or end time period.
+QCFlag	LEOT;ONBLE	Logical Error Observation Time outside survey start or end time period; Observation Number Banded Logical Error. Observation has banded data and summary field SNPL_Banded in observations is 0 or null.
+QCFlag	LEOT;ONBLE;ONBM	Logical Error Observation Time outside survey start or end time period; Observation Number Banded Logical Error. Observation has banded data and summary field SNPL_Banded in observations is 0 or null; Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time.
+QCFlag	LEOT;ONBM	Logical Error Observation Time outside survey start or end time period; Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time.
+QCFlag	LEOT;SNBO	Logical Error Observation Time outside survey start or end time period; Snowy Plover Band record Omission. Expecting record in Snowy Plover Bands but none are present.
+QCFlag	ONBLE	Observation Number Banded Logical Error. Observation has banded data and summary field SNPL_Banded in observations is 0 or null.
+QCFlag	ONBLE;ONBM	Observation Number Banded Logical Error. Observation has banded data and summary field SNPL_Banded in observations is 0 or null; Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time.
+QCFlag	ONBM	Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time.
+QCFlag	RICNC	Record imported from chick nest check table 'tbl_Nest_Checks_Legacy'
+QCFlag	SNBO	Snowy Plover Band record Omission. Expecting record in Snowy Plover Bands but none are present.
+QCFlag	SNBO;ONBM	Snowy Plover Band record Omission. Expecting record in Snowy Plover Bands but none are present; Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time.
 siteID	DB	Drakes Beach
 siteID	K	Kehoe Beach
 siteID	L	Limantour Beach

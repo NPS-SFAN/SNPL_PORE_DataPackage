@@ -38,6 +38,10 @@ microVegetation	Yes	Vegetation microhabitat present
 microVehicleTracks	No	Vehicle tracks not present
 microWoody	No	Woody debris microhabitat not present
 microWoody	Yes	Woody debris microhabitat present
+QCFlag	LCAC	Location code abbreviation changed
+QCFlag	ODEC	Original data entry value corrected during data review
+QCFlag	ODEU	Original data entry value updated
+QCFlag	OUC	Observation value not certain
 restoredAdjacent	No	Nest is not adjacent to a restored area
 restoredAdjacent	Yes	Nest is adjacent to a restored area
 restoredArea	No	Nest is not within a restored area

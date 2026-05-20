@@ -1,7 +1,7 @@
 attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
 unitCode	"Park, monument, or unit code"	categorical			Empty string	Not applicable or data not collected
 unitName	"Park, monument, or unit full name"	character			Empty string	Not applicable or data not collected
-SNPLBandIDInt	Unique band data identifier	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPLBandID	Unique band data identifier	numeric	dimensionless		Empty string	Not applicable or data not collected
 SNPLDataID	Field data table row identifier	character			Empty string	Not applicable or data not collected
 eventID	Unique event identifier for the observation	character			Empty string	Not applicable or data not collected
 locationID	Unique location identifier	character			Empty string	Not applicable or data not collected
@@ -10,8 +10,8 @@ siteName	Name of the location	character			Empty string	Not applicable or data no
 startYear	Year of the starting date of the event	Date		YYYY	Empty string	Not applicable or data not collected
 startDate	Starting date for the event	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
 nestID	Unique identifier for nest	character			Empty string	Not applicable or data not collected
-QCFlag	Data quality flag	character			NA	Not applicable or data not collected
-QCNotes	Data quality flag notes	character			NA	Not applicable or data not collected
+QCFlag	Data quality flag	categorical			Empty string	Not applicable or data not collected
+QCNotes	Data quality flag notes	character			Empty string	Not applicable or data not collected
 scientificName	Full scientific name	character			Empty string	Not applicable or data not collected
 commonName	Common or vernacular name	character			Empty string	Not applicable or data not collected
 TSN	Taxonomic serial number used to identify species in taxonomic database	numeric	dimensionless		Empty string	Not applicable or data not collected

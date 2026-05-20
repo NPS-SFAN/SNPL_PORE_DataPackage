@@ -1,5 +1,6 @@
 attributeName	code	definition
 basisOfRecord	HumanObservation	Observation made by a human
+QCFlag	Empty string	No QC flag present
 siteID	K	Kehoe Beach
 siteID	L	Limantour Beach
 siteID	NB	North Beach - South Parking

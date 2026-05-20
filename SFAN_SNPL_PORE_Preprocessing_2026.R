@@ -89,10 +89,10 @@ tablenames <- c("Events","Observations","Predators","Bands","Nesting","ChickBand
 names(df_Tables) <- tablenames
 
 # Checkpoint Temp DF To Skip Access Usage
-saveRDS(df_Tables,"temp_tables.RDS")
+ saveRDS(df_Tables,"temp_tables.RDS")
 
 # Reading from Checkpoint
-# df_Tables <- readRDS("temp_tables.RDS")
+ df_Tables <- readRDS("temp_tables.RDS")
 
 # Processing ----
 
@@ -429,6 +429,21 @@ df_Tables[["ChickBands"]] <- df_Tables[["ChickBands"]] |>
   dplyr::mutate(
     BandCombination = stringr::str_replace(BandCombination," ","")
   )
+
+# Renaming ID column
+
+df_Tables[["ChickBands"]] <- df_Tables[["ChickBands"]] |> 
+  dplyr::rename(chickBandDataID = Chick_BandData_IDInt)
+
+#################
+## Bands Dataset
+#################
+
+
+df_Tables[["Bands"]] <- df_Tables[["Bands"]] |> 
+  dplyr::rename(SNPLBandID = SNPL_Band_IDInt)
+
+
 
 ##################### 
 # Taxonomy Processing

@@ -12,23 +12,23 @@ nestID	Unique identifier for nests	character			Empty string	Not applicable or da
 SNPLTime	Time plover(s) observed	Date		hh:mm:ss+hhmm	Empty string	Not applicable or data not collected
 SNPLTimeLocal	"Time plover(s) observed, in local time"	Date		hh:mm:ss	Empty string	Not applicable or data not collected
 localTimeZone	The time zone where times were recorded in	categorical			Empty string	Not applicable or data not collected
-QCFlag	Quality control flag	character			Empty string	Not applicable or data not collected
+QCFlag	Quality control flag	categorical			Empty string	Not applicable or data not collected
 QCNotes	Notes for quality control flags	character			Empty string	Not applicable or data not collected
 scientificName	Full scientific name	character			Empty string	Not applicable or data not collected
 commonName	Common or vernacular name	character			Empty string	Not applicable or data not collected
 TSN	Taxonomic serial number used to identify species in taxonomic database	numeric	dimensionless		Empty string	Not applicable or data not collected
 waypoint	"Waypoint name, as recorded in GPS"	character			Empty string	Not applicable or data not collected
-decimalLatitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		NA	Not applicable or data not collected
-decimalLongitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		NA	Not applicable or data not collected
+decimalLatitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		Empty string	Not applicable or data not collected
+decimalLongitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		Empty string	Not applicable or data not collected
 coordSystem	Coordinate system for Decimal_Latitude and Decimal_Longitude values	categorical			Empty string	Not applicable or data not collected
 datum	Datum used for Decimal_Latitude and Decimal_Longitude values	categorical			Empty string	Not applicable or data not collected
-SNPLMale	Number of adult male Snowy plovers observed	numeric	dimensionless		NA	Not applicable or data not collected
-SNPLFemale	Number of adult female Snowy plovers observed	numeric	dimensionless		NA	Not applicable or data not collected
-SNPLUnk	Number of adult Snowy plovers observed whose sex could not be determined	numeric	dimensionless		NA	Not applicable or data not collected
-SNPLHatchlings	Number of Snowy plover hatchlings observed	numeric	dimensionless		NA	Not applicable or data not collected
-SNPLFledglings	Number of Snowy plover fledglings observed	numeric	dimensionless		NA	Not applicable or data not collected
-SNPLBands	Number of banded adult Snowy plovers	numeric	dimensionless		NA	Not applicable or data not collected
-numberEggs	"Number of eggs seen in nest, if applicable"	numeric	dimensionless		NA	Not applicable or data not collected
+SNPLMale	Number of adult male Snowy plovers observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPLFemale	Number of adult female Snowy plovers observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPLUnk	Number of adult Snowy plovers observed whose sex could not be determined	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPLHatchlings	Number of Snowy plover hatchlings observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPLFledglings	Number of Snowy plover fledglings observed	numeric	dimensionless		Empty string	Not applicable or data not collected
+SNPLBands	Number of banded adult Snowy plovers	numeric	dimensionless		Empty string	Not applicable or data not collected
+numberEggs	"Number of eggs seen in nest, if applicable"	numeric	dimensionless		Empty string	Not applicable or data not collected
 behaviorTerritoryCC	"Was a plover making a contact call? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
 behaviorTerritoryLW	"Was a plover walking low to the ground? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected
 behaviorTerritoryMD	"Was a male plover displaying? Note: Pre-2024, this information was placed in `SNPL_Notes`"	categorical			Empty string	Not applicable or data not collected

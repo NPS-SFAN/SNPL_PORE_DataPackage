@@ -6,13 +6,13 @@ locationID	Unique location identifier	character			Empty string	Not applicable or
 siteID	Location code	categorical			Empty string	Not applicable or data not collected
 siteName	Name of the location	character			Empty string	Not applicable or data not collected
 year	Year nest was observed	Date		YYYY	Empty string	Not applicable or data not collected
-QCFlag	Data quality flag	character			Empty string	Not applicable or data not collected
+QCFlag	Data quality flag	categorical			Empty string	Not applicable or data not collected
 QCNotes	Data quality notes	character			Empty string	Not applicable or data not collected
 scientificName	Full scientific name	character			Empty string	Not applicable or data not collected
 commonName	Common or vernacular name	character			Empty string	Not applicable or data not collected
 TSN	Taxonomic serial number used to identify species in taxonomic database	numeric	dimensionless		Empty string	Not applicable or data not collected
-decimalLongitude	"The geographic longitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are east of the Greenwich Meridian, negative values are west of it. Legal values lie between -180 and 180, inclusive."	numeric	dimensionless		NA	Not applicable or data not collected
-decimalLatitude	"The geographic latitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are north of the Equator, negative values are south of it. Legal values lie between -90 and 90, inclusive."	numeric	dimensionless		NA	Not applicable or data not collected
+decimalLongitude	"The geographic longitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are east of the Greenwich Meridian, negative values are west of it. Legal values lie between -180 and 180, inclusive."	numeric	dimensionless		Empty string	Not applicable or data not collected
+decimalLatitude	"The geographic latitude (in decimal degrees, using the spatial reference system given in `Datum`) of the geographic center of a location. Positive values are north of the Equator, negative values are south of it. Legal values lie between -90 and 90, inclusive."	numeric	dimensionless		Empty string	Not applicable or data not collected
 coordSystem	Coordinate system used when geographic data was recorded	categorical			Empty string	Not applicable or data not collected
 datum	Datum of the mapping ellipsoid	categorical			Empty string	Not applicable or data not collected
 GPSunit	"Type of unit or method used to GPS (i.e. ProXL, Garmin 3+, map)"	character			Empty string	Not applicable or data not collected
@@ -38,17 +38,17 @@ initiationDateUnk	Check if the initiation date is unknown	categorical			Empty st
 hatchingDate	"Date of nest hatching, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
 fledgingDate	"Date of nest fledging, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
 chickBandDate	Date chicks were banded	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
-eggs	Number of eggs	numeric	dimensionless		NA	Not applicable or data not collected
-hatchlings	Number of chicks that hatched	numeric	dimensionless		NA	Not applicable or data not collected
-fledglings	Number of chicks that fledged	numeric	dimensionless		NA	Not applicable or data not collected
+eggs	Number of eggs	numeric	dimensionless		Empty string	Not applicable or data not collected
+hatchlings	Number of chicks that hatched	numeric	dimensionless		Empty string	Not applicable or data not collected
+fledglings	Number of chicks that fledged	numeric	dimensionless		Empty string	Not applicable or data not collected
 failureDate	"Date of nest failure, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
 failureReason	"Reason for nest failure, if applicable"	character			Empty string	Not applicable or data not collected
 predatorType	"Type of predator, if failure reason was predation"	character			Empty string	Not applicable or data not collected
 chickLossDate1	"Date of first chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
-chickLossAge1	"Age of first chick when lost, if applicable"	numeric	nominalDay		NA	Not applicable or data not collected
+chickLossAge1	"Age of first chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected
 chickLossWeekend1	Yes/No if first chick was lost on a weekend	categorical			Empty string	Not applicable or data not collected
 chickLossDate2	"Date of second chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
-chickLossAge2	"Age of second chick when lost, if applicable"	numeric	nominalDay		NA	Not applicable or data not collected
+chickLossAge2	"Age of second chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected
 chickLossWeekend2	Yes/No if second chick was lost on a weekend	categorical			Empty string	Not applicable or data not collected
 chickLossDate3	"Date of third chick loss, if applicable"	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
 chickLossAge3	"Age of third chick when lost, if applicable"	numeric	nominalDay		Empty string	Not applicable or data not collected

@@ -8,19 +8,19 @@ siteID	Location code	categorical			Empty string	Not applicable or data not colle
 siteName	Location name	character			Empty string	Not applicable or data not collected
 startYear	Year of the starting date for the event	Date		YYYY	Empty string	Not applicable or data not collected
 startDate	Starting date for the event	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
-QCFlag	Quality control flag	character			NA	Not applicable or data not collected
-QCNotes	Quality control notes	character			NA	Not applicable or data not collected
+QCFlag	Quality control flag	categorical			Empty string	Not applicable or data not collected
+QCNotes	Quality control notes	character			Empty string	Not applicable or data not collected
 predatorType	Code for the type of predator or disturbance	character			Empty string	Not applicable or data not collected
 speciesCode	Predator type species code	categorical			Empty string	Not applicable or data not collected
 scientificName	Predator type scientific name	character			Empty string	Not applicable or data not collected
 commonName	Predator type common name	character			Empty string	Not applicable or data not collected
-TSN	Integrated Taxonomic Information System Taxonomic Serial Number.	character			NA	Not applicable or data not collected
-numPredator	Number of predators observed	numeric	dimensionless		NA	Not applicable or data not collected
+TSN	Integrated Taxonomic Information System Taxonomic Serial Number.	character			Empty string	Not applicable or data not collected
+numPredator	Number of predators observed	numeric	dimensionless		Empty string	Not applicable or data not collected
 predatorAction	Code for what the predator was doing	categorical			Empty string	Not applicable or data not collected
 predatorDirection	Direction of where the predator was moving	categorical			Empty string	Not applicable or data not collected
 waypoint	Waypoint name as recorded in GPS	character			Empty string	Not applicable or data not collected
-decimalLongitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		NA	Not applicable or data not collected
-decimalLatitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		NA	Not applicable or data not collected
+decimalLongitude	"The geographic longitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		Empty string	Not applicable or data not collected
+decimalLatitude	"The geographic latitude in decimal degrees, using the spatial reference system given in the 'Datum' field"	numeric	dimensionless		Empty string	Not applicable or data not collected
 coordSystem	Coordinate system for Decimal_Latitude and Decimal_Longitude values	categorical			Empty string	Not applicable or data not collected
 datum	Datum used for Decimal_Latitude and Decimal_Longitude values	categorical			Empty string	Not applicable or data not collected
 predatorNotes	General notes on the observed predators	character			Empty string	Not applicable or data not collected
