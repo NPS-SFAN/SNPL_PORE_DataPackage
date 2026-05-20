@@ -42,7 +42,7 @@ processingDate <- '2026-05-04'
 publishYear <- 2026
 
 # SNPL PORE Backend Database with the Datasets to be preprocssed
-db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260422.accdb"
+db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260514v2.accdb"
 
 # Dataset/Data Package Files Path
 dsFilePath <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/SNPLPORE_2025_2318211"
@@ -51,7 +51,7 @@ dsFilePath <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/SNPLPORE_2
 templateFileFull <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/SFAN_SNPLPORE_DRR_Template.docx"
 
 # Output Directory this is where the updated DRR Template will be exported
-outDir <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Documents/DRR_2318212"
+outDir <- "C:/Users/dwoods/OneDrive - DOI/NPS-IMD-SFAN - Documents/Data Management/Monitoring/SnowyPlover_PORE/DataPackages/2025"
 
 ##################
 # Hard coded values End
@@ -246,46 +246,67 @@ df_Tables <- lapply(query, getDataExport_Access.function, db_name = db_name)
 
 df_luFlags <- df_Tables[[1]]
 
-# Subset to only DefineDRR = 'Yes' - These are the Flags defined already in the DRR
-df_luFlags_DRR <- df_luFlags[df_luFlags$DefinedDRR == "Yes", ]
+realizedFlags_df <- realizedFlags_df |> 
+  dplyr::left_join(df_luFlags[,3:5],by = dplyr::join_by(QCFlags == FlagCode))
 
-#Check for 
-#First Outer Join of all realized on SpeciesCode
-flags_DF_Both <- realizedFlags_df %>%
-  left_join(
-    df_luFlags_DRR %>% mutate(DRR_FlagsDefined = FlagCode),
-    by = c("QCFlags" = "FlagCode")
-  )
+realizedFlags_df <- realizedFlags_df |> 
+  dplyr::rename(`Flag Code` = QCFlags,
+                `Flag Definition` = FlagDefinition,
+                `Analysis Interpretation` = AnalysisInterpretation)
+flagheaders <- c("Flag Code", "Flag Definition", "Analysis Interpretation")
 
-# Check if count of joined records equals number of records in uniqueBirds_DFCount if equal Taxonomic Template has a definition per taxon
-countNotNull <- sum(!is.na(flags_DF_Both$DRR_FlagsDefined))
 
-print(paste("Number of Matching Realized QC Flags in Dataset and the Data Release Report Table 2 is -", countNotNull))
 
-if (countNotNull == countrealizedFlags_df) {
-  print("Realized QC Flags are already defined in the DRR Table as defined in the tlu_DataFlags$DefinedDRR field attribute - no need to add new QC Flags they are already defined."
-  )
-  
-} else {
-  
-  #Subset to Taxon in need of definition in Taxonomic Coverages Template
-  flags_ToDefine <- flags_DF_Both %>%
-    filter(is.na(DRR_FlagsDefined))
-  
-  outDFPath <- here::here(paste0("Documents/","DRR_2318212", "/FlagsToDefine.csv"))
-  if (file.exists(outDFPath)) {
-    file.remove(outDFPath)
-    print(paste("Existing File - ", outDFPath, " - has been deleted."))
-  }
-  
-  write.csv(flags_ToDefine, outDFPath)
-  
-  # Get Count of records that are Null - i.e. in need of definition
-  countNull <- sum(is.na(flags_DF_Both$DRR_FlagsDefined))
-  
-  print(paste0("WARNING - there are - ", countNull, " - QC Records in need of definition in the DRR Table 2."))
-  print(paste0("See Exported dataframe with Flags to be defined in the DRR Table 2 at: ", outDFPath))
-} 
+realizedFlags_table <- flextable::flextable(realizedFlags_df) |> 
+  flextable::bold(part = "header", bold = TRUE) |> 
+  flextable::fontsize(size = 11, part = "all") |> 
+  flextable::font(fontname = "Aptos", part = "all") |> 
+  flextable::set_table_properties(layout = "autofit", width = 1) |> 
+  flextable::autofit()
+
+realizedFlags_table
+#### Following section outdated as of 5/20/2026
+
+# # Subset to only DefineDRR = 'Yes' - These are the Flags defined already in the DRR
+# df_luFlags_DRR <- df_luFlags[df_luFlags$DefinedDRR == "Yes", ]
+# 
+# #Check for 
+# #First Outer Join of all realized on SpeciesCode
+# flags_DF_Both <- realizedFlags_df %>%
+#   left_join(
+#     df_luFlags_DRR %>% mutate(DRR_FlagsDefined = FlagCode),
+#     by = c("QCFlags" = "FlagCode")
+#   )
+# 
+# # Check if count of joined records equals number of records in uniqueBirds_DFCount if equal Taxonomic Template has a definition per taxon
+# countNotNull <- sum(!is.na(flags_DF_Both$DRR_FlagsDefined))
+# 
+# print(paste("Number of Matching Realized QC Flags in Dataset and the Data Release Report Table 2 is -", countNotNull))
+# 
+# if (countNotNull == countrealizedFlags_df) {
+#   print("Realized QC Flags are already defined in the DRR Table as defined in the tlu_DataFlags$DefinedDRR field attribute - no need to add new QC Flags they are already defined."
+#   )
+#   
+# } else {
+#   
+#   #Subset to Taxon in need of definition in Taxonomic Coverages Template
+#   flags_ToDefine <- flags_DF_Both %>%
+#     filter(is.na(DRR_FlagsDefined))
+#   
+#   outDFPath <- here::here(paste0("Documents/","DRR_2318212", "/FlagsToDefine.csv"))
+#   if (file.exists(outDFPath)) {
+#     file.remove(outDFPath)
+#     print(paste("Existing File - ", outDFPath, " - has been deleted."))
+#   }
+#   
+#   write.csv(flags_ToDefine, outDFPath)
+#   
+#   # Get Count of records that are Null - i.e. in need of definition
+#   countNull <- sum(is.na(flags_DF_Both$DRR_FlagsDefined))
+#   
+#   print(paste0("WARNING - there are - ", countNull, " - QC Records in need of definition in the DRR Table 2."))
+#   print(paste0("See Exported dataframe with Flags to be defined in the DRR Table 2 at: ", outDFPath))
+# } 
 
 ####################
 # Extract File Sizes
@@ -382,6 +403,11 @@ doc <- body_replace_all_text(doc, "OBSEND", as.character(obsEnd))
 doc <- body_replace_all_text(doc, "PREDSTART", as.character(predStart))
 doc <- body_replace_all_text(doc, "PREDEND", as.character(predEnd))
 
+# Data Flag Table
+
+doc <- officer::cursor_reach(doc,"Realized data quality control flags.")
+doc <- flextable::body_add_flextable(doc, value = realizedFlags_table)
+doc <- officer::body_add_break(doc)
 
 # Record Counts by Dataset
 doc <- body_replace_all_text(doc, "NBANDS", as.character(BandsNum))
@@ -407,3 +433,4 @@ if (file.exists(outTemplateFull)) {
 } else {
   print("Failed to update the template.")
 }
+
