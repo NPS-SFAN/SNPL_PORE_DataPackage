@@ -194,7 +194,7 @@ paste("Predator Records:", PredNum)
 all_flags_raw <- c(
   as.character(bands_df$QCFlag),
   as.character(chickbands_df$QCFlag),
-  as.character(events_df$eventdetailsQCFlag),
+  as.character(events_df$eventDetailsQCFlag),
   as.character(events_df$eventQCFlag),
   as.character(nesting_df$QCFlag),
   as.character(observations_df$QCFlag),
