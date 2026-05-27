@@ -1,38 +1,39 @@
 attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
-ID	Table ID field	numeric	dimensionless		Empty string	Not applicable or data not collected
-Event_ID	Event identifier	character			Empty string	Not applicable or data not collected
-Type	The nature of the genre or source	categorical			Empty string	Not applicable or data not collected
-Basis_Of_Record	The specific nature of the data record	categorical			Empty string	Not applicable or data not collected
-Unit_Code	"Park, monument, or network code"	categorical			Empty string	Not applicable or data not collected
-Location_ID	Location identifier	categorical			Empty string	Not applicable or data not collected
-Loc_Code	Location code	categorical			Empty string	Not applicable or data not collected
-Loc_Name	Name of the location	character			Empty string	Not applicable or data not collected
-Protocol_Name	Protocol version name	character			Empty string	Not applicable or data not collected
-Protocol_Description	Protocol version description information	character			Empty string	Not applicable or data not collected
-Start_Year	Year of the starting date of the event	Date		YYYY	Empty string	Not applicable or data not collected
-Start_Date	Starting date for the event	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
-Start_Time	Starting time for the event	Date		hh:mm:ss+hhmm	Empty string	Not applicable or data not collected
-Start_Time_Local	"Starting time for the event, in local time"	Date		hh:mm:ss	Empty string	Not applicable or data not collected
-End_Time	End time for the event	Date		hh:mm:ss+hhmm	Empty string	Not applicable or data not collected
-End_Time_Local	"End time for the event, in local time"	Date		hh:mm:ss	Empty string	Not applicable or data not collected
-Local_Time_Zone	The time zone where times were recorded in	categorical			Empty string	Not applicable or data not collected
-Observers	List of names of individuals responsible for recording the original occurrence	character			Empty string	Not applicable or data not collected
-Updated_Date	Date the event was updated	Date		YYYY-MM-DD hh:mm:ss-hhmm	Empty string	Not applicable or data not collected
-Updated_By	Active Directory login name of the individual that updated the event record	character			Empty string	Not applicable or data not collected
-EventQCFlag	Quality control flag	character			Empty string	Not applicable or data not collected
-EventQCNotes	Quality control flag notes	character			Empty string	Not applicable or data not collected
-Event_Notes	General notes on the event	character			Empty string	Not applicable or data not collected
-Survey_Direction	"Direction in which the survey was conducted, i.e. north to south"	categorical			Empty string	Not applicable or data not collected
-Wind_Spd_mph	Average wind speed	numeric	milesPerHour		Empty string	Not applicable or data not collected
-Wind_Max_mph	Maximum wind speed	numeric	milesPerHour		Empty string	Not applicable or data not collected
-Wind_Dir	Wind direction	categorical			Empty string	Not applicable or data not collected
-Air_Temp_degF	Average air temperature	numeric	fahrenheit		Empty string	Not applicable or data not collected
-Rel_Hum_per	Average relative humidity	numeric	percent		Empty string	Not applicable or data not collected
-Cloud_Cover	Average percent cloud cover	numeric	percent		Empty string	Not applicable or data not collected
-Tide_Cond	Tide condition	categorical			Empty string	Not applicable or data not collected
-Incomplete_Survey	Check if the survey was an incomplete survey of the beach sector	categorical			Empty string	Not applicable or data not collected
-EventDetailsQCFlag	Quality control flag for columns `Event_Notes` to `Incomplete_Survey`	character			Empty string	Not applicable or data not collected
-EventDetailsQCNotes	Quality control flag notes	character			Empty string	Not applicable or data not collected
-DataProcessingLevel	Unique name for the data processing level	character			Empty string	Not applicable or data not collected
-DataProcessingLevelDate	Date that the data processing level changed	Date		YYYY-MM-DD hh:mm:ss	Empty string	Not applicable or data not collected
-DataProcessingLevelUser	Individual who assigned the current data processing level status	character				
+unitCode	"Park, monument, or network code"	categorical			Empty string	Not applicable or data not collected
+unitName	"Park, monument, or unit full name"	character			Empty string	Not applicable or data not collected
+eventID	Unique event identifier for the observation	character			Empty string	Not applicable or data not collected
+locationID	Unique location identifier	character			Empty string	Not applicable or data not collected
+siteID	Location code	categorical			Empty string	Not applicable or data not collected
+siteName	Name of the location	character			Empty string	Not applicable or data not collected
+protocolName	Protocol version name	character			Empty string	Not applicable or data not collected
+protocolDescription	Protocol version description information	character			Empty string	Not applicable or data not collected
+startYear	Year of the starting date of the event	Date		YYYY	Empty string	Not applicable or data not collected
+startDate	Starting date for the event	Date		YYYY-MM-DD	Empty string	Not applicable or data not collected
+startTime	Starting time for the event	Date		hh:mm:ss+hhmm	Empty string	Not applicable or data not collected
+startTimeLocal	"Starting time for the event, in local time"	Date		hh:mm:ss	Empty string	Not applicable or data not collected
+endTime	End time for the event	Date		hh:mm:ss+hhmm	Empty string	Not applicable or data not collected
+endTimeLocal	"End time for the event, in local time"	Date		hh:mm:ss	Empty string	Not applicable or data not collected
+localTimeZone	The time zone where times were recorded in	categorical			Empty string	Not applicable or data not collected
+observers	List of names of individuals responsible for recording the original occurrence	character			Empty string	Not applicable or data not collected
+eventQCFlag	Quality control flag	categorical			Empty string	Not applicable or data not collected
+eventQCNotes	Quality control flag notes	character			Empty string	Not applicable or data not collected
+scientificName	Full scientific name	character			Empty string	Not applicable or data not collected
+commonName	Common or vernacular name	character			Empty string	Not applicable or data not collected
+TSN	Taxonomic serial number used to identify species in taxonomic database	numeric	dimensionless		Empty string	Not applicable or data not collected
+eventNotes	General notes on the event	character			Empty string	Not applicable or data not collected
+surveyDirection	"Direction in which the survey was conducted, i.e. north to south"	categorical			Empty string	Not applicable or data not collected
+windSpeedMPH	Average wind speed	numeric	milesPerHour		Empty string	Not applicable or data not collected
+windMaxMPH	Maximum wind speed	numeric	milesPerHour		Empty string	Not applicable or data not collected
+windDirection	Wind direction	categorical			Empty string	Not applicable or data not collected
+airTemperatureDegreesF	Average air temperature	numeric	fahrenheit		Empty string	Not applicable or data not collected
+relativeHumidityPercent	Average relative humidity	numeric	percent		Empty string	Not applicable or data not collected
+cloudCoverPercent	Average percent cloud cover	numeric	percent		Empty string	Not applicable or data not collected
+tideCondition	Tide condition	categorical			Empty string	Not applicable or data not collected
+incompleteSurvey	Check if the survey was an incomplete survey of the beach sector	categorical			Empty string	Not applicable or data not collected
+eventDetailsQCFlag	Quality control flag for columns `Event_Notes` to `Incomplete_Survey`	categorical			Empty string	Not applicable or data not collected
+eventDetailsQCNotes	Quality control flag notes	character			Empty string	Not applicable or data not collected
+dataProcessingLevel	Unique name for the data processing level	character			Empty string	Not applicable or data not collected
+dataProcessingLevelDate	Date that the data processing level changed	Date		YYYY-MM-DD hh:mm:ss	Empty string	Not applicable or data not collected
+dataProcessingLevelUser	Individual who assigned the current data processing level status	character				
+type	The nature of the genre or source	categorical			Empty string	Not applicable or data not collected
+basisOfRecord	The specific nature of the data record	categorical			Empty string	Not applicable or data not collected

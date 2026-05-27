@@ -23,35 +23,35 @@ library(magrittr)           # Load for the pipe operator `%>%`
 ##################
 
 # Data Package Data Store Reference Code
-referencecodeDP <- 2310749
+referencecodeDP <- 2318211
 
 # Database harvested for the Datasets/Data Packages Reference Code 
-referencecodeDB <- 2310672
+referencecodeDB <- 2318209
 
 # Data Release Report Data Store Reference Code
-referencecodeDRR <- 2310766
+referencecodeDRR <- 2318212
 
 # Data Processing Scripts GitHub Repo Version Data Store Reference Code - This is the Version of the SNPL_PORE_DataPackage 
 # code repo which is exported annually to provide open data and open science reproducability.
-referencecodeDPS <- 2311196
+referencecodeDPS <- 2318231
 
 # Processing Date of the Data Package
-processingDate <- '2025-05-01'
+processingDate <- '2026-05-04'
 
 # Year Published
-publishYear <- 2025
+publishYear <- 2026
 
 # SNPL PORE Backend Database with the Datasets to be preprocssed
-db_name <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/SNPLOVER/SNPL_IM/Data/Database/Dbase_BE/PORE_SNPL_BE_20250430.accdb"
+db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260514v2.accdb"
 
 # Dataset/Data Package Files Path
-dsFilePath <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/Scripts/SNPL_PORE_DataPackage/Data/SNPLPORE_2024_2310749"
+dsFilePath <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/SNPLPORE_2025_2318211"
 
 # Template File Full Path
-templateFileFull <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/Scripts/SNPL_PORE_DataPackage/SFAN_SNPLPORE_DRR_Template.docx"
+templateFileFull <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/SFAN_SNPLPORE_DRR_Template.docx"
 
 # Output Directory this is where the updated DRR Template will be exported
-outDir <- "C:/Users/KSherrill/OneDrive - DOI/SFAN/VitalSigns/SnowyPlovers_PORE/SNPLOVER/SNPL_IM/Data/Deliverable/2024/DRR_2310766"
+outDir <- "C:/Users/dwoods/OneDrive - DOI/NPS-IMD-SFAN - Documents/Data Management/Monitoring/SnowyPlover_PORE/DataPackages/2025"
 
 ##################
 # Hard coded values End
@@ -92,7 +92,7 @@ predators_df <- dataframes[["SFAN_SNPL_Predators"]]
 # Extract min and max dates from the Dataframes in the dataframes list
 all_dates <- unlist(lapply(dataframes, function(df) {
   # Convert StartDate to Date if not already
-  as.Date(df$Start_Date)
+  as.Date(df$startDate)
 }))
 
 # Ensure all_dates is of Date class
@@ -120,33 +120,33 @@ paste ('End Year All Datasets:', endYear)
 #predatorEnd
 
 # Bands Start - End
-bands_df$Start_Date <- as.Date(bands_df$Start_Date, format = "%Y-%m-%d")
-bandsStart <- format(min(bands_df$Start_Date, na.rm = TRUE), "%Y")
-bandsEnd <- format(max(bands_df$Start_Date, na.rm = TRUE), "%Y")
+bands_df$startDate <- as.Date(bands_df$startDate, format = "%Y-%m-%d")
+bandsStart <- format(min(bands_df$startDate, na.rm = TRUE), "%Y")
+bandsEnd <- format(max(bands_df$startDate, na.rm = TRUE), "%Y")
 
 # ChickBands Start - End
-chickBandsStart <- min(chickbands_df$Year, na.rm = TRUE)
-chickBandsEnd <- max(chickbands_df$Year, na.rm = TRUE)
+chickBandsStart <- min(chickbands_df$year, na.rm = TRUE)
+chickBandsEnd <- max(chickbands_df$year, na.rm = TRUE)
 
 # Events Start - End
-events_df$Start_Date <- as.Date(events_df$Start_Date, format = "%Y-%m-%d")
-eventsStart <- format(min(events_df$Start_Date, na.rm = TRUE), "%Y")
-eventsEnd <- format(max(events_df$Start_Date, na.rm = TRUE), "%Y")
+events_df$startDate <- as.Date(events_df$startDate, format = "%Y-%m-%d")
+eventsStart <- format(min(events_df$startDate, na.rm = TRUE), "%Y")
+eventsEnd <- format(max(events_df$startDate, na.rm = TRUE), "%Y")
 
 # Nesting Start - End
-nesting_df$Date_Found <- as.Date(nesting_df$Date_Found, format = "%Y-%m-%d")
-nestingStart <- format(min(nesting_df$Date_Found, na.rm = TRUE), "%Y")
-nestingEnd <- format(max(nesting_df$Date_Found, na.rm = TRUE), "%Y")
+nesting_df$dateFound <- as.Date(nesting_df$dateFound, format = "%Y-%m-%d")
+nestingStart <- format(min(nesting_df$dateFound, na.rm = TRUE), "%Y")
+nestingEnd <- format(max(nesting_df$dateFound, na.rm = TRUE), "%Y")
 
 # Observation Start - End
-observations_df$Start_Date <- as.Date(observations_df$Start_Date, format = "%Y-%m-%d")
-obsStart <- format(min(observations_df$Start_Date, na.rm = TRUE), "%Y")
-obsEnd <- format(max(observations_df$Start_Date, na.rm = TRUE), "%Y")
+observations_df$startDate <- as.Date(observations_df$startDate, format = "%Y-%m-%d")
+obsStart <- format(min(observations_df$startDate, na.rm = TRUE), "%Y")
+obsEnd <- format(max(observations_df$startDate, na.rm = TRUE), "%Y")
 
 # Predator Start - End
-predators_df$Start_Date <- as.Date(predators_df$Start_Date, format = "%Y-%m-%d")
-predStart <- format(min(predators_df$Start_Date, na.rm = TRUE), "%Y")
-predEnd <- format(max(predators_df$Start_Date, na.rm = TRUE), "%Y")
+predators_df$startDate <- as.Date(predators_df$startDate, format = "%Y-%m-%d")
+predStart <- format(min(predators_df$startDate, na.rm = TRUE), "%Y")
+predEnd <- format(max(predators_df$startDate, na.rm = TRUE), "%Y")
 
 
 # Print individual variables
@@ -194,8 +194,8 @@ paste("Predator Records:", PredNum)
 all_flags_raw <- c(
   as.character(bands_df$QCFlag),
   as.character(chickbands_df$QCFlag),
-  as.character(events_df$EventDetailsQCFlag),
-  as.character(events_df$EventQCFlag),
+  as.character(events_df$eventDetailsQCFlag),
+  as.character(events_df$eventQCFlag),
   as.character(nesting_df$QCFlag),
   as.character(observations_df$QCFlag),
   as.character(predators_df$QCFlag)
@@ -246,46 +246,67 @@ df_Tables <- lapply(query, getDataExport_Access.function, db_name = db_name)
 
 df_luFlags <- df_Tables[[1]]
 
-# Subset to only DefineDRR = 'Yes' - These are the Flags defined already in the DRR
-df_luFlags_DRR <- df_luFlags[df_luFlags$DefinedDRR == "Yes", ]
+realizedFlags_df <- realizedFlags_df |> 
+  dplyr::left_join(df_luFlags[,3:5],by = dplyr::join_by(QCFlags == FlagCode))
 
-#Check for 
-#First Outer Join of all realized on SpeciesCode
-flags_DF_Both <- realizedFlags_df %>%
-  left_join(
-    df_luFlags_DRR %>% mutate(DRR_FlagsDefined = FlagCode),
-    by = c("QCFlags" = "FlagCode")
-  )
+realizedFlags_df <- realizedFlags_df |> 
+  dplyr::rename(`Flag Code` = QCFlags,
+                `Flag Definition` = FlagDefinition,
+                `Analysis Interpretation` = AnalysisInterpretation)
+flagheaders <- c("Flag Code", "Flag Definition", "Analysis Interpretation")
 
-# Check if count of joined records equals number of records in uniqueBirds_DFCount if equal Taxonomic Template has a definition per taxon
-countNotNull <- sum(!is.na(flags_DF_Both$DRR_FlagsDefined))
 
-print(paste("Number of Matching Realized QC Flags in Dataset and the Data Release Report Table 2 is -", countNotNull))
 
-if (countNotNull == countrealizedFlags_df) {
-  print("Realized QC Flags are already defined in the DRR Table as defined in the tlu_DataFlags$DefinedDRR field attribute - no need to add new QC Flags they are already defined."
-  )
-  
-} else {
-  
-  #Subset to Taxon in need of definition in Taxonomic Coverages Template
-  flags_ToDefine <- flags_DF_Both %>%
-    filter(is.na(DRR_FlagsDefined))
-  
-  outDFPath <- here::here(paste0("Input", "/FlagsToDefine.csv"))
-  if (file.exists(outDFPath)) {
-    file.remove(outDFPath)
-    print(paste("Existing File - ", outDFPath, " - has been deleted."))
-  }
-  
-  write.csv(flags_ToDefine, outDFPath)
-  
-  # Get Count of records that are Null - i.e. in need of definition
-  countNull <- sum(is.na(flags_DF_Both$DRR_FlagsDefined))
-  
-  print(paste0("WARNING - there are - ", countNull, " - QC Records in need of definition in the DRR Table 2."))
-  print(paste0("See Exported dataframe with Flags to be defined in the DRR Table 2 at: ", outDFPath))
-} 
+realizedFlags_table <- flextable::flextable(realizedFlags_df) |> 
+  flextable::bold(part = "header", bold = TRUE) |> 
+  flextable::fontsize(size = 11, part = "all") |> 
+  flextable::font(fontname = "Aptos", part = "all") |> 
+  flextable::set_table_properties(layout = "autofit", width = 1) |> 
+  flextable::autofit()
+
+realizedFlags_table
+#### Following section outdated as of 5/20/2026
+
+# # Subset to only DefineDRR = 'Yes' - These are the Flags defined already in the DRR
+# df_luFlags_DRR <- df_luFlags[df_luFlags$DefinedDRR == "Yes", ]
+# 
+# #Check for 
+# #First Outer Join of all realized on SpeciesCode
+# flags_DF_Both <- realizedFlags_df %>%
+#   left_join(
+#     df_luFlags_DRR %>% mutate(DRR_FlagsDefined = FlagCode),
+#     by = c("QCFlags" = "FlagCode")
+#   )
+# 
+# # Check if count of joined records equals number of records in uniqueBirds_DFCount if equal Taxonomic Template has a definition per taxon
+# countNotNull <- sum(!is.na(flags_DF_Both$DRR_FlagsDefined))
+# 
+# print(paste("Number of Matching Realized QC Flags in Dataset and the Data Release Report Table 2 is -", countNotNull))
+# 
+# if (countNotNull == countrealizedFlags_df) {
+#   print("Realized QC Flags are already defined in the DRR Table as defined in the tlu_DataFlags$DefinedDRR field attribute - no need to add new QC Flags they are already defined."
+#   )
+#   
+# } else {
+#   
+#   #Subset to Taxon in need of definition in Taxonomic Coverages Template
+#   flags_ToDefine <- flags_DF_Both %>%
+#     filter(is.na(DRR_FlagsDefined))
+#   
+#   outDFPath <- here::here(paste0("Documents/","DRR_2318212", "/FlagsToDefine.csv"))
+#   if (file.exists(outDFPath)) {
+#     file.remove(outDFPath)
+#     print(paste("Existing File - ", outDFPath, " - has been deleted."))
+#   }
+#   
+#   write.csv(flags_ToDefine, outDFPath)
+#   
+#   # Get Count of records that are Null - i.e. in need of definition
+#   countNull <- sum(is.na(flags_DF_Both$DRR_FlagsDefined))
+#   
+#   print(paste0("WARNING - there are - ", countNull, " - QC Records in need of definition in the DRR Table 2."))
+#   print(paste0("See Exported dataframe with Flags to be defined in the DRR Table 2 at: ", outDFPath))
+# } 
 
 ####################
 # Extract File Sizes
@@ -382,6 +403,11 @@ doc <- body_replace_all_text(doc, "OBSEND", as.character(obsEnd))
 doc <- body_replace_all_text(doc, "PREDSTART", as.character(predStart))
 doc <- body_replace_all_text(doc, "PREDEND", as.character(predEnd))
 
+# Data Flag Table
+
+doc <- officer::cursor_reach(doc,"Realized data quality control flags.")
+doc <- flextable::body_add_flextable(doc, value = realizedFlags_table)
+doc <- officer::body_add_break(doc)
 
 # Record Counts by Dataset
 doc <- body_replace_all_text(doc, "NBANDS", as.character(BandsNum))
@@ -407,3 +433,4 @@ if (file.exists(outTemplateFull)) {
 } else {
   print("Failed to update the template.")
 }
+
