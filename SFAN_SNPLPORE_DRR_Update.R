@@ -36,13 +36,13 @@ referencecodeDRR <- 2318212
 referencecodeDPS <- 2318231
 
 # Processing Date of the Data Package
-processingDate <- '2026-05-04'
+processingDate <- '2026-06-08'
 
 # Year Published
 publishYear <- 2026
 
 # SNPL PORE Backend Database with the Datasets to be preprocssed
-db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260514v2.accdb"
+db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260605.accdb"
 
 # Dataset/Data Package Files Path
 dsFilePath <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/SNPLPORE_2025_2318211"
