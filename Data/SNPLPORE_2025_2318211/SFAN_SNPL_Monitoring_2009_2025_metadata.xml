@@ -63,7 +63,11 @@
       <organizationName>National Park Service</organizationName>
       <role>contributor</role>
     </associatedParty>
+<<<<<<< HEAD
+    <pubDate>2026-06-08</pubDate>
+=======
     <pubDate>2026-05-20</pubDate>
+>>>>>>> origin/main
     <language>eng</language>
     <abstract>
       <para>The National Park Service (NPS) San Francisco Area Network (SFAN) has been monitoring western snowy plovers (Charadrius nivosus) since the 1970s. Snowy plovers have been selected as a vital sign for monitoring due to their sensitivity to habitat conditions and quality. Given their habitat needs, this vital sign serves as an important benchmark of habitat quality at Port Reyes National Seashore (PORE). This data package contains snowy plover monitoring data collected at Point Reyes National Seashore from 2009 - 2025. It includes the following datasets: Snowy Plover Observations, Banding , Nesting, Predator, Chick Band, and Event Metadata.</para>
@@ -687,6 +691,10 @@
                       <taxonomicClassification>
                         <taxonRankName>class</taxonRankName>
                         <taxonRankValue>Mammalia</taxonRankValue>
+<<<<<<< HEAD
+                        <commonName>mammals</commonName>
+=======
+>>>>>>> origin/main
                         <taxonId provider="https://itis.gov">179913</taxonId>
                         <taxonomicClassification>
                           <taxonRankName>subclass</taxonRankName>
@@ -970,7 +978,11 @@
       <physical>
         <objectName>SFAN_SNPL_Bands.csv</objectName>
         <size unit="bytes">3543132</size>
+<<<<<<< HEAD
+        <authentication method="MD5">964b9f8a81fdb9b6e85b3dcb1f926b48</authentication>
+=======
         <authentication method="MD5">4d014b772406238176ad93bd59c2a3d5</authentication>
+>>>>>>> origin/main
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -1508,7 +1520,11 @@
       <physical>
         <objectName>SFAN_SNPL_ChickBands.csv</objectName>
         <size unit="bytes">139601</size>
+<<<<<<< HEAD
+        <authentication method="MD5">24dc55eca759c09ee26689b8e75ad20b</authentication>
+=======
         <authentication method="MD5">13008aa70c3204a7d7bf146d4b0196b0</authentication>
+>>>>>>> origin/main
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -2033,8 +2049,13 @@
       <entityDescription>Event Metadata Environmental, data, time, and directional information for surveys</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_Events.csv</objectName>
+<<<<<<< HEAD
+        <size unit="bytes">2013721</size>
+        <authentication method="MD5">7dd6e8131b448d7142b723b382c2b1f7</authentication>
+=======
         <size unit="bytes">2012945</size>
         <authentication method="MD5">2d0df04aeffe979af453e6721226c1bb</authentication>
+>>>>>>> origin/main
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -2371,6 +2392,13 @@
                     <code>NCD</code>
                     <definition>No Crew Defined</definition>
                   </codeDefinition>
+<<<<<<< HEAD
+                  <codeDefinition>
+                    <code>NGUSDN</code>
+                    <definition>Spatial data entered in office rather then field, spatial coordinates set to null</definition>
+                  </codeDefinition>
+=======
+>>>>>>> origin/main
                 </enumeratedDomain>
               </nonNumericDomain>
             </nominal>
@@ -3015,7 +3043,11 @@
       <physical>
         <objectName>SFAN_SNPL_Nesting.csv</objectName>
         <size unit="bytes">459064</size>
+<<<<<<< HEAD
+        <authentication method="MD5">d1c8cba6686f7abbb347ee837b9256fa</authentication>
+=======
         <authentication method="MD5">217f4abee28628675f68c28666a23cea</authentication>
+>>>>>>> origin/main
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -4436,8 +4468,13 @@
       <entityDescription>Observations of any snowy plover encountered</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_Observations.csv</objectName>
+<<<<<<< HEAD
+        <size unit="bytes">6845905</size>
+        <authentication method="MD5">442847bb68dbe8245d1f62f38d7d899b</authentication>
+=======
         <size unit="bytes">6842830</size>
         <authentication method="MD5">85915ffcd001dd7e5d21423d4714a632</authentication>
+>>>>>>> origin/main
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -4770,6 +4807,21 @@
                     <code>SNBO;ONBM</code>
                     <definition>Snowy Plover Band record Omission. Expecting record in Snowy Plover Bands but none are present; Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time.</definition>
                   </codeDefinition>
+<<<<<<< HEAD
+                  <codeDefinition>
+                    <code>NGUSDN</code>
+                    <definition>Spatial data entered in office rather then field, spatial coordinates set to null</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>ONBLE;ONBM;NGUSDN</code>
+                    <definition>Observation Number Banded Logical Error. Observation has banded data and summary field SNPL_Banded in observations is 0 or null; Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time; Spatial data entered in office rather then field, spatial coordinates set to null</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>LEOT;NGUSDN</code>
+                    <definition>Logical Error Observation Time outside survey start or end time period; Spatial data entered in office rather then field, spatial coordinates set to null</definition>
+                  </codeDefinition>
+=======
+>>>>>>> origin/main
                 </enumeratedDomain>
               </nonNumericDomain>
             </nominal>
@@ -4887,7 +4939,11 @@
                 <numberType>real</numberType>
                 <bounds>
                   <minimum exclusive="false">19.1920820106773</minimum>
+<<<<<<< HEAD
+                  <maximum exclusive="false">38.1544437105307</maximum>
+=======
                   <maximum exclusive="false">38.2284814829311</maximum>
+>>>>>>> origin/main
                 </bounds>
               </numericDomain>
             </ratio>
@@ -4910,7 +4966,11 @@
                 <numberType>real</numberType>
                 <bounds>
                   <minimum exclusive="false">-123.00230024571</minimum>
+<<<<<<< HEAD
+                  <maximum exclusive="false">-122.703231814663</maximum>
+=======
                   <maximum exclusive="false">-122.625802035274</maximum>
+>>>>>>> origin/main
                 </bounds>
               </numericDomain>
             </ratio>
@@ -5539,8 +5599,13 @@
       <entityDescription>Observations of nearby predators</entityDescription>
       <physical>
         <objectName>SFAN_SNPL_Predators.csv</objectName>
+<<<<<<< HEAD
+        <size unit="bytes">3567061</size>
+        <authentication method="MD5">588d62addda584ac4c6d317d37c7e7c4</authentication>
+=======
         <size unit="bytes">3565801</size>
         <authentication method="MD5">316526d032a80a725d1bdd44a18a3d4f</authentication>
+>>>>>>> origin/main
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -5753,8 +5818,13 @@
               <nonNumericDomain>
                 <enumeratedDomain>
                   <codeDefinition>
+<<<<<<< HEAD
+                    <code>NGUSDN</code>
+                    <definition>Spatial data entered in office rather then field, spatial coordinates set to null</definition>
+=======
                     <code>Empty string</code>
                     <definition>No QC flag present</definition>
+>>>>>>> origin/main
                   </codeDefinition>
                 </enumeratedDomain>
               </nonNumericDomain>
@@ -6056,7 +6126,11 @@
                 <numberType>real</numberType>
                 <bounds>
                   <minimum exclusive="false">-127.488403219294</minimum>
+<<<<<<< HEAD
+                  <maximum exclusive="false">-122.703236480738</maximum>
+=======
                   <maximum exclusive="false">-122.62587056522</maximum>
+>>>>>>> origin/main
                 </bounds>
               </numericDomain>
             </ratio>
@@ -6079,7 +6153,11 @@
                 <numberType>real</numberType>
                 <bounds>
                   <minimum exclusive="false">-0.00110899591384664</minimum>
+<<<<<<< HEAD
+                  <maximum exclusive="false">38.1608412110481</maximum>
+=======
                   <maximum exclusive="false">38.2284719932961</maximum>
+>>>>>>> origin/main
                 </bounds>
               </numericDomain>
             </ratio>

@@ -28,6 +28,7 @@ eventDetailsQCFlag	ODEC;NSPLE;NSBPLE	"Original data entry value corrected during
 eventDetailsQCFlag	ODEC;NSPLE;NSBPLE;ESBNA	"Original data entry value corrected during data review; Number of Summarized Snowy Plovers Logical Error.  Summarized number of adults, hatchlings, or fledglings SNPL does not match the observed sum of adult (Male+Female+Unk); Number of Summarized Banded Snowy Plovers Logical Error. Summarized number of Bands Snowy Plovers is not the same as the tally of Banded observation records for the survey; Event Summary Banded Number Not in Agreement with number of records for event in tbl_SNPL_Banded"
 eventDetailsQCFlag	ODEU	Original data entry value updated
 eventQCFlag	NCD	No Crew Defined
+eventQCFlag	NGUSDN	"Spatial data entered in office rather then field, spatial coordinates set to null"
 incompleteSurvey	Yes	Survey was incomplete
 localTimeZone	PDT	Pacific Daylight Time
 localTimeZone	PST	Pacific Standard Time

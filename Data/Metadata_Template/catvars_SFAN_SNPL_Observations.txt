@@ -52,6 +52,9 @@ QCFlag	ONBM	Observation Number Banded in plover observation SNPL_Bands fields do
 QCFlag	RICNC	Record imported from chick nest check table 'tbl_Nest_Checks_Legacy'
 QCFlag	SNBO	Snowy Plover Band record Omission. Expecting record in Snowy Plover Bands but none are present.
 QCFlag	SNBO;ONBM	Snowy Plover Band record Omission. Expecting record in Snowy Plover Bands but none are present; Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time.
+QCFlag	NGUSDN	"Spatial data entered in office rather then field, spatial coordinates set to null"
+QCFlag	ONBLE;ONBM;NGUSDN	"Observation Number Banded Logical Error. Observation has banded data and summary field SNPL_Banded in observations is 0 or null; Observation Number Banded in plover observation SNPL_Bands fields does not Match the number of records in tbl_SNPLBanded for the survey data and time; Spatial data entered in office rather then field, spatial coordinates set to null"
+QCFlag	LEOT;NGUSDN	"Logical Error Observation Time outside survey start or end time period; Spatial data entered in office rather then field, spatial coordinates set to null"
 siteID	DB	Drakes Beach
 siteID	K	Kehoe Beach
 siteID	L	Limantour Beach
