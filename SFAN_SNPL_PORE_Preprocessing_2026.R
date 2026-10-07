@@ -24,7 +24,7 @@ rm(list = ls())
 # Variables to Define
 #####################
 # SNPL PORE Backend Database with the Datasets to be preprocssed
-db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260605.accdb"
+db_name <- "//Files.nps.doi.net/NPS/WASO/Programs/IMD/SFAN/Files/Shared/Monitoring/SnowyPlovers/PORE/DATA/Database/PORE_SNPL_BE_20261007.accdb"
 # Directory where output preprocessed .csv dataset files will be exported
 outPutDir <-'C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/Input'
 #############################################
@@ -333,21 +333,22 @@ df_Tables[["Nesting"]] <- df_Tables[["Nesting"]] %>%
   )
 
 # Adding NA to microhabitat columns where code is NA
+# Field season 2026 update: Assuming NA MicroCodes means none present, rather than no data collected.
 
-df_Tables[["Nesting"]] <- df_Tables[["Nesting"]] |> 
-  dplyr::mutate(
-    MicroSand = dplyr::if_else(stringr::str_detect(MicroCodes,"S"),"Yes","No"),
-    MicroCoarse = dplyr::if_else(stringr::str_detect(MicroCodes,"R"),"Yes","No"),
-    MicroSeaweedKelp = dplyr::if_else(stringr::str_detect(MicroCodes,"K"),"Yes","No"),
-    MicroWoody = dplyr::if_else(stringr::str_detect(MicroCodes,"W"),"Yes","No"),
-    MicroHumanTrash = dplyr::if_else(stringr::str_detect(MicroCodes,"T"),"Yes","No"),
-    MicroVegetation = dplyr::if_else(stringr::str_detect(MicroCodes,"V"),"Yes","No"),
-    MicroSmooth = dplyr::if_else(stringr::str_detect(MicroCodes,"E"),"Yes","No"),
-    MicroSteep = dplyr::if_else(stringr::str_detect(MicroCodes,"D"),"Yes","No"),
-    MicroHumanDogPrints = dplyr::if_else(stringr::str_detect(MicroCodes,"P"),"Yes","No"),
-    MicroHorsePrints = dplyr::if_else(stringr::str_detect(MicroCodes,"H"),"Yes","No"),
-    MicroVehicleTracks = dplyr::if_else(stringr::str_detect(MicroCodes,"A"),"Yes","No"),
-  )
+# df_Tables[["Nesting"]] <- df_Tables[["Nesting"]] |> 
+#   dplyr::mutate(
+#     MicroSand = dplyr::if_else(stringr::str_detect(MicroCodes,"S"),"Yes","No"),
+#     MicroCoarse = dplyr::if_else(stringr::str_detect(MicroCodes,"R"),"Yes","No"),
+#     MicroSeaweedKelp = dplyr::if_else(stringr::str_detect(MicroCodes,"K"),"Yes","No"),
+#     MicroWoody = dplyr::if_else(stringr::str_detect(MicroCodes,"W"),"Yes","No"),
+#     MicroHumanTrash = dplyr::if_else(stringr::str_detect(MicroCodes,"T"),"Yes","No"),
+#     MicroVegetation = dplyr::if_else(stringr::str_detect(MicroCodes,"V"),"Yes","No"),
+#     MicroSmooth = dplyr::if_else(stringr::str_detect(MicroCodes,"E"),"Yes","No"),
+#     MicroSteep = dplyr::if_else(stringr::str_detect(MicroCodes,"D"),"Yes","No"),
+#     MicroHumanDogPrints = dplyr::if_else(stringr::str_detect(MicroCodes,"P"),"Yes","No"),
+#     MicroHorsePrints = dplyr::if_else(stringr::str_detect(MicroCodes,"H"),"Yes","No"),
+#     MicroVehicleTracks = dplyr::if_else(stringr::str_detect(MicroCodes,"A"),"Yes","No"),
+#   )
 
 #####
 # Check for Null fields - ChickLoss_4 fields are all null as of 5/1/2025
@@ -633,6 +634,19 @@ df_Tables <- purrr::imap(
                          dplyr::contains("Id"))
   }
 )
+
+#########################################
+# Checking values
+#########################################
+check <- NULL
+
+# check unique values in each column in each table
+for (i in seq_along(df_Tables)) {
+  check[[i]] <- lapply(df_Tables[[i]], unique)
+}
+
+names(check) <- names(df_Tables)
+
 
 #########################################
 # Export cleaned datasets to CSV in the 'Input' directory of the Data Package Script location

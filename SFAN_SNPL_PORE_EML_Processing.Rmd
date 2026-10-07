@@ -1,7 +1,7 @@
 ---
 title: "NPS, SFAN Snowy Plover EML creation"
 author: "Original Author: Alexa Serrantes, subsequent edits by Kirk Sherrill DS/DM SFAN, Daniel Woods ADS"
-date: "2026/06/08"
+date: "2026/10/01"
 output: html
 
 
@@ -20,6 +20,9 @@ cat("\014")
 #clear the environment
 rm(list = ls())
 ```
+
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -40,7 +43,7 @@ This script acts as a template file for end-to-end creation of EML metadata in R
 datapackage_type <- "public"
 
 # Choose a name for your data package. This will be used as the name of the data package folder.
-data_pkg_name <- "SNPLPORE_2025_2318211"
+data_pkg_name <- "SNPLPORE_2026_2320618"
 
 # For each CREATOR in the personel.txt file (Data/Metadata_Templates), in the order they appear, 
 # add their orcidID in the variable below. Use NA (no quotes) if a Creator doesn't
@@ -52,14 +55,14 @@ my_orcids <- c( "0009-0000-9082-4799",
 # Select 'Yes' if Data package reference already exists else select 'No'  ('Yes'|'No')
 existingReference <- "Yes"
 # Define the Existing Data Package Reference Code if reference has already been created
-existingReferenceCode  <- 2318211
+existingReferenceCode  <- 2320618
 
 # Database reference on the datastore with the through field data being processed. This reference is being added to
 # the 'Additional_Info' EML section.
-db_referenceCode <- 2318209
+db_referenceCode <- 2321088
 
 # Data Release Report Reference
-drr_referenceCode <- 2318212
+drr_referenceCode <- 2321090
 
 # SNPL PORE Data Store Project Code - Created Data Package will be linked to the SPOW Project Reference
 projectReferenceCode <- 2310339
@@ -81,7 +84,8 @@ remove.packages("NPSdataverse")
 remove.packages("DPchecker")
 remove.packages("EMLeditor")
 
-devtools::install_github("nationalparkservice/NPSdataverse")
+remotes::install_github("doi-nps/NPSdataverse")
+pak::pkg_install("doi-nps/NPSdataverse")
 ```
 ```{r load_packages}
 # When loading packages, you may be advised to update to more recent versions
@@ -393,7 +397,7 @@ The `set_int_rights()` function will also put the name of your license in a fiel
 
 ```{r int_rights}
 # choose from "restricted", "public" or "CC0" (zero), see above:
-my_metadata2 <- EMLeditor::set_int_rights(my_metadata2, "public")
+my_metadata2 <- EMLeditor::set_int_rights(my_metadata2, "CC0")
 ```
 
 #### Add a data package DOI 

@@ -23,35 +23,35 @@ library(magrittr)           # Load for the pipe operator `%>%`
 ##################
 
 # Data Package Data Store Reference Code
-referencecodeDP <- 2318211
+referencecodeDP <- 2320618
 
 # Database harvested for the Datasets/Data Packages Reference Code 
-referencecodeDB <- 2318209
+referencecodeDB <- 2321088
 
 # Data Release Report Data Store Reference Code
-referencecodeDRR <- 2318212
+referencecodeDRR <- 2321090
 
 # Data Processing Scripts GitHub Repo Version Data Store Reference Code - This is the Version of the SNPL_PORE_DataPackage 
 # code repo which is exported annually to provide open data and open science reproducability.
-referencecodeDPS <- 2318231
+referencecodeDPS <- 2321088
 
 # Processing Date of the Data Package
-processingDate <- '2026-06-08'
+processingDate <- '2026-10-01'
 
 # Year Published
 publishYear <- 2026
 
 # SNPL PORE Backend Database with the Datasets to be preprocssed
-db_name <- "//INPPORE07/Resources/Natural/SNPLOVER/SNPL_IM/DATA/Database/Dbase_BE/PORE_SNPL_BE_20260605.accdb"
+db_name <- "//Files.nps.doi.net/NPS/WASO/Programs/IMD/SFAN/Files/Shared/Monitoring/SnowyPlovers/PORE/DATA/Database/PORE_SNPL_BE_20260929.accdb"
 
 # Dataset/Data Package Files Path
-dsFilePath <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/SNPLPORE_2025_2318211"
+dsFilePath <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/SNPLPORE_2026_2320618"
 
 # Template File Full Path
 templateFileFull <- "C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/SFAN_SNPLPORE_DRR_Template.docx"
 
 # Output Directory this is where the updated DRR Template will be exported
-outDir <- "C:/Users/dwoods/OneDrive - DOI/NPS-IMD-SFAN - Documents/Data Management/Monitoring/SnowyPlover_PORE/DataPackages/2025"
+outDir <- "C:/Users/dwoods/OneDrive - DOI/NPS-IMD-SFAN - Documents/Data Management/Monitoring/SnowyPlover_PORE/DataPackages/2026"
 
 ##################
 # Hard coded values End
