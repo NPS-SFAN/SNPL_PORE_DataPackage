@@ -24,7 +24,9 @@ rm(list = ls())
 # Variables to Define
 #####################
 # SNPL PORE Backend Database with the Datasets to be preprocssed
+
 db_name <- "//Files.nps.doi.net/NPS/WASO/Programs/IMD/SFAN/Files/Shared/Monitoring/SnowyPlovers/PORE/DATA/Database/PORE_SNPL_BE_20261007.accdb"
+
 # Directory where output preprocessed .csv dataset files will be exported
 outPutDir <-'C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage/Data/Input'
 #############################################

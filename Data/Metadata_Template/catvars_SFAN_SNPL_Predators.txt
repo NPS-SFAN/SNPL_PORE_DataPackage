@@ -15,6 +15,7 @@ predatorDirection	Southeast	Predator was observed moving southeast
 predatorDirection	Southwest	Predator was observed moving southwest
 predatorDirection	West	Predator was observed moving west
 QCFlag	NGUSDN	"Spatial data entered in office rather then field, spatial coordinates set to null"
+QCFlag	Empty string	No QC flag present
 siteID	DB	Drakes Beach
 siteID	K	Kehoe Beach
 siteID	L	Limantour Beach
