@@ -69,6 +69,9 @@ drr_referenceCode <- 2321090
 # SNPL PORE Data Store Project Code - Created Data Package will be linked to the SPOW Project Reference
 projectReferenceCode <- 2310339
 
+# Data Processing Script GitHub Reference Code
+datapackageScripts_url <- 2321089
+
 # Path to the Scripts being used in this processing. Will be where the Falcons Datapackage Repo has been cloned locally.
 codepath <-"C:/Users/dwoods/GitHub/SFAN/SNPL_PORE_DataPackage"
 ```
@@ -206,7 +209,7 @@ Give the data package a title. FAIR principles suggest titles of between 7 and 2
 metadata_id <- paste0("SFAN_SNPL_Monitoring_" , startYear, "_", endYear, "_metadata")
 print(paste0("Metadata FileName - ", metadata_id))
 
-package_title <- paste0("Snowy Plover Monitoring Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network: ", startYear, "-", endYear, " – Data Package")
+package_title <- paste0("Snowy Plover Monitoring at Point Reyes National Seashore by the San Francisco Bay Area Inventory and Monitoring Network: ", startYear, "-", endYear, " – Data Package")
 print(paste0("Data Package Title - ", package_title))
 ```
 
@@ -418,7 +421,7 @@ You will need the DOI for the DRR you are drafting as well as the DRR's Title. G
 it will not be activated until after publication so that you have plenty of 
 time to construct the DRR.
 ```{r DRR_links}
-dRR_Name <- paste0("Snowy Plover Monitoring Point Reyes National Seashore and the San Francisco Bay Area Inventory and Monitoring Network: ", startYear, "-", endYear, " - Data Release Report")
+dRR_Name <- paste0("Snowy Plover Monitoring at Point Reyes National Seashore by the San Francisco Bay Area Inventory and Monitoring Network: ", startYear, "-", endYear, " - Data Release Report")
 my_metadata2 <- EMLeditor::set_drr(my_metadata2, drr_referenceCode, dRR_Name)
 ```
 
@@ -437,17 +440,17 @@ my_metadata2 <- EMLeditor::set_creator_orcids(my_metadata2, my_orcids, force=FAL
 # EMLeditor::get_author_list(my_metadata)
 ```
 
-## Add additoinal Info Section
+## Add additional Info Section
 
 ```{r addtional Info - with Database}
 # Define the Additional Info section. Include the Link to the database profile for this reference
-database_LU <- paste0("The snowy plover database from which the datasets were processed for this data package is on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
+database_LU <- paste0("The snowy plover database from which the datasets were processed for this data package is available on the NPS Datastore at: https://irma.nps.gov/DataStore/Reference/Profile/", db_referenceCode)
 
-monitoringObjectives <- "The snowy plover monitoring objectives are to determine trends in the estimated breeding population size, distribution, and reproductive success of snowy plovers at known breeding beaches at Point Reyes National Seashore."
+scriptRep_LU <- paste0("Dataset pre-processing and data package creation was accomplished using the R scripts available on the NPS DataStore at: https://irma.nps.gov/DataStore/Reference/Profile/", datapackageScripts_url, ".")
 
-# Combine Monitoring Objectives and the database Reference Info.
-defition_LU <- paste0(monitoringObjectives," ", database_LU)
-my_metadata2 <- EMLeditor::set_additional_info(my_metadata2, defition_LU)
+additional_LU <- paste0(database_LU,". ",scriptRep_LU)
+
+my_metadata2 <- EMLeditor::set_additional_info(my_metadata2, additional_LU)
 # Show the addition Info Text
 EMLeditor::get_additional_info(my_metadata2)
 ```
